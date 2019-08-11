@@ -49,7 +49,7 @@ function IndexPage() {
             text={"You have a store!"}
           ></ListItem>
         </ul>
-        <ConnectedLine className="mt-16 alias-max-w-index-wide w-full">
+        <ConnectedLine className="mt-24 alias-max-w-index-wide w-full">
           <div className="alias-rounded-index overflow-hidden">
             <InsetBox className="px-8 py-5 text-purple-100">
               <div className="font-bold mb-4">
@@ -78,11 +78,24 @@ function IndexPage() {
                 />
               </ul>
             </InsetBox>
-            <div className="text-center py-6 text-2xl bg-teal-500 shadow-inset-teal font-bold text-purple-900">
+            <div className="text-center py-6 text-2xl cta-button">
               Coming soon...
             </div>
           </div>
         </ConnectedLine>
+        <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
+          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-white p-10 border-2">
+            <span>Get notified when single product store is available.</span>
+            <form className="w-full mt-4 rounded-sm flex overflow-hidden">
+              <input
+                type="email"
+                placeholder="your email..."
+                className="text-purple-900 font-bold pl-4 py-2 flex-grow min-w-0"
+              ></input>
+              <button className="cta-button px-6 flex-shrink-0">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </Layout>
   );

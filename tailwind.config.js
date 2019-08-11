@@ -32,6 +32,7 @@ module.exports = {
         80: "21rem"
       },
       borderRadius: {
+        sm: ".25rem",
         default: ".4375rem"
       },
       boxShadow: {
