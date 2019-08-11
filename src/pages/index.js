@@ -94,19 +94,19 @@ function IndexPage() {
               </div>
               <ul>
                 <FeatureItem
-                  header="Online Store"
+                  header="Online store"
                   text="A well presented website to sell your product"
                 />
                 <FeatureItem
-                  header="Payment Processing"
+                  header="Payment processing"
                   text="We handle to payments for you, just tell us where to pay you"
                 />
                 <FeatureItem
-                  header="Change Templates in One Click"
+                  header="Change templates in one click"
                   text="If your product changes or its time for a refresh you can change themes"
                 />
                 <FeatureItem
-                  header="No Branding"
+                  header="No branding"
                   text="No one will know that you built a store with us unless you tell them"
                 />
               </ul>
