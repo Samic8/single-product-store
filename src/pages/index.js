@@ -9,20 +9,29 @@ import StoreInfoSvg from "../images/store-info.svg";
 import StoreSuccessSvg from "../images/store-success.svg";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
+import { useStaticQuery } from "gatsby";
 
 function IndexPage() {
+  const data = useStaticQuery(graphql`
+    query IndexQuery {
+      site {
+        siteMetadata {
+          title
+          description
+        }
+      }
+    }
+  `);
+
   return (
     <Layout>
-      <SEO
-        title="Home"
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
-      />
+      <SEO keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]} />
 
       <div className="flex flex-col items-center">
         <ConnectedLine>
           <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
             <h2 className="text-white text-2xl text-center font-bold">
-              The simplest way to sell something online.
+              {data.site.siteMetadata.description}
             </h2>
           </InsetBox>
         </ConnectedLine>
