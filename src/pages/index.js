@@ -99,11 +99,11 @@ function IndexPage() {
                 />
                 <FeatureItem
                   header="Payment processing"
-                  text="We handle to payments for you, just tell us where to pay you"
+                  text="We handle the payments for you, just tell us where to pay you"
                 />
                 <FeatureItem
                   header="Change templates in one click"
-                  text="If your product changes or its time for a refresh you can change themes"
+                  text="If your product changes or it's time for a refresh you can change themes"
                 />
                 <FeatureItem
                   header="No branding"
