@@ -9,6 +9,7 @@ import StoreInfoSvg from "../images/store-info.svg";
 import StoreSuccessSvg from "../images/store-success.svg";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
+import SignUpForm from "../components/SignUpForm";
 import { useStaticQuery } from "gatsby";
 
 function IndexPage() {
@@ -84,16 +85,8 @@ function IndexPage() {
           </div>
         </ConnectedLine>
         <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
-          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 sm:p-10 border-2">
-            <span>Get notified when single product store is available.</span>
-            <form className="w-full mt-4 rounded-sm flex overflow-hidden">
-              <input
-                type="email"
-                placeholder="your email..."
-                className="text-purple-900 font-bold pl-4 py-2 flex-grow min-w-0"
-              ></input>
-              <button className="cta-button px-4 flex-shrink-0">Submit</button>
-            </form>
+          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 border-2">
+            <SignUpForm />
           </div>
         </div>
       </div>
