@@ -2,12 +2,13 @@
 
 module.exports = {
   theme: {
-    fontFamily: {
-      sans: `"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`
-    },
     extend: {
+      fontFamily: {
+        sans: `"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`
+      },
       colors: {
         purple: {
+          100: "#D6CFD8",
           600: "#524D60",
           900: "#433F4F"
         },
@@ -42,6 +43,16 @@ module.exports = {
       const newUtilities = {
         ".gradient": {
           background: "linear-gradient(99.32deg, #8555B8 1.22%, #1D6399 167.6%)"
+        }
+      };
+
+      addUtilities(newUtilities);
+    },
+    // Aliases
+    function({ addUtilities, theme }) {
+      const newUtilities = {
+        ".alias-max-w-index-wide": {
+          "max-width": theme("maxWidth").sm
         }
       };
 
