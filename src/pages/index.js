@@ -26,7 +26,17 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]} />
+      <SEO
+        keywords={[
+          "single",
+          "product",
+          "store",
+          "online store",
+          "single product",
+          "single product store",
+          "easy online store"
+        ]}
+      />
 
       <div className="flex flex-col items-center px-4">
         <ConnectedLine>
