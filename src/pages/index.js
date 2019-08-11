@@ -4,13 +4,14 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import InsetBox from "../components/atoms/InsetBox";
 import ConnectedLine from "../components/atoms/ConnectedLine";
-import StoreMockupSvg from "../images/store-mockup.svg";
-import StoreInfoSvg from "../images/store-info.svg";
-import StoreSuccessSvg from "../images/store-success.svg";
+// import StoreMockupSvg from "../images/store-mockup.svg";
+// import StoreInfoSvg from "../images/store-info.svg";
+// import StoreSuccessSvg from "../images/store-success.svg";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
 import SignUpForm from "../components/SignUpForm";
 import { useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
 
 function IndexPage() {
   const data = useStaticQuery(graphql`
@@ -19,6 +20,27 @@ function IndexPage() {
         siteMetadata {
           title
           description
+        }
+      }
+      storeMockup: file(relativePath: { eq: "store-mockup.png" }) {
+        childImageSharp {
+          fixed(width: 232) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      storeInfo: file(relativePath: { eq: "store-info.png" }) {
+        childImageSharp {
+          fixed(width: 247) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      storeSuccess: file(relativePath: { eq: "store-success.png" }) {
+        childImageSharp {
+          fixed(width: 232) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }
@@ -48,15 +70,15 @@ function IndexPage() {
         </ConnectedLine>
         <ul className={"w-full flex flex-col items-center"}>
           <ListItem
-            content={<StoreMockupSvg />}
+            content={<Img fixed={data.storeMockup.childImageSharp.fixed} />}
             text={"Choose a Theme"}
           ></ListItem>
           <ListItem
-            content={<StoreInfoSvg />}
+            content={<Img fixed={data.storeInfo.childImageSharp.fixed} />}
             text={"Enter some info"}
           ></ListItem>
           <ListItem
-            content={<StoreSuccessSvg />}
+            content={<Img fixed={data.storeSuccess.childImageSharp.fixed} />}
             text={"You have a store!"}
           ></ListItem>
         </ul>
