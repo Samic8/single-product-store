@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         purple: {
           100: "#D6CFD8",
+          200: "#8C8A94",
           600: "#524D60",
           900: "#433F4F"
         },
@@ -19,9 +20,6 @@ module.exports = {
           500: "#39C1BC",
           900: "#0F4D4A"
         }
-      },
-      opacity: {
-        40: ".4"
       },
       inset: {
         full: "100%",

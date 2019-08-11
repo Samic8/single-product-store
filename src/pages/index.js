@@ -84,7 +84,7 @@ function IndexPage() {
           </div>
         </ConnectedLine>
         <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
-          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-white p-10 border-2">
+          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-10 border-2">
             <span>Get notified when single product store is available.</span>
             <form className="w-full mt-4 rounded-sm flex overflow-hidden">
               <input
