@@ -27,7 +27,7 @@ function IndexPage() {
     <Layout>
       <SEO keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]} />
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center px-4">
         <ConnectedLine>
           <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
             <h2 className="text-white text-2xl text-center font-bold">
@@ -35,7 +35,7 @@ function IndexPage() {
             </h2>
           </InsetBox>
         </ConnectedLine>
-        <ul>
+        <ul className={"w-full flex flex-col items-center"}>
           <ListItem
             content={<StoreMockupSvg />}
             text={"Choose a Theme"}
@@ -51,7 +51,7 @@ function IndexPage() {
         </ul>
         <ConnectedLine className="mt-24 alias-max-w-index-wide w-full">
           <div className="alias-rounded-index overflow-hidden">
-            <InsetBox className="px-8 py-5 text-purple-100">
+            <InsetBox className="px-4 sm:px-8 py-3 sm:py-5 text-purple-100">
               <div className="font-bold mb-4">
                 <span className="text-2xl">$28</span>
                 <span className="text-sm ml-2">/month</span>
@@ -84,7 +84,7 @@ function IndexPage() {
           </div>
         </ConnectedLine>
         <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
-          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-10 border-2">
+          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 sm:p-10 border-2">
             <span>Get notified when single product store is available.</span>
             <form className="w-full mt-4 rounded-sm flex overflow-hidden">
               <input
@@ -102,10 +102,10 @@ function IndexPage() {
 }
 
 const ListItem = ({ content, text }) => (
-  <li>
+  <li className="max-w-xs w-full">
     <ConnectedLine className="mt-16">
       <GradientBox
-        content={<div className="flex justify-center">{content}</div>}
+        content={<div className="flex justify-center w-full">{content}</div>}
         text={<span>{text}</span>}
       ></GradientBox>
     </ConnectedLine>
