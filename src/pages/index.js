@@ -70,11 +70,11 @@ function IndexPage() {
                   text="We handle to payments for you, just tell us where to pay you"
                 />
                 <FeatureItem
-                  header="Change templates in one click"
+                  header="Change Templates in One Click"
                   text="If your product changes or its time for a refresh you can change styles"
                 />
                 <FeatureItem
-                  header="No branding"
+                  header="No Branding"
                   text="No one will know that you built a store with us unless you tell them"
                 />
               </ul>
