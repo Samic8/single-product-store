@@ -71,7 +71,7 @@ function IndexPage() {
         <ul className={"w-full flex flex-col items-center"}>
           <ListItem
             content={<Img fixed={data.storeMockup.childImageSharp.fixed} />}
-            text={"Choose a Theme"}
+            text={"Choose a theme"}
           ></ListItem>
           <ListItem
             content={<Img fixed={data.storeInfo.childImageSharp.fixed} />}
