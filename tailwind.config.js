@@ -14,6 +14,10 @@ module.exports = {
         },
         gray: {
           100: "#FCFAFA"
+        },
+        teal: {
+          500: "#39C1BC",
+          900: "#0F4D4A"
         }
       },
       opacity: {
@@ -33,7 +37,9 @@ module.exports = {
       boxShadow: {
         default: "0px 4px 14px rgba(0, 0, 0, 0.25)",
         "inset-combo":
-          "0px 2px 2px rgba(0, 0, 0, 0.06), inset 0px 2px 4px rgba(0, 0, 0, 0.25)"
+          "0px 2px 2px rgba(0, 0, 0, 0.06), inset 0px 2px 4px rgba(0, 0, 0, 0.25)",
+        "inset-teal":
+          "0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 0px #55D3B8"
       }
     }
   },
@@ -53,6 +59,9 @@ module.exports = {
       const newUtilities = {
         ".alias-max-w-index-wide": {
           "max-width": theme("maxWidth").sm
+        },
+        ".alias-rounded-index": {
+          "border-radius": theme("borderRadius").default
         }
       };
 

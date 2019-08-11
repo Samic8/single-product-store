@@ -41,31 +41,38 @@ function IndexPage() {
           ></ListItem>
         </ul>
         <ConnectedLine className="mt-16 alias-max-w-index-wide w-full">
-          <InsetBox className="px-8 py-5 max-w-sm text-purple-100">
-            <div className="font-bold mb-4">
-              <span className="text-2xl">$28</span>
-              <span className="text-sm ml-2">/month</span>
-              <div className="leading-tight">+3.2% payment processing fee</div>
+          <div className="alias-rounded-index overflow-hidden">
+            <InsetBox className="px-8 py-5 text-purple-100">
+              <div className="font-bold mb-4">
+                <span className="text-2xl">$28</span>
+                <span className="text-sm ml-2">/month</span>
+                <div className="leading-tight">
+                  +3.2% payment processing fee
+                </div>
+              </div>
+              <ul>
+                <FeatureItem
+                  header="Online Store"
+                  text="A well presented website to sell your product"
+                />
+                <FeatureItem
+                  header="Payment Processing"
+                  text="We handle to payments for you, just tell us where to pay you"
+                />
+                <FeatureItem
+                  header="Change templates in one click"
+                  text="If your product changes or its time for a refresh you can change styles"
+                />
+                <FeatureItem
+                  header="No branding"
+                  text="No one will know that you built a store with us unless you tell them"
+                />
+              </ul>
+            </InsetBox>
+            <div className="text-center py-6 text-2xl bg-teal-500 shadow-inset-teal font-bold text-purple-900">
+              Coming soon...
             </div>
-            <ul>
-              <FeatureItem
-                header="Online Store"
-                text="A well presented website to sell your product"
-              />
-              <FeatureItem
-                header="Payment Processing"
-                text="We handle to payments for you, just tell us where to pay you"
-              />
-              <FeatureItem
-                header="Change templates in one click"
-                text="If your product changes or its time for a refresh you can change styles"
-              />
-              <FeatureItem
-                header="No branding"
-                text="No one will know that you built a store with us unless you tell them"
-              />
-            </ul>
-          </InsetBox>
+          </div>
         </ConnectedLine>
       </div>
     </Layout>
