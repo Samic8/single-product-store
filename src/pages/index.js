@@ -95,19 +95,19 @@ function IndexPage() {
               <ul>
                 <FeatureItem
                   header="Online store"
-                  text="A well presented website to sell your product"
+                  text="A well presented website to sell your product."
                 />
                 <FeatureItem
                   header="Payment processing"
-                  text="We handle the payments for you, just tell us where to pay you"
+                  text="We handle the payments for you, just tell us where to pay you."
                 />
                 <FeatureItem
                   header="Change templates in one click"
-                  text="If your product changes or it's time for a refresh you can change themes"
+                  text="Change themes if your product changes or it's time for a refresh."
                 />
                 <FeatureItem
                   header="No branding"
-                  text="No one will know that you built a store with us unless you tell them"
+                  text="No one will know that you built a store with us unless you tell them."
                 />
               </ul>
             </InsetBox>
