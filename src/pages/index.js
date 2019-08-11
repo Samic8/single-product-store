@@ -92,7 +92,7 @@ function IndexPage() {
                 placeholder="your email..."
                 className="text-purple-900 font-bold pl-4 py-2 flex-grow min-w-0"
               ></input>
-              <button className="cta-button px-6 flex-shrink-0">Submit</button>
+              <button className="cta-button px-4 flex-shrink-0">Submit</button>
             </form>
           </div>
         </div>
