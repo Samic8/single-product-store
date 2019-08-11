@@ -81,7 +81,7 @@ function IndexPage() {
                 />
                 <FeatureItem
                   header="Change Templates in One Click"
-                  text="If your product changes or its time for a refresh you can change styles"
+                  text="If your product changes or its time for a refresh you can change themes"
                 />
                 <FeatureItem
                   header="No Branding"
