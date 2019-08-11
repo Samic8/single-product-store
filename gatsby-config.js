@@ -26,6 +26,14 @@ module.exports = {
         purgeOnly: [`src/css/style.css`]
       }
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images/ // See below to configure properly
+        }
+      }
+    },
     `gatsby-plugin-offline`
   ]
 };
