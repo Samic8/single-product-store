@@ -86,10 +86,9 @@ function IndexPage() {
           <div className="alias-rounded-index overflow-hidden">
             <InsetBox className="px-4 sm:px-8 py-3 sm:py-5 text-purple-100">
               <div className="font-bold mb-4">
-                <span className="text-2xl">$28</span>
-                <span className="text-sm ml-2">/month</span>
-                <div className="leading-tight">
-                  +3.2% payment processing fee
+                <span className="text-2xl">Pay as you go pricing</span>
+                <div className="text-sm">
+                  Pay nothing until you make a sale.
                 </div>
               </div>
               <ul>
