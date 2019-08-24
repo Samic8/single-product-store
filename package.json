@@ -31,6 +31,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "server": "node src/backend/server.js",
     "analyze:lint": "eslint --ext .jsx --ext .js .",
     "analyze:prettier": "prettier --list-different '**/*.{js,css,md,json}'",
     "analyze": "npm run analyze:lint && npm run analyze:prettier",
