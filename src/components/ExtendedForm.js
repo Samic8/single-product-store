@@ -36,7 +36,6 @@ export default function() {
           placeholder="Your email"
         />
         <button type="button" onClick={submitForm}>Submitt</button>
-        {/* <button type="button" onClick={testSubmit}>Submitt</button> */}
       </form>
     </>
   )
