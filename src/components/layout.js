@@ -2,7 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 
+import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
 import Header from "./header";
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000'
+})
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
 function Layout({ children }) {
   const data = useStaticQuery(graphql`
@@ -20,7 +35,11 @@ function Layout({ children }) {
       <Header siteTitle={data.site.siteMetadata.title} />
 
       <main>
-        {children}
+        <ApolloProvider client={client}>
+          <ApolloHooksProvider client={client}>
+            {children}
+          </ApolloHooksProvider>
+        </ApolloProvider>
       </main>
 
     </div>

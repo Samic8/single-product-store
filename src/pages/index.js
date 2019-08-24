@@ -10,6 +10,7 @@ import ConnectedLine from "../components/atoms/ConnectedLine";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
 import SignUpForm from "../components/SignUpForm";
+import ExtendedForm from "../components/ExtendedForm";
 import { useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
@@ -118,6 +119,7 @@ function IndexPage() {
         <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
           <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 border-2">
             <SignUpForm />
+            <ExtendedForm />
           </div>
         </div>
       </div>
