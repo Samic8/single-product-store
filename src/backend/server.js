@@ -1,4 +1,4 @@
-const { GraphQLServer } = require("graphql-yoga");
+const { GraphQLServerLambda } = require("graphql-yoga");
 const { prisma } = require('./generated/prisma-client')
 
 const resolvers = {
@@ -17,10 +17,13 @@ const resolvers = {
   },
 };
 
-// 3
-const server = new GraphQLServer({
+const lambbaServer = new GraphQLServerLambda({
   typeDefs: './src/backend/schema.graphql',
   resolvers,
   context: {prisma}
 });
-server.start(() => console.log(`Server is running on http://localhost:4000`));
+
+exports.handler = async (event, context, callback) => {
+  context.callbackWaitsForEmptyEventLoop = false; // AWS expects us to use callback, and will wait and timeout otherwise
+  return lambbaServer.graphqlHandler(event, context, callback);
+};

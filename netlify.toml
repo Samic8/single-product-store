@@ -1,0 +1,8 @@
+[build]
+
+# output of the build
+publish = "public/"
+
+command = "yarn build"
+
+functions = "backend/functions/"
