@@ -5,4 +5,4 @@ publish = "public/"
 
 command = "yarn build"
 
-functions = "backend/functions/"
+functions = "src/backend/functions/"

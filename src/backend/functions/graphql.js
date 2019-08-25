@@ -1,5 +1,7 @@
 const { GraphQLServerLambda } = require("graphql-yoga");
-const { prisma } = require('./generated/prisma-client')
+const { prisma } = require('../generated/prisma-client')
+
+console.log('hello')
 
 const resolvers = {
   Query: {
@@ -24,6 +26,7 @@ const lambbaServer = new GraphQLServerLambda({
 });
 
 exports.handler = async (event, context, callback) => {
+  console.log('called')
   context.callbackWaitsForEmptyEventLoop = false; // AWS expects us to use callback, and will wait and timeout otherwise
-  return lambbaServer.graphqlHandler(event, context, callback);
+  return lambbaServer.playgroundHandler(event, context, callback);
 };
