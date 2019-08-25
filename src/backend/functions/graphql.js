@@ -19,14 +19,11 @@ const resolvers = {
   },
 };
 
-const lambbaServer = new GraphQLServerLambda({
+const lambdaServer = new GraphQLServerLambda({
   typeDefs: './src/backend/schema.graphql',
   resolvers,
   context: {prisma}
 });
 
-exports.handler = async (event, context, callback) => {
-  console.log('called')
-  context.callbackWaitsForEmptyEventLoop = false; // AWS expects us to use callback, and will wait and timeout otherwise
-  return lambbaServer.playgroundHandler(event, context, callback);
-};
+exports.handler = lambdaServer.graphqlHandler;
+  // return lambbaServer.playgroundHandler(event, context, callback);
