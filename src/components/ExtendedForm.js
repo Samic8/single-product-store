@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import gql from 'graphql-tag'
-import { useMutation } from 'react-apollo-hooks';
+import { useMutation, useQuery } from 'react-apollo-hooks';
 
 const ADD_USER = gql`
   mutation addUser($email: String!, $name: String!){
@@ -11,6 +11,14 @@ const ADD_USER = gql`
   }
 `;
 
+const GET_USERS = gql`
+query {
+  users {
+    name
+  }
+}
+`
+
 
 export default function() {
   const [email, setEmail] = useState('')
@@ -19,6 +27,8 @@ export default function() {
     variables: { email, name },
     update: (proxy, mutationResult) => {console.log(mutationResult)}
   });
+  const { data } = useQuery(GET_USERS);
+  console.log(data, 'data')
   return (
     <>
       <hr/>
