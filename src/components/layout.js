@@ -16,10 +16,10 @@ function Layout({ children }) {
   `);
 
   return (
-    <div className="flex flex-col font-sans min-h-screen text-gray-900">
-      <Header siteTitle={data.site.siteMetadata.title} />
+    <div className="flex flex-col items-start font-sans min-h-screen text-gray-900">
 
       <main>
+      <Header siteTitle={data.site.siteMetadata.title} />
         {children}
       </main>
 

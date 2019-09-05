@@ -60,7 +60,7 @@ function IndexPage() {
         ]}
       />
 
-      <div className="flex flex-col items-center px-4">
+      <div className="flex flex-col items-start items-center px-6">
         <ConnectedLine>
           <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
             <h2 className="text-white text-2xl text-center font-bold">
