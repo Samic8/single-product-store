@@ -24,7 +24,7 @@ function IndexPage() {
       }
       storeMockup: file(relativePath: { eq: "store-mockup.png" }) {
         childImageSharp {
-          fixed(width: 232) {
+          fixed(width: 67) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -69,10 +69,24 @@ function IndexPage() {
           </InsetBox>
         </ConnectedLine>
         <ul className={"w-full flex flex-col items-center"}>
-          <ListItem
-            content={<Img fixed={data.storeMockup.childImageSharp.fixed} />}
-            text={"Choose a theme"}
-          ></ListItem>
+          <li className="max-w-sm w-full">
+            <ConnectedLine className="mt-16">
+              <GradientBox
+                content={
+                  <div className="px-4">
+                    <h2 className="text-white font-bold text-sm leading-loose">Theme</h2>
+                    <div className="flex justify-between">
+                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
+                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
+                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
+                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
+                    </div>
+                  </div>
+                }
+                text={<span></span>}
+              ></GradientBox>
+            </ConnectedLine>
+          </li>
           <ListItem
             content={<Img fixed={data.storeInfo.childImageSharp.fixed} />}
             text={"Enter some info"}
@@ -126,7 +140,7 @@ function IndexPage() {
 }
 
 const ListItem = ({ content, text }) => (
-  <li className="max-w-xs w-full">
+  <li className="max-w-sm w-full">
     <ConnectedLine className="mt-16">
       <GradientBox
         content={<div className="flex justify-center w-full">{content}</div>}

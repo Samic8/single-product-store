@@ -28,6 +28,10 @@ module.exports = {
       width: {
         1: "3px"
       },
+      maxWidth: {
+        sm: '330px',
+        md: '360px',
+      },
       borderRadius: {
         sm: ".25rem",
         default: ".4375rem"
@@ -56,7 +60,7 @@ module.exports = {
     function({ addUtilities, theme }) {
       const newUtilities = {
         ".alias-max-w-index-wide": {
-          "max-width": theme("maxWidth").sm
+          "max-width": theme("maxWidth").md
         },
         ".alias-rounded-index": {
           "border-radius": theme("borderRadius").default
