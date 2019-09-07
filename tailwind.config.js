@@ -14,7 +14,8 @@ module.exports = {
           900: "#433F4F"
         },
         gray: {
-          100: "#FCFAFA"
+          100: "#FCFAFA",
+          800: "#525252"
         },
         teal: {
           500: "#39C1BC",
@@ -26,11 +27,12 @@ module.exports = {
         "1/2": "50%"
       },
       width: {
-        1: "3px"
+        1: "3px",
+        26: "6.5rem"
       },
       maxWidth: {
-        sm: '330px',
-        md: '360px',
+        sm: "330px",
+        md: "360px"
       },
       borderRadius: {
         sm: ".25rem",
@@ -64,6 +66,10 @@ module.exports = {
         },
         ".alias-rounded-index": {
           "border-radius": theme("borderRadius").default
+        },
+        // TODO: better tailwind way to handle background opacity?
+        ".bg-grey-800-opacity-05": {
+          "background-color": "rgba(87, 87, 87, 0.5)"
         }
       };
 

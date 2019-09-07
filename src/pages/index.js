@@ -4,11 +4,9 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import InsetBox from "../components/atoms/InsetBox";
 import ConnectedLine from "../components/atoms/ConnectedLine";
-// import StoreMockupSvg from "../images/store-mockup.svg";
-// import StoreInfoSvg from "../images/store-info.svg";
-// import StoreSuccessSvg from "../images/store-success.svg";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
+import Config from '../components/Config.tsx'
 import SignUpForm from "../components/SignUpForm";
 import { useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
@@ -20,13 +18,6 @@ function IndexPage() {
         siteMetadata {
           title
           description
-        }
-      }
-      storeMockup: file(relativePath: { eq: "store-mockup.png" }) {
-        childImageSharp {
-          fixed(width: 67) {
-            ...GatsbyImageSharpFixed
-          }
         }
       }
       storeInfo: file(relativePath: { eq: "store-info.png" }) {
@@ -71,20 +62,7 @@ function IndexPage() {
         <ul className={"w-full flex flex-col items-center"}>
           <li className="max-w-sm w-full">
             <ConnectedLine className="mt-16">
-              <GradientBox
-                content={
-                  <div className="px-4">
-                    <h2 className="text-white font-bold text-sm leading-loose">Theme</h2>
-                    <div className="flex justify-between">
-                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
-                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
-                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
-                      <Img className="rounded-sm" fixed={data.storeMockup.childImageSharp.fixed} />
-                    </div>
-                  </div>
-                }
-                text={<span></span>}
-              ></GradientBox>
+              <Config />
             </ConnectedLine>
           </li>
           <ListItem
