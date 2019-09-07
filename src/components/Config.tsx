@@ -37,8 +37,9 @@ export default function Config() {
                 </div>
               </div>
               <TwoColOverlay>
+                <TwoColRow title="" content={<></>} />
                 <TwoColRow
-                  title="background"
+                  title="Background"
                   content={
                     <>
                       <RadioButton
@@ -55,6 +56,28 @@ export default function Config() {
                         className="mr-1"
                         name={"background"}
                         value={"background-3"}
+                      />
+                    </>
+                  }
+                />
+                <TwoColRow
+                  title="Header"
+                  content={
+                    <>
+                      <RadioButton
+                        className="mr-1"
+                        name={"header"}
+                        value={"header-1"}
+                      />
+                      <RadioButton
+                        className="mr-1"
+                        name={"header"}
+                        value={"header-2"}
+                      />
+                      <RadioButton
+                        className="mr-1"
+                        name={"header"}
+                        value={"header-3"}
                       />
                     </>
                   }

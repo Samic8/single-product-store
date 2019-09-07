@@ -1,12 +1,19 @@
 @tailwind base;
 @tailwind components;
 
+/* cta-button */
 .cta-button {
   @apply shadow-inset-teal bg-teal-500 text-teal-900 font-bold;
 }
 
+/* radio-button */
 .radio-button {
-  @apply rounded-full p-1 border border-transparent;
+  @apply rounded-full p-1 border border-transparent cursor-pointer;
+}
+
+.radio-button:hover .radio-button-inner {
+  @apply bg-purple-100;
+  transition: background-color 0.1s ease-out;
 }
 
 .radio-button-inner {
@@ -14,7 +21,8 @@
 }
 
 input:checked + .radio-button {
-  @apply border-purple-100;
+  @apply border-purple-100 border-solid;
+  transition: border-color 0.1s ease-out;
 }
 
 @tailwind utilities;

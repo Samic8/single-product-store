@@ -6,11 +6,11 @@ export default function TwoColOverlay({ children }) {
 
 export function TwoColRow({ title, content }) {
   return (
-    <tr className="">
-      <td className="pl-4 w-26 text-white text-sm bg-grey-800-opacity-08">
-        Background
+    <tr>
+      <td className="pl-4 w-26 text-white text-sm bg-grey-800-opacity-08 align-top">
+        {title}
       </td>
-      <td className="pl-4 py-3 flex items-center">{content}</td>
+      <td className="pl-4 pb-1 flex items-center">{content}</td>
     </tr>
   );
 }
