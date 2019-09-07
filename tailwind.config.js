@@ -10,7 +10,9 @@ module.exports = {
         purple: {
           100: "#D6CFD8",
           200: "#8C8A94",
+          300: "#8583C8",
           600: "#524D60",
+          700: "#9B8FBC",
           900: "#433F4F"
         },
         gray: {
@@ -60,6 +62,7 @@ module.exports = {
     },
     // Aliases
     function({ addUtilities, theme }) {
+      console.log(theme("colors").purple);
       const newUtilities = {
         ".alias-max-w-index-wide": {
           "max-width": theme("maxWidth").md
@@ -70,6 +73,12 @@ module.exports = {
         // TODO: better tailwind way to handle background opacity?
         ".bg-grey-800-opacity-05": {
           "background-color": "rgba(87, 87, 87, 0.5)"
+        },
+        ".bg-grey-800-opacity-08": {
+          "background-color": "rgba(87, 87, 87, 0.8)"
+        },
+        ".shadow-inner-radio": {
+          "box-shadow": `inset 0px 1px 0px ${theme("colors").purple[300]}`
         }
       };
 

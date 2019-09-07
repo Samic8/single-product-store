@@ -1,7 +1,7 @@
 import React from "react";
 import GradientBox from "./atoms/GradientBox";
 import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
-import RadioButton from './atoms/RadioButton'
+import RadioButton from "./atoms/RadioButton";
 import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
 
@@ -9,7 +9,7 @@ export default function Config() {
   return (
     <StaticQuery
       query={query}
-      render={({storeMockup}) => (
+      render={({ storeMockup }) => (
         <GradientBox
           content={
             <>
@@ -37,7 +37,28 @@ export default function Config() {
                 </div>
               </div>
               <TwoColOverlay>
-                <TwoColRow title="background" content={<RadioButton />} />
+                <TwoColRow
+                  title="background"
+                  content={
+                    <>
+                      <RadioButton
+                        className="mr-1"
+                        name={"background"}
+                        value={"background-1"}
+                      />
+                      <RadioButton
+                        className="mr-1"
+                        name={"background"}
+                        value={"background-2"}
+                      />
+                      <RadioButton
+                        className="mr-1"
+                        name={"background"}
+                        value={"background-3"}
+                      />
+                    </>
+                  }
+                />
               </TwoColOverlay>
             </>
           }
