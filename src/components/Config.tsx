@@ -15,7 +15,7 @@ export default function Config() {
         <GradientBox
           content={
             <>
-              <div className="px-4 pb-4">
+              <div className="px-4 pb-3">
                 <h2 className="text-white font-bold text-sm leading-loose">
                   Theme
                 </h2>
