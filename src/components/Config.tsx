@@ -2,6 +2,7 @@ import React from "react";
 import GradientBox from "./atoms/GradientBox";
 import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
 import RadioButton from "./atoms/RadioButton";
+import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
 
@@ -18,10 +19,12 @@ export default function Config() {
                   Theme
                 </h2>
                 <div className="flex justify-between">
-                  <Img
-                    className="rounded-sm"
-                    fixed={storeMockup.childImageSharp.fixed}
-                  />
+                  <ImageRadioButton name="theme" value="one">
+                    <Img
+                      className="rounded-sm"
+                      fixed={storeMockup.childImageSharp.fixed}
+                    />
+                  </ImageRadioButton>
                   <Img
                     className="rounded-sm"
                     fixed={storeMockup.childImageSharp.fixed}
