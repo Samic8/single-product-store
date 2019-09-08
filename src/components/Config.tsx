@@ -5,6 +5,7 @@ import RadioButton from "./atoms/RadioButton";
 import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
+import SettingsSvg from "../images/settings.svg";
 
 export default function Config() {
   return (
@@ -22,24 +23,32 @@ export default function Config() {
                   <ImageRadioButton name="theme" value="one">
                     <Img
                       className="rounded-sm"
+                      draggable={false}
                       fixed={storeMockup.childImageSharp.fixed}
                     />
                   </ImageRadioButton>
                   <ImageRadioButton name="theme" value="two">
                     <Img
                       className="rounded-sm"
+                      draggable={false}
                       fixed={storeMockup.childImageSharp.fixed}
                     />
                   </ImageRadioButton>
                   <ImageRadioButton name="theme" value="three">
                     <Img
                       className="rounded-sm"
+                      draggable={false}
                       fixed={storeMockup.childImageSharp.fixed}
                     />
                   </ImageRadioButton>
                   <ImageRadioButton name="theme" value="four">
+                    <div className="absolute inset-0 bg-black opacity-25 z-10" />
+                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                      <SettingsSvg></SettingsSvg>
+                    </div>
                     <Img
                       className="rounded-sm"
+                      draggable={false}
                       fixed={storeMockup.childImageSharp.fixed}
                     />
                   </ImageRadioButton>

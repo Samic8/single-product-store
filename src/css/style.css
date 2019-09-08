@@ -34,14 +34,6 @@ input:checked + .image-radio-button {
   @apply border-gray-100;
 }
 
-.image-radio-button-overlay {
-  @apply inset-0 absolute;
-}
-
-input:checked + .image-radio-button .image-radio-button-overlay {
-  @apply bg-black opacity-25 z-10;
-}
-
 .image-radio-button-inner {
   @apply rounded-sm overflow-hidden flex relative;
 }
