@@ -18,25 +18,31 @@ export default function Config() {
                 <h2 className="text-white font-bold text-sm leading-loose">
                   Theme
                 </h2>
-                <div className="flex justify-between">
+                <div className="flex justify-between -ml-1">
                   <ImageRadioButton name="theme" value="one">
                     <Img
                       className="rounded-sm"
                       fixed={storeMockup.childImageSharp.fixed}
                     />
                   </ImageRadioButton>
-                  <Img
-                    className="rounded-sm"
-                    fixed={storeMockup.childImageSharp.fixed}
-                  />
-                  <Img
-                    className="rounded-sm"
-                    fixed={storeMockup.childImageSharp.fixed}
-                  />
-                  <Img
-                    className="rounded-sm"
-                    fixed={storeMockup.childImageSharp.fixed}
-                  />
+                  <ImageRadioButton name="theme" value="two">
+                    <Img
+                      className="rounded-sm"
+                      fixed={storeMockup.childImageSharp.fixed}
+                    />
+                  </ImageRadioButton>
+                  <ImageRadioButton name="theme" value="three">
+                    <Img
+                      className="rounded-sm"
+                      fixed={storeMockup.childImageSharp.fixed}
+                    />
+                  </ImageRadioButton>
+                  <ImageRadioButton name="theme" value="four">
+                    <Img
+                      className="rounded-sm"
+                      fixed={storeMockup.childImageSharp.fixed}
+                    />
+                  </ImageRadioButton>
                 </div>
               </div>
               <TwoColOverlay>
