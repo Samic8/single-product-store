@@ -6,7 +6,8 @@ import InsetBox from "../components/atoms/InsetBox";
 import ConnectedLine from "../components/atoms/ConnectedLine";
 import TickSvg from "../images/tick.svg";
 import GradientBox from "../components/atoms/GradientBox";
-import Config from '../components/Config.tsx'
+import Config from "../components/Config.tsx";
+import Info from "../components/Info.tsx";
 import SignUpForm from "../components/SignUpForm";
 import { useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
@@ -65,10 +66,11 @@ function IndexPage() {
               <Config />
             </ConnectedLine>
           </li>
-          <ListItem
-            content={<Img fixed={data.storeInfo.childImageSharp.fixed} />}
-            text={"Enter some info"}
-          ></ListItem>
+          <li className="max-w-sm w-full">
+            <ConnectedLine className="mt-16">
+              <Info />
+            </ConnectedLine>
+          </li>
           <ListItem
             content={<Img fixed={data.storeSuccess.childImageSharp.fixed} />}
             text={"You have a store!"}
@@ -120,10 +122,9 @@ function IndexPage() {
 const ListItem = ({ content, text }) => (
   <li className="max-w-sm w-full">
     <ConnectedLine className="mt-16">
-      <GradientBox
-        content={<div className="flex justify-center w-full">{content}</div>}
-        text={<span>{text}</span>}
-      ></GradientBox>
+      <GradientBox>
+        <div className="flex justify-center w-full">{content}</div>
+      </GradientBox>
     </ConnectedLine>
   </li>
 );

@@ -63,33 +63,30 @@ export default function Config() {
         console.log(selectedTheme);
 
         return (
-          <GradientBox
-            content={
-              <>
-                <div className="px-4 pb-3">
-                  <h2 className="text-white font-bold text-sm leading-loose">
-                    Theme
-                  </h2>
-                  <div className="flex justify-between -ml-1">
-                    {themes.map(theme => (
-                      <ImageRadioButton
-                        name="theme"
-                        value={theme}
-                        selectedValue={selectedTheme}
-                        onSelect={selectTheme}
-                      >
-                        {themeRepresentationComponent[theme]()}
-                      </ImageRadioButton>
-                    ))}
-                  </div>
+          <GradientBox>
+            <>
+              <div className="px-4 pb-3">
+                <h2 className="text-white font-bold text-sm leading-loose">
+                  Theme
+                </h2>
+                <div className="flex justify-between -ml-1">
+                  {themes.map(theme => (
+                    <ImageRadioButton
+                      name="theme"
+                      value={theme}
+                      selectedValue={selectedTheme}
+                      onSelect={selectTheme}
+                    >
+                      {themeRepresentationComponent[theme]()}
+                    </ImageRadioButton>
+                  ))}
                 </div>
-                {selectedTheme === Theme.mixAndMatch && (
-                  <MixAndMatchOptions></MixAndMatchOptions>
-                )}
-              </>
-            }
-            text={<span></span>}
-          ></GradientBox>
+              </div>
+              {selectedTheme === Theme.mixAndMatch && (
+                <MixAndMatchOptions></MixAndMatchOptions>
+              )}
+            </>
+          </GradientBox>
         );
       }}
     />
