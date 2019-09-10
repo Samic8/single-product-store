@@ -2,6 +2,7 @@ import React from "react";
 import GradientBox from "./atoms/GradientBox";
 import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
 import TextField from "@material-ui/core/TextField";
+import Popover from "@material-ui/core/Popover";
 import { ThemeProvider } from "@material-ui/styles";
 import RadioButton from "./atoms/RadioButton";
 import "./Info.css";
@@ -20,6 +21,19 @@ const theme = createMuiTheme({
 });
 
 export default function Info(): Props {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   return (
     <ThemeProvider theme={theme}>
       <GradientBox>
@@ -49,8 +63,26 @@ export default function Info(): Props {
                   name="type"
                   value="digital"
                   label="Digital"
+                  onClick={handleClick}
                   disabled={true}
                 />
+                <Popover
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center"
+                  }}
+                  transformOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center"
+                  }}
+                >
+                  <div className="p-2">
+                    Digital product stores are coming soon
+                  </div>
+                </Popover>
               </>
             }
           />

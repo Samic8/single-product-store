@@ -7,6 +7,7 @@ interface Props {
   className?: string;
   label?: string;
   disabled?: boolean;
+  onClick?: (a: Event) => void;
 }
 // TODO: Add some sort of selection animation
 export default function RadioButton({
@@ -14,10 +15,11 @@ export default function RadioButton({
   value,
   className,
   label,
-  disabled
+  disabled,
+  onClick
 }: Props) {
   return (
-    <div className={`inline-flex items-center ${className}`}>
+    <div className={`inline-flex items-center ${className}`} onClick={onClick}>
       <input
         type="radio"
         name={name}
