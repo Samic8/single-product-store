@@ -7,10 +7,10 @@ export default function TwoColOverlay({ children }) {
 export function TwoColRow({ title, content }) {
   return (
     <tr>
-      <td className="pl-4 w-26 text-white text-sm bg-grey-800-opacity-08 align-top">
+      <td className="pl-4 w-26 text-white text-sm bg-grey-800-opacity-08 align-middle">
         {title}
       </td>
-      <td className="pl-4 pb-1 flex items-center">{content}</td>
+      <td className="px-4 pb-1 flex items-center text-sm">{content}</td>
     </tr>
   );
 }

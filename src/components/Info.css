@@ -1,0 +1,4 @@
+.MuiInputBase-input {
+  @apply text-sm;
+  padding: 4px 0;
+}
