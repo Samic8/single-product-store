@@ -115,16 +115,6 @@ function IndexPage() {
   );
 }
 
-const ListItem = ({ content, text }) => (
-  <li className="max-w-sm w-full">
-    <ConnectedLine className="mt-16">
-      <GradientBox>
-        <div className="flex justify-center w-full">{content}</div>
-      </GradientBox>
-    </ConnectedLine>
-  </li>
-);
-
 const FeatureItem = ({ header, text }) => (
   <li className="mt-2">
     <div className="flex">
