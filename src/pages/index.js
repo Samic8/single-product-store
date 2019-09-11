@@ -21,20 +21,6 @@ function IndexPage() {
           description
         }
       }
-      storeInfo: file(relativePath: { eq: "store-info.png" }) {
-        childImageSharp {
-          fixed(width: 247) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      storeSuccess: file(relativePath: { eq: "store-success.png" }) {
-        childImageSharp {
-          fixed(width: 232) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
     }
   `);
 
