@@ -71,12 +71,8 @@ function IndexPage() {
               <Info />
             </ConnectedLine>
           </li>
-          <ListItem
-            content={<Img fixed={data.storeSuccess.childImageSharp.fixed} />}
-            text={"You have a store!"}
-          ></ListItem>
         </ul>
-        <ConnectedLine className="mt-24 alias-max-w-index-wide w-full">
+        <ConnectedLine className="mt-16 alias-max-w-index-wide w-full">
           <div className="alias-rounded-index overflow-hidden">
             <InsetBox className="px-4 sm:px-8 py-3 sm:py-5 text-purple-100">
               <div className="font-bold mb-4">
