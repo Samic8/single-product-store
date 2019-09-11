@@ -5,7 +5,7 @@ import TickSvg from "../../images/tick.svg";
 import Config from "../Config";
 import Info from "../Info";
 import SignUpForm from "../SignUpForm";
-import { useStaticQuery } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 interface Props {}
 
