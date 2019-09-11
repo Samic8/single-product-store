@@ -86,8 +86,27 @@ export default function Info(): Props {
               </>
             }
           />
-          <TwoColRow title={"Price"} content={<></>} />
-          <TwoColRow title={"Description"} content={<></>} />
+          <TwoColRow
+            title={"Price"}
+            content={
+              <>
+                <TextField className="flex-1" placeholder="$49" />
+              </>
+            }
+          />
+          <TwoColRow
+            title={"Description"}
+            content={
+              <>
+                <TextField
+                  multiline
+                  className="flex-1"
+                  placeholder="A tea set both designed and ..."
+                />
+              </>
+            }
+          />
+          <TwoColRow title={""} content={<></>} />
         </TwoColOverlay>
       </GradientBox>
     </ThemeProvider>
