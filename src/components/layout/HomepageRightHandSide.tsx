@@ -1,6 +1,6 @@
 import React from "react";
 import SaveSvg from "../../images/save.svg";
-import { Store } from "../../containers/store";
+import { Store } from "../../components/containers/store";
 
 interface Props {}
 
