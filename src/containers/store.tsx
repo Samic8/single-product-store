@@ -5,7 +5,7 @@ type ContextProps = {
 };
 
 type Action = {
-  type: string;
+  type: "TOGGLE_SAVE_MODAL" | "UPDATE_EMAIL";
   payload: any;
 };
 
@@ -20,6 +20,11 @@ const reducer = (state, action: Action) => {
       return {
         ...state,
         isSaveModalOpen: action.payload
+      };
+    case "UPDATE_EMAIL":
+      return {
+        ...state,
+        email: action.payload
       };
     default:
       return state;

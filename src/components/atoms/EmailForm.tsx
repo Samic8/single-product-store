@@ -5,17 +5,22 @@ interface Props {
   buttonText: string;
   // Callbacks
   onChange: (text: string) => void;
-  onButtonClick: () => void;
+  onConfirm: () => void;
 }
 
 export default function SubmitButton({
   onChange,
   value,
   buttonText,
-  onButtonClick
+  onConfirm
 }: Props) {
+  const handleSubmit = e => {
+    e.preventDefault();
+    onConfirm();
+  };
+
   return (
-    <div className="rounded-sm flex overflow-hidden">
+    <form className="rounded-sm flex overflow-hidden" onSubmit={handleSubmit}>
       <input
         type="email"
         placeholder="your email..."
@@ -23,12 +28,10 @@ export default function SubmitButton({
         value={value}
         className="text-purple-900 font-bold pl-4 py-2 flex-grow min-w-0"
       />
-      <button
-        className="cta-button px-4 flex-shrink-0"
-        onClick={() => onButtonClick()}
-      >
+      {/* TODO: Add loading and success state for button */}
+      <button className="cta-button px-4 flex-shrink-0" type="submit">
         {buttonText}
       </button>
-    </div>
+    </form>
   );
 }

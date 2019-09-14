@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import TickSvg from "../images/tick.svg";
-import SubmitButton from "./atoms/InputButtonCombo";
+import SubmitButton from "./atoms/EmailForm";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ export default function SignUpForm() {
             onChange={setEmail}
             value={email}
             buttonText={"Submit"}
-            onButtonClick={handleSubmit}
+            onConfirm={handleSubmit}
           />
         )) || (
           <div className="flex items-center">
