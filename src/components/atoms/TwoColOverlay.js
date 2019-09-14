@@ -1,7 +1,11 @@
 import React from "react";
 
 export default function TwoColOverlay({ children }) {
-  return <table className="w-full bg-grey-800-opacity-05">{children}</table>;
+  return (
+    <table className="w-full bg-grey-800-opacity-05">
+      <tbody>{children}</tbody>
+    </table>
+  );
 }
 
 export function TwoColRow({ title, content }) {

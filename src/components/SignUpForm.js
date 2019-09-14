@@ -3,7 +3,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp";
 import TickSvg from "../images/tick.svg";
 
 export default function SignUpForm() {
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(null);
 
   const handleSubmit = async e => {

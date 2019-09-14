@@ -60,8 +60,6 @@ export default function Config() {
           )
         };
 
-        console.log(selectedTheme);
-
         return (
           <GradientBox>
             <>
@@ -72,6 +70,7 @@ export default function Config() {
                 <div className="flex justify-between -ml-1">
                   {themes.map(theme => (
                     <ImageRadioButton
+                      key={theme}
                       name="theme"
                       value={theme}
                       selectedValue={selectedTheme}

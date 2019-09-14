@@ -7,8 +7,6 @@ import { ThemeProvider } from "@material-ui/styles";
 import RadioButton from "./atoms/RadioButton";
 import "./Info.css";
 
-interface Props {}
-
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -20,7 +18,7 @@ const theme = createMuiTheme({
   }
 });
 
-export default function Info(): Props {
+export default function Info() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClick(event) {
