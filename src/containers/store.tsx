@@ -1,11 +1,20 @@
 import React from "react";
 
+type ContextProps = {
+  isSaveModalOpen: boolean;
+};
+
+type Action = {
+  type: string;
+  payload: any;
+};
+
 // Context
-const State = React.createContext(null);
-const Dispatch = React.createContext(null);
+const State = React.createContext<Partial<ContextProps>>(null);
+const Dispatch = React.createContext<React.Dispatch<Action>>(null);
 
 // Reducer
-const reducer = (state, action) => {
+const reducer = (state, action: Action) => {
   switch (action.type) {
     case "TOGGLE_SAVE_MODAL":
       return {
