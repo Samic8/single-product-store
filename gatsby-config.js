@@ -56,6 +56,7 @@ module.exports = {
         endpoint:
           "https://gmail.us3.list-manage.com/subscribe/post?u=e3d40026264a982baf0275441&amp;id=23400ce5fc"
       }
-    }
+    },
+    `gatsby-plugin-typescript`
   ]
 };

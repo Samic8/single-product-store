@@ -1,19 +1,15 @@
 import React from "react";
+import InsetBox from "../atoms/InsetBox";
+import ConnectedLine from "../atoms/ConnectedLine";
+import TickSvg from "../../images/tick.svg";
+import Config from "../Config";
+import Info from "../Info";
+import SignUpForm from "../SignUpForm";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import InsetBox from "../components/atoms/InsetBox";
-import ConnectedLine from "../components/atoms/ConnectedLine";
-// import StoreMockupSvg from "../images/store-mockup.svg";
-// import StoreInfoSvg from "../images/store-info.svg";
-// import StoreSuccessSvg from "../images/store-success.svg";
-import TickSvg from "../images/tick.svg";
-import GradientBox from "../components/atoms/GradientBox";
-import SignUpForm from "../components/SignUpForm";
-import { useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+interface Props {}
 
-function IndexPage() {
+export default function HomepageLeftHandSide(): Props {
   const data = useStaticQuery(graphql`
     query IndexQuery {
       site {
@@ -22,45 +18,11 @@ function IndexPage() {
           description
         }
       }
-      storeMockup: file(relativePath: { eq: "store-mockup.png" }) {
-        childImageSharp {
-          fixed(width: 232) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      storeInfo: file(relativePath: { eq: "store-info.png" }) {
-        childImageSharp {
-          fixed(width: 247) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      storeSuccess: file(relativePath: { eq: "store-success.png" }) {
-        childImageSharp {
-          fixed(width: 232) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
     }
   `);
-
   return (
-    <Layout>
-      <SEO
-        keywords={[
-          "single",
-          "product",
-          "store",
-          "online store",
-          "single product",
-          "single product store",
-          "easy online store"
-        ]}
-      />
-
-      <div className="flex flex-col items-center px-4">
+    <div>
+      <div className="flex flex-col items-start items-center px-6">
         <ConnectedLine>
           <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
             <h2 className="text-white text-2xl text-center font-bold">
@@ -69,20 +31,18 @@ function IndexPage() {
           </InsetBox>
         </ConnectedLine>
         <ul className={"w-full flex flex-col items-center"}>
-          <ListItem
-            content={<Img fixed={data.storeMockup.childImageSharp.fixed} />}
-            text={"Choose a theme"}
-          ></ListItem>
-          <ListItem
-            content={<Img fixed={data.storeInfo.childImageSharp.fixed} />}
-            text={"Enter some info"}
-          ></ListItem>
-          <ListItem
-            content={<Img fixed={data.storeSuccess.childImageSharp.fixed} />}
-            text={"You have a store!"}
-          ></ListItem>
+          <li className="max-w-sm w-full">
+            <ConnectedLine className="mt-16">
+              <Config />
+            </ConnectedLine>
+          </li>
+          <li className="max-w-sm w-full">
+            <ConnectedLine className="mt-16">
+              <Info />
+            </ConnectedLine>
+          </li>
         </ul>
-        <ConnectedLine className="mt-24 alias-max-w-index-wide w-full">
+        <ConnectedLine className="mt-16 alias-max-w-index-wide w-full">
           <div className="alias-rounded-index overflow-hidden">
             <InsetBox className="px-4 sm:px-8 py-3 sm:py-5 text-purple-100">
               <div className="font-bold mb-4">
@@ -121,20 +81,9 @@ function IndexPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }
-
-const ListItem = ({ content, text }) => (
-  <li className="max-w-xs w-full">
-    <ConnectedLine className="mt-16">
-      <GradientBox
-        content={<div className="flex justify-center w-full">{content}</div>}
-        text={<span>{text}</span>}
-      ></GradientBox>
-    </ConnectedLine>
-  </li>
-);
 
 const FeatureItem = ({ header, text }) => (
   <li className="mt-2">
@@ -149,5 +98,3 @@ const FeatureItem = ({ header, text }) => (
     </div>
   </li>
 );
-
-export default IndexPage;
