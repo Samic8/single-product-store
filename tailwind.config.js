@@ -7,25 +7,9 @@ module.exports = {
         sans: `"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`
       },
       colors: {
-        purple: {
-          100: "#D6CFD8",
-          200: "#8C8A94",
-          300: "#8583C8",
-          600: "#524D60",
-          700: "#9B8FBC",
-          900: "#433F4F"
-        },
-        gray: {
-          100: "#FCFAFA",
-          200: "#D2D2D2",
-          500: "#707070",
-          800: "#525252"
-        },
-        teal: {
-          100: "#C5E2DD",
-          500: "#39C1BC",
-          900: "#0F4D4A"
-        }
+        purple: generateColorProps("purple"),
+        gray: generateColorProps("gray"),
+        teal: generateColorProps("teal")
       },
       inset: {
         full: "100%",
@@ -88,3 +72,11 @@ module.exports = {
     }
   ]
 };
+
+function generateColorProps(name) {
+  let props = {};
+  for (let i = 1; i <= 9; i++) {
+    props[`${i}00`] = `var(--color-${name}-${i}00)`;
+  }
+  return props;
+}
