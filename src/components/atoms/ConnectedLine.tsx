@@ -1,6 +1,11 @@
-import React from "react";
+import React, { ReactChild } from "react";
 
-export default function ConnectedLine({ children, className }) {
+interface Props {
+  className?: string;
+  children?: ReactChild;
+}
+
+export default function ConnectedLine({ children, className }: Props) {
   return (
     <div className={`relative ${className}`}>
       <div className="z-10">{children}</div>

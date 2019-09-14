@@ -62,7 +62,6 @@ module.exports = {
     },
     // Aliases
     function({ addUtilities, theme }) {
-      console.log(theme("colors").purple);
       const newUtilities = {
         ".alias-max-w-index-wide": {
           "max-width": theme("maxWidth").md

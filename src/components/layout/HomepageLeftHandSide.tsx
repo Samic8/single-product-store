@@ -9,7 +9,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 interface Props {}
 
-export default function HomepageLeftHandSide(): Props {
+export default function HomepageLeftHandSide() {
   const data = useStaticQuery(graphql`
     query IndexQuery {
       site {

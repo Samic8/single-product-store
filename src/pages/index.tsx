@@ -17,6 +17,7 @@ function IndexPage() {
           "single product store",
           "easy online store"
         ]}
+        title="Single Product Store."
       />
       <HomepageLeftHandSide />
     </Layout>
