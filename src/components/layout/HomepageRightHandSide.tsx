@@ -1,12 +1,18 @@
 import React from "react";
 import SaveSvg from "../../images/save.svg";
+import { Store } from "../../containers/store";
 
 interface Props {}
 
 export default function HomepageRightHandSide() {
+  const dispatch = React.useContext(Store.Dispatch);
+
   return (
     <div className="flex items-start w-full py-2">
-      <button className="py-2">
+      <button
+        className="py-2"
+        onClick={() => dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })}
+      >
         <SaveSvg />
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
