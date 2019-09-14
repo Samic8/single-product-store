@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import HomepageLeftHandSide from "../components/layout/HomepageLeftHandSide";
+import HomepageRightHandSide from "../components/layout/HomepageRightHandSide";
 
 function IndexPage() {
   return (
@@ -19,7 +20,10 @@ function IndexPage() {
         ]}
         title="Single Product Store."
       />
-      <HomepageLeftHandSide />
+      <div className="flex w-full">
+        <HomepageLeftHandSide />
+        <HomepageRightHandSide />
+      </div>
     </Layout>
   );
 }
