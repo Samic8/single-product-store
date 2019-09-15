@@ -1,11 +1,15 @@
 import React from "react";
+import { VariationKeys } from "./../themes/variations";
 
 type ContextProps = {
   isSaveModalOpen: boolean;
+  // TODO replace number with variation type
+  selectedVariations: { [key in VariationKeys]: number };
 };
 
+// TODO how to typescript a specific payload with a type? Maybe union types of objects?
 type Action = {
-  type: "TOGGLE_SAVE_MODAL" | "UPDATE_EMAIL";
+  type: "TOGGLE_SAVE_MODAL" | "UPDATE_EMAIL" | "UPDATE_VARIATION";
   payload: any;
 };
 
@@ -26,6 +30,18 @@ const reducer = (state, action: Action) => {
         ...state,
         email: action.payload
       };
+    case "UPDATE_VARIATION":
+      console.log(action, {
+        ...state.selectedVariations,
+        [action.payload.key]: action.payload.variation
+      });
+      return {
+        ...state,
+        selectedVariations: {
+          ...state.selectedVariations,
+          [action.payload.key]: action.payload.variation
+        }
+      };
     default:
       return state;
   }
@@ -34,7 +50,8 @@ const reducer = (state, action: Action) => {
 // Provider
 const Provider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, {
-    isSaveModalOpen: false
+    isSaveModalOpen: false,
+    selectedVariations: {}
   });
 
   return (

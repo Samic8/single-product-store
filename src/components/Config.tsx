@@ -6,6 +6,9 @@ import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
 import SettingsSvg from "../images/settings.svg";
+import { allVariations } from "./themes/variations";
+import { Store } from "./containers/store";
+import { dispatch } from "rxjs/internal/observable/range";
 
 enum Theme {
   one = "one",
@@ -93,41 +96,36 @@ export default function Config() {
 }
 
 const MixAndMatchOptions: FunctionComponent = () => {
+  const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
+
   return (
     <TwoColOverlay>
       <TwoColRow title="" content={<></>} />
-      <TwoColRow
-        title="Background"
-        content={
-          <>
-            <RadioButton
-              className="mr-1"
-              name={"background"}
-              value={"background-1"}
-            />
-            <RadioButton
-              className="mr-1"
-              name={"background"}
-              value={"background-2"}
-            />
-            <RadioButton
-              className="mr-1"
-              name={"background"}
-              value={"background-3"}
-            />
-          </>
-        }
-      />
-      <TwoColRow
-        title="Header"
-        content={
-          <>
-            <RadioButton className="mr-1" name={"header"} value={"header-1"} />
-            <RadioButton className="mr-1" name={"header"} value={"header-2"} />
-            <RadioButton className="mr-1" name={"header"} value={"header-3"} />
-          </>
-        }
-      />
+      {allVariations.map(({ name, key, variations }) => (
+        <TwoColRow
+          key={key}
+          title={name}
+          content={
+            <>
+              {variations.map(variation => (
+                <RadioButton
+                  className="mr-1"
+                  name={key}
+                  value={variation}
+                  checked={state.selectedVariations[key] === variation}
+                  onClick={() =>
+                    dispatch({
+                      type: "UPDATE_VARIATION",
+                      payload: { key, variation }
+                    })
+                  }
+                />
+              ))}
+            </>
+          }
+        />
+      ))}
     </TwoColOverlay>
   );
 };
