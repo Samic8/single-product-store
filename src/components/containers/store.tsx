@@ -9,7 +9,11 @@ type ContextProps = {
 
 // TODO how to typescript a specific payload with a type? Maybe union types of objects?
 type Action = {
-  type: "TOGGLE_SAVE_MODAL" | "UPDATE_EMAIL" | "UPDATE_VARIATION";
+  type:
+    | "TOGGLE_SAVE_MODAL"
+    | "UPDATE_EMAIL"
+    | "UPDATE_VARIATION"
+    | "SET_PRESET_THEME";
   payload: any;
 };
 
@@ -36,6 +40,14 @@ const reducer = (state, action: Action) => {
         selectedVariations: {
           ...state.selectedVariations,
           [action.payload.key]: action.payload.variation
+        }
+      };
+    case "SET_PRESET_THEME":
+      return {
+        ...state,
+        // TODO: better way to update all of the keys? Maybe store keys all in one place
+        selectedVariations: {
+          header: action.payload
         }
       };
     default:

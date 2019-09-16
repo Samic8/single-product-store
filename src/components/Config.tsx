@@ -8,58 +8,54 @@ import { StaticQuery, graphql } from "gatsby";
 import SettingsSvg from "../images/settings.svg";
 import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
-import { dispatch } from "rxjs/internal/observable/range";
 
 enum Theme {
-  one = "one",
-  two = "two",
-  three = "three",
-  mixAndMatch = "mixAndMatch"
+  one = 1,
+  two,
+  three
 }
 
-const themes = [Theme.one, Theme.two, Theme.three, Theme.mixAndMatch];
+const themes = [Theme.one, Theme.two, Theme.three];
 
 export default function Config() {
   const [selectedTheme, selectTheme] = useState(null);
+  const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
+
+  const onSelectTheme = newTheme => {
+    selectTheme(newTheme);
+
+    if (themes.includes(parseInt(newTheme))) {
+      // TODO maybe make theme variations always strings, seems a pain to have to parseInts
+      dispatch({ type: "SET_PRESET_THEME", payload: parseInt(newTheme) });
+    }
+  };
 
   return (
     <StaticQuery
       query={query}
       render={({ storeMockup }) => {
         const themeRepresentationComponent = {
-          one: () => (
+          [Theme.one]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
           ),
-          two: () => (
+          [Theme.two]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
           ),
-          three: () => (
+          [Theme.three]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
-          ),
-          [Theme.mixAndMatch]: () => (
-            <>
-              <div className="absolute inset-0 bg-black opacity-25 z-10" />
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <SettingsSvg></SettingsSvg>
-              </div>
-              <Img
-                className="rounded-sm"
-                draggable={false}
-                fixed={storeMockup.childImageSharp.fixed}
-              />
-            </>
           )
         };
 
@@ -77,14 +73,31 @@ export default function Config() {
                       name="theme"
                       value={theme}
                       selectedValue={selectedTheme}
-                      onSelect={selectTheme}
+                      onSelect={onSelectTheme}
                     >
                       {themeRepresentationComponent[theme]()}
                     </ImageRadioButton>
                   ))}
+                  <ImageRadioButton
+                    key={"mixAndMatch"}
+                    name="theme"
+                    value={"mixAndMatch"}
+                    selectedValue={selectedTheme}
+                    onSelect={selectTheme}
+                  >
+                    <div className="absolute inset-0 bg-black opacity-25 z-10" />
+                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                      <SettingsSvg></SettingsSvg>
+                    </div>
+                    <Img
+                      className="rounded-sm"
+                      draggable={false}
+                      fixed={storeMockup.childImageSharp.fixed}
+                    />
+                  </ImageRadioButton>
                 </div>
               </div>
-              {selectedTheme === Theme.mixAndMatch && (
+              {selectedTheme === "mixAndMatch" && (
                 <MixAndMatchOptions></MixAndMatchOptions>
               )}
             </>
