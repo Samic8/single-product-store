@@ -110,6 +110,7 @@ const MixAndMatchOptions: FunctionComponent = () => {
             <>
               {variations.map(variation => (
                 <RadioButton
+                  key={variation}
                   className="mr-1"
                   name={key}
                   value={variation}
