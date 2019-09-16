@@ -7,9 +7,5 @@ interface Props {
 }
 
 export default function ThemeContainer({ headerVariation }: Props) {
-  return (
-    <div>
-      <Header variation={0} />
-    </div>
-  );
+  return <div>{headerVariation && <Header variation={headerVariation} />}</div>;
 }

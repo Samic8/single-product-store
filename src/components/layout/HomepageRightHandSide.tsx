@@ -8,6 +8,7 @@ interface Props {}
 
 export default function HomepageRightHandSide() {
   const dispatch = React.useContext(Store.Dispatch);
+  const { selectedVariations } = React.useContext(Store.State);
 
   return (
     <section>
@@ -28,7 +29,9 @@ export default function HomepageRightHandSide() {
           <div>Save your configuration so its ready to set live at launch</div>
         </div>
       </div>
-      <ThemeContainer headerVariation={1}></ThemeContainer>
+      <ThemeContainer
+        headerVariation={selectedVariations.header}
+      ></ThemeContainer>
     </section>
   );
 }

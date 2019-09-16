@@ -1,10 +1,10 @@
 import React from "react";
-import { VariationKeys } from "./../themes/variations";
+import { VariationKeys, HeaderVariations } from "./../themes/variations";
 
 type ContextProps = {
   isSaveModalOpen: boolean;
   // TODO replace number with variation type
-  selectedVariations: { [key in VariationKeys]: number };
+  selectedVariations: { [key in VariationKeys]: any };
 };
 
 // TODO how to typescript a specific payload with a type? Maybe union types of objects?
@@ -31,10 +31,6 @@ const reducer = (state, action: Action) => {
         email: action.payload
       };
     case "UPDATE_VARIATION":
-      console.log(action, {
-        ...state.selectedVariations,
-        [action.payload.key]: action.payload.variation
-      });
       return {
         ...state,
         selectedVariations: {
