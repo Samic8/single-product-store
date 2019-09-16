@@ -11,6 +11,7 @@ export default function HomepageRightHandSide() {
     <div className="flex items-start w-full py-2">
       <button
         className="py-2"
+        aria-haspopup="true"
         onClick={() => dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })}
       >
         <SaveSvg />
