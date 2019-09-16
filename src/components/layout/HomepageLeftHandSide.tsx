@@ -5,6 +5,7 @@ import TickSvg from "../../images/tick.svg";
 import Config from "../Config";
 import Info from "../Info";
 import SignUpForm from "../SignUpForm";
+import Header from "../header";
 import { useStaticQuery, graphql } from "gatsby";
 
 interface Props {}
@@ -22,6 +23,7 @@ export default function HomepageLeftHandSide() {
   `);
   return (
     <div>
+      <Header siteTitle={data.site.siteMetadata.title} />
       <div className="flex flex-col items-start items-center px-6">
         <ConnectedLine>
           <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
