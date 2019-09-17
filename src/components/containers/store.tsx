@@ -47,7 +47,8 @@ const reducer = (state, action: Action) => {
         ...state,
         // TODO: better way to update all of the keys? Maybe store keys all in one place
         selectedVariations: {
-          header: action.payload
+          header: action.payload,
+          background: action.payload
         }
       };
     default:
