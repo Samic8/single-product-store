@@ -11,7 +11,7 @@ export default function HomepageRightHandSide() {
   const { selectedVariations } = React.useContext(Store.State);
 
   return (
-    <section>
+    <section className="flex-grow">
       <div className="flex items-start w-full py-2">
         <button
           className="py-2"
