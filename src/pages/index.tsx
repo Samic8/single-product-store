@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import HomepageLeftHandSide from "../components/layout/HomepageLeftHandSide";
 import HomepageRightHandSide from "../components/layout/HomepageRightHandSide";
-import { Store } from "../containers/store";
+import { Store } from "../components/containers/store";
 import SaveModal from "../components/layout/SaveModal";
 
 function IndexPage() {

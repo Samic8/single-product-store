@@ -1,0 +1,20 @@
+:root {
+  /* Purple */
+  --color-purple-100: #d6cfd8;
+  --color-purple-200: #8c8a94;
+  --color-purple-300: #8583c8;
+  --color-purple-600: #524d60;
+  --color-purple-700: #9b8fbc;
+  --color-purple-900: #433f4f;
+
+  /* Gray */
+  --color-gray-100: #fcfafa;
+  --color-gray-200: #d2d2d2;
+  --color-gray-500: #707070;
+  --color-gray-800: #525252;
+
+  /* Teal */
+  --color-teal-100: #c5e2dd;
+  --color-teal-500: #39c1bc;
+  --color-teal-900: #0f4d4a;
+}

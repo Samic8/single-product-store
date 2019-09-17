@@ -4,6 +4,7 @@ import { getActiveClasses } from "../../utility/active-classes";
 interface Props {
   name: string;
   value: any;
+  checked?: boolean;
   className?: string;
   label?: string;
   disabled?: boolean;
@@ -15,16 +16,21 @@ export default function RadioButton({
   value,
   className,
   label,
+  checked,
   disabled,
   onClick
 }: Props) {
+  const id = `${value}-${name}-id`;
+
   return (
-    <div className={`inline-flex items-center ${className}`} onClick={onClick}>
+    <div className={`inline-flex items-center ${className}`}>
       <input
         type="radio"
         name={name}
-        id={`${value}-id`}
+        id={id}
         value={value}
+        onChange={() => onClick()}
+        checked={checked}
         hidden
         disabled={disabled}
       />
@@ -33,7 +39,7 @@ export default function RadioButton({
           "radio-button": true,
           "radio-button-disabled": disabled
         })}
-        htmlFor={`${value}-id`}
+        htmlFor={id}
       >
         <div className={"radio-button-inner"}></div>
       </label>

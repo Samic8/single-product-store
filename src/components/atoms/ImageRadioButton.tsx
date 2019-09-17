@@ -24,7 +24,7 @@ const ImageRadioButton: FunctionComponent<Props> = ({
         id={`${value}-id`}
         value={value}
         onChange={e => onSelect(e.target.value)}
-        checked={selectedValue === value}
+        checked={selectedValue == value}
         hidden
       />
       <label className="image-radio-button" htmlFor={`${value}-id`}>

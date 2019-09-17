@@ -1,7 +1,7 @@
 import React from "react";
 
 import Modal from "@material-ui/core/Modal";
-import { Store } from "../../containers/store";
+import { Store } from "../../components/containers/store";
 import CrossSvg from "../../images/cross.svg";
 import EmailForm from "../atoms/EmailForm";
 
