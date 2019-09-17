@@ -8,7 +8,7 @@ interface Props {}
 
 export default function HomepageRightHandSide() {
   const dispatch = React.useContext(Store.Dispatch);
-  const { selectedVariations } = React.useContext(Store.State);
+  const { selectedVariations, storeInfo } = React.useContext(Store.State);
 
   return (
     <section className="flex-grow">
@@ -31,6 +31,7 @@ export default function HomepageRightHandSide() {
       </div>
       <ThemeContainer
         headerVariation={selectedVariations.header}
+        storeInfo={storeInfo}
       ></ThemeContainer>
     </section>
   );
