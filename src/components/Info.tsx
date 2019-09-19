@@ -6,6 +6,7 @@ import Popover from "@material-ui/core/Popover";
 import { ThemeProvider } from "@material-ui/styles";
 import RadioButton from "./atoms/RadioButton";
 import "./Info.css";
+import { Store } from "./containers/store";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -19,6 +20,8 @@ const theme = createMuiTheme({
 });
 
 export default function Info() {
+  const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClick(event) {
@@ -30,7 +33,6 @@ export default function Info() {
   }
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,6 +45,21 @@ export default function Info() {
               </h2>
             }
             content={<></>}
+          />
+          <TwoColRow
+            title={"Store Name"}
+            content={
+              <TextField
+                className="flex-1"
+                placeholder="Barcardis Tea Shop"
+                onChange={e =>
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { storeName: e.target.value }
+                  })
+                }
+              />
+            }
           />
           <TwoColRow
             title={"Product"}

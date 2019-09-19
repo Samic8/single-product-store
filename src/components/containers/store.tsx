@@ -1,10 +1,12 @@
 import React from "react";
 import { VariationKeys, HeaderVariations } from "./../themes/variations";
+import { StoreInfo } from "./../themes/info";
 
 type ContextProps = {
   isSaveModalOpen: boolean;
   // TODO replace number with variation type
   selectedVariations: { [key in VariationKeys]: any };
+  storeInfo: StoreInfo;
 };
 
 // TODO how to typescript a specific payload with a type? Maybe union types of objects?
@@ -13,7 +15,8 @@ type Action = {
     | "TOGGLE_SAVE_MODAL"
     | "UPDATE_EMAIL"
     | "UPDATE_VARIATION"
-    | "SET_PRESET_THEME";
+    | "SET_PRESET_THEME"
+    | "UPDATE_STORE_INFO";
   payload: any;
 };
 
@@ -47,7 +50,16 @@ const reducer = (state, action: Action) => {
         ...state,
         // TODO: better way to update all of the keys? Maybe store keys all in one place
         selectedVariations: {
-          header: action.payload
+          header: action.payload,
+          background: action.payload
+        }
+      };
+    case "UPDATE_STORE_INFO":
+      return {
+        ...state,
+        storeInfo: {
+          ...state.storeInfo,
+          ...action.payload
         }
       };
     default:
@@ -59,7 +71,11 @@ const reducer = (state, action: Action) => {
 const Provider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, {
     isSaveModalOpen: false,
-    selectedVariations: {}
+    selectedVariations: {},
+    // TODO: use defaults in info.tsx as well
+    storeInfo: {
+      storeName: "Barcardis Tea Shop"
+    }
   });
 
   return (

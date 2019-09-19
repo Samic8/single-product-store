@@ -8,10 +8,10 @@ interface Props {}
 
 export default function HomepageRightHandSide() {
   const dispatch = React.useContext(Store.Dispatch);
-  const { selectedVariations } = React.useContext(Store.State);
+  const { selectedVariations, storeInfo } = React.useContext(Store.State);
 
   return (
-    <section>
+    <section className="flex-grow">
       <div className="flex items-start w-full py-2">
         <button
           className="py-2"
@@ -31,6 +31,7 @@ export default function HomepageRightHandSide() {
       </div>
       <ThemeContainer
         headerVariation={selectedVariations.header}
+        storeInfo={storeInfo}
       ></ThemeContainer>
     </section>
   );
