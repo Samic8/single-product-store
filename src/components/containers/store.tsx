@@ -1,5 +1,5 @@
 import React from "react";
-import { VariationKeys, HeaderVariations } from "./../themes/variations";
+import { VariationKeys } from "./../themes/variations";
 import { StoreInfo } from "./../themes/info";
 
 type ContextProps = {
@@ -73,9 +73,7 @@ const Provider = ({ children }) => {
     isSaveModalOpen: false,
     selectedVariations: {},
     // TODO: use defaults in info.tsx as well
-    storeInfo: {
-      storeName: "Barcardis Tea Shop"
-    }
+    storeInfo: {}
   });
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderVariations } from "./variations";
-import { StoreInfo } from "../info";
+import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
 
 interface Props {
   variation: HeaderVariations;
@@ -8,6 +8,8 @@ interface Props {
 }
 
 export default function Header({ variation, storeInfo }: Props) {
+  const { storeName } = applyPlaceholderStoreInfo(storeInfo);
+
   switch (variation) {
     case 1:
       return (
@@ -17,7 +19,7 @@ export default function Header({ variation, storeInfo }: Props) {
             href="https://fonts.googleapis.com/css?family=Satisfy&display=swap"
             rel="stylesheet"
           ></link>
-          {storeInfo.storeName}
+          {storeName}
         </div>
       );
     case 2:
