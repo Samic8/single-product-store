@@ -17,7 +17,9 @@ export default function Background({ variations, children }: Props) {
         </div>
       );
     case 2:
-      return <div>{children}</div>;
+      return (
+        <div className="flex flex-grow w-full bg-gray-200">{children}</div>
+      );
     case 3:
       return <div>{children}</div>;
   }
