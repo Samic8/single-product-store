@@ -53,6 +53,16 @@ functions:
       - http: 
           path: updateuser/{id}
           method: post
+  graphql:
+    handler: api/graphql.handler
+    memorySize: 128
+    events:
+      - http:
+          path: graphql
+          method: post
+      - http:
+          path: graphql
+          method: get
 
 resources:
   Resources:
