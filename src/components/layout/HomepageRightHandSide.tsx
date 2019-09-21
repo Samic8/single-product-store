@@ -11,7 +11,7 @@ export default function HomepageRightHandSide() {
   const { selectedVariations, storeInfo } = React.useContext(Store.State);
 
   return (
-    <section className="flex-grow">
+    <section className="flex-grow flex flex-col">
       <div className="flex items-start w-full py-2">
         <button
           className="py-2"
@@ -30,7 +30,7 @@ export default function HomepageRightHandSide() {
         </div>
       </div>
       <ThemeContainer
-        headerVariation={selectedVariations.header}
+        variations={selectedVariations}
         storeInfo={storeInfo}
       ></ThemeContainer>
     </section>

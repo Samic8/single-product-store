@@ -9,7 +9,8 @@ module.exports = {
       colors: {
         purple: generateColorProps("purple"),
         gray: generateColorProps("gray"),
-        teal: generateColorProps("teal")
+        teal: generateColorProps("teal"),
+        red: generateColorProps("red")
       },
       inset: {
         full: "100%",

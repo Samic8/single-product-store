@@ -13,14 +13,21 @@ export default function Header({ variation, storeInfo }: Props) {
   switch (variation) {
     case 1:
       return (
-        <div className="text-white font-bold" style={{ fontFamily: "Satisfy" }}>
+        <>
           {/* TODO figure out how to lazy load this font with gatsby */}
           <link
             href="https://fonts.googleapis.com/css?family=Satisfy&display=swap"
             rel="stylesheet"
           ></link>
-          {storeName}
-        </div>
+          <div className="py-5 px-6">
+            <h1
+              className="text-white font-bold inline-block text-2xl"
+              style={{ fontFamily: "Satisfy", transform: "rotate(-5deg)" }}
+            >
+              {storeName}
+            </h1>
+          </div>
+        </>
       );
     case 2:
       return <div className="text-white font-bold">1</div>;

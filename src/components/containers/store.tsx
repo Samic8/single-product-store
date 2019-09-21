@@ -1,11 +1,11 @@
 import React from "react";
-import { VariationKeys } from "./../themes/variations";
+import { Variations } from "./../themes/variations";
 import { StoreInfo } from "./../themes/info";
 
 type ContextProps = {
   isSaveModalOpen: boolean;
   // TODO replace number with variation type
-  selectedVariations: { [key in VariationKeys]: any };
+  selectedVariations: Variations;
   storeInfo: StoreInfo;
 };
 
