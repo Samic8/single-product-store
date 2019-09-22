@@ -1,0 +1,32 @@
+type Query {
+    ok: String
+    list: [User]
+}
+
+type Mutation {
+    addUser(email: String!, fName: String, lName: String, color: String): User!
+    UpdateUserConfig(email: String!, config: Config): User!
+}
+
+input Config {
+    storeName: String
+    productName: String
+    type: String
+    price: String
+    description: String
+    header: Int
+    background: Int
+    productContainer: Int
+}
+
+type User {
+    id: String!
+    email: String!
+    fName: String
+    lName: String
+    configuration: UserConfig!
+}
+
+type UserConfig {
+    color: String
+}

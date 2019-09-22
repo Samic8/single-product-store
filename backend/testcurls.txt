@@ -1,0 +1,8 @@
+getuser
+curl localhost:3000/getuser/id
+
+submituser
+curl -H "Content-Type: application/json" -X POST -d '{"email":"higuy2@hi.com","name":"hi","color":"red"}' localhost:3000/user
+
+updateuser
+curl -H "Content-Type: application/json" -X POST -d '{"color":"blue"}' localhost:3000/updateuser/id

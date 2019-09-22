@@ -1,0 +1,12 @@
+query {
+  ok 
+}
+
+mutation {
+  addUser(email: "user@user.com", fName: "hi", lName: "guy", color: "red") {
+    id
+    email
+  }
+}
+
+
