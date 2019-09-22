@@ -51,7 +51,8 @@ const reducer = (state, action: Action) => {
         // TODO: better way to update all of the keys? Maybe store keys all in one place
         selectedVariations: {
           header: action.payload,
-          background: action.payload
+          background: action.payload,
+          productContainer: action.payload
         }
       };
     case "UPDATE_STORE_INFO":
