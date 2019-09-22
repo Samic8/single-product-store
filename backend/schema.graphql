@@ -4,8 +4,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(email: String!, fName: String, lName: String, color: String): User!
-    UpdateUserConfig(email: String!, config: Config): User!
+    UpdateUserConfig(email: String!, config: Config): String!
 }
 
 input Config {
@@ -22,8 +21,6 @@ input Config {
 type User {
     id: String!
     email: String!
-    fName: String
-    lName: String
     configuration: UserConfig!
 }
 
