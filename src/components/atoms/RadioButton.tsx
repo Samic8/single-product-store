@@ -39,6 +39,7 @@ export default function RadioButton({
           "radio-button": true,
           "radio-button-disabled": disabled
         })}
+        aria-label={name}
         htmlFor={id}
       >
         <div className={"radio-button-inner"}></div>
@@ -46,7 +47,6 @@ export default function RadioButton({
       {label && (
         // TODO is this the right aria label?
         <span
-          aria-labelfor={id}
           onClick={() => onClick(value)}
           className={getActiveClasses({
             "ml-1 text-white": true,

@@ -5,8 +5,11 @@ import { Store } from "../../components/containers/store";
 import CrossSvg from "../../images/cross.svg";
 import EmailForm from "../atoms/EmailForm";
 
-function IndexPage() {
-  const { isSaveModalOpen } = React.useContext(Store.State);
+interface Props {
+  onEmailConfirm: (email: string) => void;
+}
+
+function SaveModal({ onEmailConfirm }: Props) {
   const dispatch = React.useContext(Store.Dispatch);
   const [email, setEmail] = React.useState("");
 
@@ -16,7 +19,7 @@ function IndexPage() {
   return (
     <Modal
       aria-describedby="save-modal-description"
-      open={isSaveModalOpen}
+      open={true}
       onClose={() => hideModal()}
     >
       <>
@@ -38,9 +41,10 @@ function IndexPage() {
               <EmailForm
                 value={email}
                 onChange={newEmail => setEmail(newEmail)}
-                onConfirm={() =>
-                  dispatch({ type: "UPDATE_EMAIL", payload: email })
-                }
+                onConfirm={() => {
+                  dispatch({ type: "UPDATE_EMAIL", payload: email });
+                  onEmailConfirm(email);
+                }}
                 buttonText={"Save"}
               />
             </div>
@@ -51,4 +55,4 @@ function IndexPage() {
   );
 }
 
-export default IndexPage;
+export default SaveModal;
