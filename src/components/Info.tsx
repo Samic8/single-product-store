@@ -66,7 +66,17 @@ export default function Info() {
           <TwoColRow
             title={"Product"}
             content={
-              <TextField className="flex-1" placeholder="Handmade tea set" />
+              <TextField
+                className="flex-1"
+                placeholder={storeInfoPlaceholder.productName}
+                value={state.storeInfo.productName}
+                onChange={e =>
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { productName: e.target.value }
+                  })
+                }
+              />
             }
           />
           <TwoColRow
@@ -107,7 +117,17 @@ export default function Info() {
             title={"Price"}
             content={
               <>
-                <TextField className="flex-1" placeholder="$49" />
+                <TextField
+                  className="flex-1"
+                  placeholder={storeInfoPlaceholder.price}
+                  value={state.storeInfo.price}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { price: e.target.value }
+                    })
+                  }
+                />
               </>
             }
           />
@@ -118,7 +138,14 @@ export default function Info() {
                 <TextField
                   multiline
                   className="flex-1"
-                  placeholder="A tea set both designed and ..."
+                  placeholder={storeInfoPlaceholder.description}
+                  value={state.storeInfo.description}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { description: e.target.value }
+                    })
+                  }
                 />
               </>
             }
