@@ -1,11 +1,11 @@
 import React from "react";
-import { VariationKeys, HeaderVariations } from "./../themes/variations";
+import { Variations } from "./../themes/variations";
 import { StoreInfo } from "./../themes/info";
 
 type ContextProps = {
   isSaveModalOpen: boolean;
   // TODO replace number with variation type
-  selectedVariations: { [key in VariationKeys]: any };
+  selectedVariations: Variations;
   storeInfo: StoreInfo;
 };
 
@@ -51,7 +51,8 @@ const reducer = (state, action: Action) => {
         // TODO: better way to update all of the keys? Maybe store keys all in one place
         selectedVariations: {
           header: action.payload,
-          background: action.payload
+          background: action.payload,
+          productContainer: action.payload
         }
       };
     case "UPDATE_STORE_INFO":
@@ -74,7 +75,7 @@ const Provider = ({ children }) => {
     selectedVariations: {},
     // TODO: use defaults in info.tsx as well
     storeInfo: {
-      storeName: "Barcardis Tea Shop"
+      type: "physical"
     }
   });
 

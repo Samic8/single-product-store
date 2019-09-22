@@ -8,7 +8,7 @@ interface Props {
   className?: string;
   label?: string;
   disabled?: boolean;
-  onClick?: (a: Event) => void;
+  onClick?: (a: string) => void;
 }
 // TODO: Add some sort of selection animation
 export default function RadioButton({
@@ -29,7 +29,7 @@ export default function RadioButton({
         name={name}
         id={id}
         value={value}
-        onChange={() => onClick()}
+        onChange={e => onClick(e.target.value)}
         checked={checked}
         hidden
         disabled={disabled}
@@ -44,7 +44,10 @@ export default function RadioButton({
         <div className={"radio-button-inner"}></div>
       </label>
       {label && (
+        // TODO is this the right aria label?
         <span
+          aria-labelfor={id}
+          onClick={() => onClick(value)}
           className={getActiveClasses({
             "ml-1 text-white": true,
             "cursor-pointer": !disabled

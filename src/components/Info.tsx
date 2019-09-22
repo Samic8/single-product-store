@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import RadioButton from "./atoms/RadioButton";
 import "./Info.css";
 import { Store } from "./containers/store";
+import { storeInfoPlaceholder } from "../components/themes/info";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -51,7 +52,8 @@ export default function Info() {
             content={
               <TextField
                 className="flex-1"
-                placeholder="Barcardis Tea Shop"
+                placeholder={storeInfoPlaceholder.storeName}
+                value={state.storeInfo.storeName}
                 onChange={e =>
                   dispatch({
                     type: "UPDATE_STORE_INFO",
@@ -64,22 +66,47 @@ export default function Info() {
           <TwoColRow
             title={"Product"}
             content={
-              <TextField className="flex-1" placeholder="Handmade tea set" />
+              <TextField
+                className="flex-1"
+                placeholder={storeInfoPlaceholder.productName}
+                value={state.storeInfo.productName}
+                onChange={e =>
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { productName: e.target.value }
+                  })
+                }
+              />
             }
           />
           <TwoColRow
             title={"Type"}
             content={
               <>
-                <RadioButton name="type" value="physical" label="Physical" />
-                {/* TODO: Add coming soon tooltip? What about mobile? */}
+                <RadioButton
+                  name="type"
+                  value={"physical"}
+                  checked={state.storeInfo.type === "physical"}
+                  label="Physical"
+                  onClick={value =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { type: value }
+                    })
+                  }
+                />
                 <RadioButton
                   className="ml-3"
                   name="type"
-                  value="digital"
+                  value={"digital"}
+                  checked={state.storeInfo.type === "digital"}
+                  onClick={value =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { type: value }
+                    })
+                  }
                   label="Digital"
-                  onClick={handleClick}
-                  disabled={true}
                 />
                 <Popover
                   open={open}
@@ -105,7 +132,17 @@ export default function Info() {
             title={"Price"}
             content={
               <>
-                <TextField className="flex-1" placeholder="$49" />
+                <TextField
+                  className="flex-1"
+                  placeholder={storeInfoPlaceholder.price}
+                  value={state.storeInfo.price}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { price: e.target.value }
+                    })
+                  }
+                />
               </>
             }
           />
@@ -116,7 +153,14 @@ export default function Info() {
                 <TextField
                   multiline
                   className="flex-1"
-                  placeholder="A tea set both designed and ..."
+                  placeholder={storeInfoPlaceholder.description}
+                  value={state.storeInfo.description}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { description: e.target.value }
+                    })
+                  }
                 />
               </>
             }

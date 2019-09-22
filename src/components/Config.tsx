@@ -78,6 +78,7 @@ export default function Config() {
                       {themeRepresentationComponent[theme]()}
                     </ImageRadioButton>
                   ))}
+                  {/* TODO: Add tooltip or title to explain what this section is */}
                   <ImageRadioButton
                     key={"mixAndMatch"}
                     name="theme"
