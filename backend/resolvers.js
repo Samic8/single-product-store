@@ -9,28 +9,37 @@ const createUserId = () => `usr-${uuidv1()}`
 
 export const resolvers = {
   Query: {
-    hello: () => "world",
+    ok: () => "ok",
     list: async () => {
       var params = {
           TableName: process.env.USER_TABLE,
-          ProjectionExpression: "id, fullname, email"
+          ProjectionExpression: "id, fName, lName, email"
       };
       const data = await dynamoDb.scan(params).promise();
-      return data.Items.map(({email}) => email)
+      return Object.values(data.Items.reduce((acc, current) => {
+        if(!acc[current.id]) {
+          acc[current.id] = current;
+          return acc;
+        } 
+        acc[current.id] = {
+          ...acc[current.id],
+          ...current,
+        };
+        return acc;
+      },{}))
     },
   },
   Mutation: {
-    addUser : async (parent, {email, name = '', lName = '', color ='a'}) => {
+    addUser : async (parent, {email, fName = '', lName = '', color ='a'}) => {
       const id = createUserId();
       const timestamp = new Date().getTime();
-      console.log(email, name, lName, color)
       const userDetail = {
         id,
         info: 'userDetail',
         submittedAt: timestamp,
         updatedAt: timestamp,
         email,
-        name,
+        fName,
         lName,
       };
       const userConfig = {
@@ -55,7 +64,7 @@ export const resolvers = {
       return {
         id,
         email,
-        name,
+        fName,
         lName,
         configuration: {
           color,
