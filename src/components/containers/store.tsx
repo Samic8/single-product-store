@@ -74,7 +74,9 @@ const Provider = ({ children }) => {
     isSaveModalOpen: false,
     selectedVariations: {},
     // TODO: use defaults in info.tsx as well
-    storeInfo: {}
+    storeInfo: {
+      type: "physical"
+    }
   });
 
   return (

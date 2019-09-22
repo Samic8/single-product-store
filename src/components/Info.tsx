@@ -83,15 +83,30 @@ export default function Info() {
             title={"Type"}
             content={
               <>
-                <RadioButton name="type" value="physical" label="Physical" />
-                {/* TODO: Add coming soon tooltip? What about mobile? */}
+                <RadioButton
+                  name="type"
+                  value={"physical"}
+                  checked={state.storeInfo.type === "physical"}
+                  label="Physical"
+                  onClick={value =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { type: value }
+                    })
+                  }
+                />
                 <RadioButton
                   className="ml-3"
                   name="type"
-                  value="digital"
+                  value={"digital"}
+                  checked={state.storeInfo.type === "digital"}
+                  onClick={value =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { type: value }
+                    })
+                  }
                   label="Digital"
-                  onClick={handleClick}
-                  disabled={true}
                 />
                 <Popover
                   open={open}
