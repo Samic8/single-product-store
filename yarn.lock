@@ -9596,7 +9596,7 @@ postcss-selector-parser@^5.0.0, postcss-selector-parser@^5.0.0-rc.4:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-selector-parser@^6.0.0:
+postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.2.tgz#934cf799d016c83411859e09dcecade01286ec5c"
   integrity sha512-36P2QR59jDTOAiIkqEprfJDsoNrvwFei3eCqKd1Y0tUsBimsq39BLp7RD+JWny3WgB1zGhJX8XVePwm9k4wdBg==
@@ -11454,6 +11454,14 @@ table@^5.2.3:
     lodash "^4.17.14"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
+
+tailwindcss-interaction-variants@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-interaction-variants/-/tailwindcss-interaction-variants-2.2.0.tgz#a6667af19f7ba39d841e5b8dc668eac68fd8b01c"
+  integrity sha512-ZKi0YF4QZSyvL6V2+Y94KsyocynI6hSot6e8m6eSrnEg2KLl/begfsB2CnZ+s83EgWEL2/zA+cC3nNCVnT2mTA==
+  dependencies:
+    lodash "^4.17.15"
+    postcss-selector-parser "^6.0.2"
 
 tailwindcss@1.0.6:
   version "1.0.6"

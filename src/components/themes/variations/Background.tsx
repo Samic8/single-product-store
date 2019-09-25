@@ -18,7 +18,9 @@ export default function Background({ variations, children }: Props) {
       );
     case 2:
       return (
-        <div className="flex flex-grow w-full bg-gray-200">{children}</div>
+        <div className="relative flex flex-grow w-full bg-gray-200">
+          <div className="absolute inset-0">{children}</div>
+        </div>
       );
     case 3:
       return <div>{children}</div>;

@@ -26,7 +26,8 @@ module.exports = {
       },
       borderRadius: {
         sm: ".25rem",
-        default: ".4375rem"
+        default: ".4375rem",
+        xl: "1.875rem"
       },
       boxShadow: {
         default: "0px 4px 14px rgba(0, 0, 0, 0.25)",
@@ -37,8 +38,11 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    backgroundColor: ["hover", "hocus", "responsive"]
+  },
   plugins: [
+    require("tailwindcss-interaction-variants")(),
     function({ addUtilities }) {
       const newUtilities = {
         ".gradient": {
