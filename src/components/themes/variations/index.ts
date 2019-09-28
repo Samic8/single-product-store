@@ -1,9 +1,4 @@
 import Header from "./Header";
-import {
-  HeaderVariations,
-  allVariations,
-  VariationKeys,
-  Variations
-} from "./variations";
+import { allVariations, Variations } from "./variations";
 
-export { Header, HeaderVariations, allVariations, VariationKeys, Variations };
+export { Header, allVariations, Variations };

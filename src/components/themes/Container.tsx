@@ -17,7 +17,7 @@ export default function ThemeContainer({ variations, storeInfo }: Props) {
       <Background variations={variations}>
         <>
           {variations.header && (
-            <Header variation={variations.header} storeInfo={storeInfo} />
+            <Header variations={variations} storeInfo={storeInfo} />
           )}
           {variations.productContainer && (
             <ProductContainer variations={variations} storeInfo={storeInfo} />
