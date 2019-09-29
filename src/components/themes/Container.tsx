@@ -16,9 +16,7 @@ export default function ThemeContainer({ variations, storeInfo }: Props) {
     <div className="flex-grow flex flex-col variations-colors">
       <Background variations={variations}>
         <>
-          {variations.header && (
-            <Header variations={variations} storeInfo={storeInfo} />
-          )}
+          <Header variations={variations} storeInfo={storeInfo} />
           {variations.productContainer && (
             <ProductContainer variations={variations} storeInfo={storeInfo} />
           )}
