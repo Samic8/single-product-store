@@ -16,7 +16,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
       return (
         <CenteredContainer
           variations={variations}
-          classes={{ image: "rounded shadow-sm" }}
+          classes={{ root: "text-white", image: "rounded shadow-sm" }}
           storeInfo={appliedStoreInfo}
         />
       );
@@ -24,7 +24,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
       return (
         <CenteredContainer
           variations={variations}
-          classes={{ root: "shadow overflow-hidden bg-white" }}
+          classes={{ root: "shadow overflow-hidden bg-white text-gray-600" }}
           storeInfo={appliedStoreInfo}
         />
       );
@@ -53,12 +53,12 @@ const CenteredContainer = ({
       className={getActiveClasses(["w-2/5 bg-gray-200 z-10", classes.image])}
     ></div>
     <div className="w-3/5 px-10 py-16 relative">
-      <h2 className="font-bold text-2xl text-gray-600 leading-tight inline-block">
+      <h2 className="font-bold text-2xl leading-tight inline-block">
         {productName}
         <div className="bg-gray-200 h-2 w-16 ml-auto"></div>
       </h2>
-      <div className="text-3xl text-gray-600">{price}</div>
-      <p className="text-md leading-tight text-gray-600 mt-2">{description}</p>
+      <div className="text-3xl">{price}</div>
+      <p className="text-md leading-tight mt-2">{description}</p>
       {/* TODO better focus state? */}
       <button className="rounded-xl bg-gray-500 py-3 px-6 text-white font-bold mt-4 hocus:bg-gray-600">
         Buy
