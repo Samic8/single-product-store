@@ -30,8 +30,16 @@ export default function Header({ variations, storeInfo }: Props) {
         </>
       );
     case 2:
-      return <div className="text-white font-bold">1</div>;
+      return (
+        <div className="py-5 px-6">
+          <h1 className="text-white font-bold inline-block text-2xl">
+            {storeName}
+          </h1>
+        </div>
+      );
     case 3:
       return <div className="text-white font-bold">2</div>;
   }
+
+  return <div className="py-5 px-6"></div>;
 }

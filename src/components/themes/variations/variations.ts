@@ -40,7 +40,7 @@ export const preConfiguredThemes: {
     decoration: 1
   },
   2: {
-    header: 2,
+    header: null,
     background: 2,
     productContainer: 2,
     decoration: 1
