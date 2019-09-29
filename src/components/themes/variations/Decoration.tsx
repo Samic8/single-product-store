@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Variations } from "./variations";
-import { StoreInfo } from "../info";
 import DecoSvg from "../decorations/pattern.svg";
 import Deco2Svg from "../decorations/pattern2.svg";
 
