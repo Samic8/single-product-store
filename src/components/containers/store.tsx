@@ -71,7 +71,8 @@ const Provider = ({ children }) => {
     selectedVariations: {},
     // TODO: use defaults in info.tsx as well
     storeInfo: {
-      type: "physical"
+      type: "physical",
+      moreInfo: []
     }
   });
 

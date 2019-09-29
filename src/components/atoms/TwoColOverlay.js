@@ -14,7 +14,7 @@ export function TwoColRow({ title, content }) {
       <td className="pl-4 w-26 text-white text-sm bg-grey-800-opacity-08 align-top">
         {title}
       </td>
-      <td className="px-4 pb-2 flex items-center text-sm">{content}</td>
+      <td className="px-4 pb-2 text-sm">{content}</td>
     </tr>
   );
 }

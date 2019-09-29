@@ -4,7 +4,8 @@ export type VariationKeys =
   | "header"
   | "background"
   | "productContainer"
-  | "decoration";
+  | "decoration"
+  | "moreInfo";
 
 type AllVariations = {
   name: string;
@@ -18,10 +19,11 @@ export type Variations = {
 };
 
 export const allVariations: AllVariations[] = [
-  { name: "Header", key: "header", variations: [1, 2, 3] },
-  { name: "Background", key: "background", variations: [1, 2, 3] },
-  { name: "Product", key: "productContainer", variations: [1, 2, 3] },
-  { name: "Decoration", key: "decoration", variations: [1, 2, 3] }
+  { name: "Header", key: "header", variations: [1, 2] },
+  { name: "Background", key: "background", variations: [1, 2] },
+  { name: "Product", key: "productContainer", variations: [1, 2] },
+  { name: "Decoration", key: "decoration", variations: [1, 2] },
+  { name: "More Info", key: "moreInfo", variations: [1, 2] }
 ];
 
 export enum PreConfiguredThemes {
@@ -37,18 +39,21 @@ export const preConfiguredThemes: {
     header: 1,
     background: 1,
     productContainer: 1,
-    decoration: 1
+    decoration: 1,
+    moreInfo: 1
   },
   2: {
     header: 2,
     background: 2,
     productContainer: 2,
-    decoration: 1
+    decoration: 1,
+    moreInfo: 2
   },
   3: {
     header: 1,
     background: 1,
     productContainer: 1,
-    decoration: 1
+    decoration: 1,
+    moreInfo: null
   }
 };

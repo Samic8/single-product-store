@@ -35,6 +35,71 @@ export default function Info() {
 
   const open = Boolean(anchorEl);
 
+  const StretchCol = ({ children }) => (
+    <div className="flex items-center">{children}</div>
+  );
+
+  const MoreInfoOptions = () => {
+    if (!state.storeInfo.moreInfo) return <></>;
+
+    return (
+      <div>
+        {state.storeInfo.moreInfo.map(({ icon, text }, index) => (
+          <div>
+            <div>
+              <TextField
+                multiline
+                className=" w-20"
+                placeholder={storeInfoPlaceholder.moreInfo[index].icon}
+                value={icon}
+                onChange={e =>
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { moreInfo: e.target.value }
+                  })
+                }
+              />
+            </div>
+            <StretchCol>
+              <TextField
+                multiline
+                className="flex-1"
+                placeholder={storeInfoPlaceholder.moreInfo[index].text}
+                value={text}
+                onChange={e =>
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { moreInfo: e.target.value }
+                  })
+                }
+              />
+            </StretchCol>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const AddMoreInfoRow = () => {
+    return (
+      <div>
+        <button
+          className="font-bold text-gray-200 mt-2"
+          onClick={() =>
+            dispatch({
+              type: "UPDATE_STORE_INFO",
+              payload: {
+                moreInfo: [...state.storeInfo.moreInfo, { text: "", icon: "" }]
+              }
+            })
+          }
+        >
+          Add Row
+        </button>
+      </div>
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GradientBox>
@@ -50,33 +115,37 @@ export default function Info() {
           <TwoColRow
             title={"Store Name"}
             content={
-              <TextField
-                className="flex-1"
-                placeholder={storeInfoPlaceholder.storeName}
-                value={state.storeInfo.storeName}
-                onChange={e =>
-                  dispatch({
-                    type: "UPDATE_STORE_INFO",
-                    payload: { storeName: e.target.value }
-                  })
-                }
-              />
+              <StretchCol>
+                <TextField
+                  className="flex-1"
+                  placeholder={storeInfoPlaceholder.storeName}
+                  value={state.storeInfo.storeName}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { storeName: e.target.value }
+                    })
+                  }
+                />
+              </StretchCol>
             }
           />
           <TwoColRow
             title={"Product"}
             content={
-              <TextField
-                className="flex-1"
-                placeholder={storeInfoPlaceholder.productName}
-                value={state.storeInfo.productName}
-                onChange={e =>
-                  dispatch({
-                    type: "UPDATE_STORE_INFO",
-                    payload: { productName: e.target.value }
-                  })
-                }
-              />
+              <StretchCol>
+                <TextField
+                  className="flex-1"
+                  placeholder={storeInfoPlaceholder.productName}
+                  value={state.storeInfo.productName}
+                  onChange={e =>
+                    dispatch({
+                      type: "UPDATE_STORE_INFO",
+                      payload: { productName: e.target.value }
+                    })
+                  }
+                />
+              </StretchCol>
             }
           />
           <TwoColRow
@@ -131,7 +200,7 @@ export default function Info() {
           <TwoColRow
             title={"Price"}
             content={
-              <>
+              <StretchCol>
                 <TextField
                   className="flex-1"
                   placeholder={storeInfoPlaceholder.price}
@@ -143,13 +212,13 @@ export default function Info() {
                     })
                   }
                 />
-              </>
+              </StretchCol>
             }
           />
           <TwoColRow
             title={"Description"}
             content={
-              <>
+              <StretchCol>
                 <TextField
                   multiline
                   className="flex-1"
@@ -162,6 +231,15 @@ export default function Info() {
                     })
                   }
                 />
+              </StretchCol>
+            }
+          />
+          <TwoColRow
+            title={"More Info"}
+            content={
+              <>
+                <MoreInfoOptions />
+                <AddMoreInfoRow />
               </>
             }
           />

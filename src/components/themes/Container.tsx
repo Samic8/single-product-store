@@ -3,6 +3,7 @@ import { Variations } from "./variations/variations";
 import Background from "./variations/Background";
 import Header from "./variations/Header";
 import ProductContainer from "./variations/ProductContainer";
+import MoreInfo from "./variations/MoreInfo";
 import { StoreInfo } from "./info";
 import "./variations/variations-colors.css";
 
@@ -21,6 +22,9 @@ export default function ThemeContainer({ variations, storeInfo }: Props) {
           )}
           {variations.productContainer && (
             <ProductContainer variations={variations} storeInfo={storeInfo} />
+          )}
+          {variations.productContainer && (
+            <MoreInfo variations={variations} storeInfo={storeInfo} />
           )}
         </>
       </Background>
