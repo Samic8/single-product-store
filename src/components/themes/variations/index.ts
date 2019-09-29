@@ -1,4 +1,15 @@
 import Header from "./Header";
-import { allVariations, Variations } from "./variations";
+import {
+  allVariations,
+  Variations,
+  preConfiguredThemes,
+  PreConfiguredThemes
+} from "./variations";
 
-export { Header, allVariations, Variations };
+export {
+  Header,
+  allVariations,
+  Variations,
+  preConfiguredThemes,
+  PreConfiguredThemes
+};

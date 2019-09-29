@@ -15,6 +15,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
     case 1:
       return (
         <CenteredContainer
+          variations={variations}
           classes={{ image: "rounded shadow-sm" }}
           storeInfo={appliedStoreInfo}
         />
@@ -22,6 +23,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
     case 2:
       return (
         <CenteredContainer
+          variations={variations}
           classes={{ root: "shadow overflow-hidden bg-white" }}
           storeInfo={appliedStoreInfo}
         />
@@ -29,15 +31,17 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
     case 3:
       return <div>{appliedStoreInfo.productName}</div>;
   }
-  return <div>{appliedStoreInfo.productName}</div>;
+  return <></>;
 }
 
 const CenteredContainer = ({
   storeInfo: { productName, price, description },
-  classes = {}
+  classes = {},
+  variations
 }: {
   storeInfo: StoreInfo;
   classes?: { root?: string; image?: string };
+  variations: Variations;
 }) => (
   <div
     className={getActiveClasses([
@@ -59,14 +63,18 @@ const CenteredContainer = ({
       <button className="rounded-xl bg-gray-500 py-3 px-6 text-white font-bold mt-4 hocus:bg-gray-600">
         Buy
       </button>
-      <DecoSvg
-        className="absolute"
-        style={{ bottom: "20px", right: "-20px" }}
-      />
-      <DecoSvg
-        className="absolute z-0"
-        style={{ top: "-30px", left: "-50px" }}
-      />
+      {variations.decoration === 1 && (
+        <>
+          <DecoSvg
+            className="absolute"
+            style={{ bottom: "20px", right: "-20px" }}
+          />
+          <DecoSvg
+            className="absolute z-0"
+            style={{ top: "-30px", left: "-50px" }}
+          />
+        </>
+      )}
     </div>
   </div>
 );

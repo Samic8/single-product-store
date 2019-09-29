@@ -8,14 +8,13 @@ import { StaticQuery, graphql } from "gatsby";
 import SettingsSvg from "../images/settings.svg";
 import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
+import { PreConfiguredThemes } from "./themes/variations";
 
-enum Theme {
-  one = 1,
-  two,
-  three
-}
-
-const themes = [Theme.one, Theme.two, Theme.three];
+const themes = [
+  PreConfiguredThemes.one,
+  PreConfiguredThemes.two,
+  PreConfiguredThemes.three
+];
 
 export default function Config() {
   const [selectedTheme, selectTheme] = useState(null);
@@ -36,21 +35,21 @@ export default function Config() {
       query={query}
       render={({ storeMockup }) => {
         const themeRepresentationComponent = {
-          [Theme.one]: () => (
+          [PreConfiguredThemes.one]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
           ),
-          [Theme.two]: () => (
+          [PreConfiguredThemes.two]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
           ),
-          [Theme.three]: () => (
+          [PreConfiguredThemes.three]: () => (
             <Img
               className="rounded-sm"
               draggable={false}
