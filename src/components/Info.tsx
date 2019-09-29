@@ -171,7 +171,6 @@ export default function Info() {
             content={
               <ImageUploader
                 onImageUpload={({ previewUrl, binaryString }) => {
-                  console.log(previewUrl, binaryString);
                   dispatch({
                     type: "UPDATE_STORE_INFO",
                     payload: { image: { previewUrl, binaryString } }
