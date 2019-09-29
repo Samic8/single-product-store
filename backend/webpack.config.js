@@ -6,31 +6,34 @@ module.exports = {
   entry: slsw.lib.entries,
   target: "node",
   mode: slsw.lib.webpack.isLocal ? "development" : "production",
+  devtool: 'source-map',
   optimization: {
     minimize: false
   },
   performance: {
     hints: false
   },
-  devtool: "nosources-source-map",
   externals: [nodeExternals()],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader"
-          }
-        ]
+        test: /\.ts$/,
+        loader: 'babel-loader',
       },
       {
         test: /\.graphql$/,
         exclude: /node_modules/,
         loader: 'graphql-tag/loader',
       },
+      {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre"
+      },
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.ts'],
   },
   output: {
     libraryTarget: "commonjs2",
