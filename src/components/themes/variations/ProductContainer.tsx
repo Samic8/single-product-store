@@ -1,7 +1,7 @@
 import React from "react";
 import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
-import DecoSvg from "../decorations/pattern.svg";
+import Decoration from "./Decoration";
 import { getActiveClasses } from "../../../utility/active-classes";
 
 interface Props {
@@ -63,18 +63,16 @@ const CenteredContainer = ({
       <button className="rounded-xl bg-gray-500 py-3 px-6 text-white font-bold mt-4 hocus:bg-gray-600">
         Buy
       </button>
-      {variations.decoration === 1 && (
-        <>
-          <DecoSvg
-            className="absolute"
-            style={{ bottom: "20px", right: "-20px" }}
-          />
-          <DecoSvg
-            className="absolute z-0"
-            style={{ top: "-30px", left: "-50px" }}
-          />
-        </>
-      )}
+      <Decoration
+        variations={variations}
+        className="absolute"
+        style={{ bottom: "20px", right: "-20px" }}
+      />
+      <Decoration
+        variations={variations}
+        className="absolute z-0"
+        style={{ top: "-30px", left: "-50px" }}
+      />
     </div>
   </div>
 );
