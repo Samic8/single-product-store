@@ -1,5 +1,5 @@
 import React from "react";
-import { Variations } from "./../themes/variations";
+import { Variations, preConfiguredThemes } from "./../themes/variations";
 import { StoreInfo } from "./../themes/info";
 
 type ContextProps = {
@@ -49,11 +49,7 @@ const reducer = (state, action: Action) => {
       return {
         ...state,
         // TODO: better way to update all of the keys? Maybe store keys all in one place
-        selectedVariations: {
-          header: action.payload,
-          background: action.payload,
-          productContainer: action.payload
-        }
+        selectedVariations: preConfiguredThemes[action.payload]
       };
     case "UPDATE_STORE_INFO":
       return {

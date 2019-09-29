@@ -1,16 +1,16 @@
 import React from "react";
-import { HeaderVariations } from "./variations";
+import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
 
 interface Props {
-  variation: HeaderVariations;
+  variations: Variations;
   storeInfo: StoreInfo;
 }
 
-export default function Header({ variation, storeInfo }: Props) {
+export default function Header({ variations, storeInfo }: Props) {
   const { storeName } = applyPlaceholderStoreInfo(storeInfo);
 
-  switch (variation) {
+  switch (variations.header) {
     case 1:
       return (
         <>
