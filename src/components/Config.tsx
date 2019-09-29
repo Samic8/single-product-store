@@ -19,7 +19,6 @@ const themes = [
 export default function Config() {
   const [selectedTheme, selectTheme] = useState(null);
   const dispatch = React.useContext(Store.Dispatch);
-  const state = React.useContext(Store.State);
 
   const onSelectTheme = newTheme => {
     selectTheme(newTheme);
