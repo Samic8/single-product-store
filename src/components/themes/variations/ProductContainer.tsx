@@ -35,7 +35,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
 }
 
 const CenteredContainer = ({
-  storeInfo: { productName, price, description },
+  storeInfo: { productName, price, description, image },
   classes = {},
   variations
 }: {
@@ -49,9 +49,10 @@ const CenteredContainer = ({
       classes.root
     ])}
   >
-    <div
+    <img
+      src={image.previewUrl}
       className={getActiveClasses(["w-2/5 bg-gray-200 z-10", classes.image])}
-    ></div>
+    />
     <div className="w-3/5 px-10 py-16 relative">
       <h2 className="font-bold text-2xl leading-tight inline-block">
         {productName}
