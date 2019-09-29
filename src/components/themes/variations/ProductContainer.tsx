@@ -16,7 +16,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
       return (
         <CenteredContainer
           variations={variations}
-          classes={{ root: "text-white", image: "rounded shadow-sm" }}
+          classes={{ image: "rounded shadow-sm" }}
           storeInfo={appliedStoreInfo}
         />
       );
@@ -24,7 +24,7 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
       return (
         <CenteredContainer
           variations={variations}
-          classes={{ root: "shadow overflow-hidden bg-white text-gray-600" }}
+          classes={{ root: "shadow overflow-hidden bg-white" }}
           storeInfo={appliedStoreInfo}
         />
       );
@@ -45,7 +45,7 @@ const CenteredContainer = ({
 }) => (
   <div
     className={getActiveClasses([
-      "max-w-3xl mx-auto rounded-sm flex min-h",
+      "max-w-3xl mx-auto rounded-sm flex text-gray-600",
       classes.root
     ])}
   >
