@@ -1,4 +1,4 @@
-type VariationOptions = 1 | 2 | 3;
+type VariationOptions = 1 | 2 | 3 | null;
 
 export type VariationKeys =
   | "header"
@@ -10,7 +10,7 @@ type AllVariations = {
   name: string;
   key: VariationKeys;
   // TODO how to type each object with different variations? Maybe generics
-  variations: number[];
+  variations: VariationOptions[];
 };
 
 export type Variations = {
@@ -18,10 +18,10 @@ export type Variations = {
 };
 
 export const allVariations: AllVariations[] = [
-  { name: "Header", key: "header", variations: [1, 2, 3] },
-  { name: "Background", key: "background", variations: [1, 2, 3] },
-  { name: "Product", key: "productContainer", variations: [1, 2, 3] },
-  { name: "Decoration", key: "decoration", variations: [1, 2, 3] }
+  { name: "Header", key: "header", variations: [1, 2, null] },
+  { name: "Background", key: "background", variations: [1, 2, null] },
+  { name: "Product", key: "productContainer", variations: [1, 2, null] },
+  { name: "Decoration", key: "decoration", variations: [1, 2, null] }
 ];
 
 export enum PreConfiguredThemes {
