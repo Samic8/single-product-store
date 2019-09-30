@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { reject } from "any-promise";
+import Button from "@material-ui/core/Button";
 
 interface Props {
   onImageUpload: (image: { previewUrl: string; binaryString: string }) => void;
@@ -9,7 +9,7 @@ interface Props {
 export default function ImageUploader({ onImageUpload }: Props) {
   // Drag and Drop
   const onDrop = useCallback(acceptedFiles => {
-    const promise = new Promise<string>(resolve => {
+    const promise = new Promise<string>((resolve, reject) => {
       // URL
       const reader = new FileReader();
       reader.onabort = () => reject("file reading was aborted");
@@ -40,12 +40,13 @@ export default function ImageUploader({ onImageUpload }: Props) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
-    <div {...getRootProps()}>
+    <div className="w-full" {...getRootProps()}>
       <input {...getInputProps()} />
-      {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drag 'n' drop some files here, or click to select files</p>
+      <Button variant="outlined">Upload</Button>
+      {!!isDragActive && (
+        <div className="mt-3 text-gray-200 border-dashed border border-gray-200 py-8 text-center rounded-lg w-full">
+          Drop files here ...
+        </div>
       )}
     </div>
   );
