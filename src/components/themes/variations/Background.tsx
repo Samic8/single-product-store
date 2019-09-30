@@ -11,8 +11,14 @@ export default function Background({ variations, children }: Props) {
     case 1:
       return (
         <div className="relative flex flex-grow w-full">
-          <div className="bg-gray-300 w-1/4"></div>
-          <div className="bg-red-300 w-3/4"></div>
+          <div
+            className="bg-gray-300"
+            style={{ width: "calc(50% - 220px)" }}
+          ></div>
+          <div
+            className="bg-red-300"
+            style={{ width: "calc(50% + 220px)" }}
+          ></div>
           <div className="absolute inset-0">{children}</div>
         </div>
       );
