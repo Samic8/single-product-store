@@ -45,7 +45,7 @@ const CenteredContainer = ({
 }) => (
   <div
     className={getActiveClasses([
-      "max-w-3xl mx-auto rounded-sm flex text-gray-600",
+      "max-w-3xl mx-auto rounded-sm flex",
       classes.root
     ])}
   >
