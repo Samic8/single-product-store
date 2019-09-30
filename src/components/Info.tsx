@@ -8,6 +8,7 @@ import RadioButton from "./atoms/RadioButton";
 import "./Info.css";
 import { Store } from "./containers/store";
 import { storeInfoPlaceholder } from "../components/themes/info";
+import ImageUploader from "./atoms/ImageUploader";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -163,6 +164,19 @@ export default function Info() {
                   }
                 />
               </>
+            }
+          />
+          <TwoColRow
+            title={"Image"}
+            content={
+              <ImageUploader
+                onImageUpload={({ previewUrl, binaryString }) => {
+                  dispatch({
+                    type: "UPDATE_STORE_INFO",
+                    payload: { image: { previewUrl, binaryString } }
+                  });
+                }}
+              />
             }
           />
           <TwoColRow title={""} content={<></>} />
