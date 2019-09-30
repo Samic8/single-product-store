@@ -11,6 +11,7 @@ export default function Background({ variations, children }: Props) {
     case 1:
       return (
         <div className="relative flex flex-grow w-full">
+          {/* TODO: Pixel value is a bit magic, maybe make a constant of the image width and share here  */}
           <div
             className="bg-gray-300"
             style={{ width: "calc(50% - 220px)" }}
