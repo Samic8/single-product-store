@@ -1,14 +1,18 @@
 import React from "react";
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
 import SaveModal from "../components/layout/SaveModal";
 import SaveSvg from "../images/save.svg";
 import { Store } from "../components/containers/store";
 
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 
-const EXCHANGE_RATES = gql`
-  query {
-    ok
+const UPDATE_USER_MUTATION = gql`
+  mutation UPDATE_USER_MUTATION(
+    $email: String!
+    $config: Config!
+  ) {
+    UpdateUserConfig(email: $email, config: $config)
   }
 `;
 
@@ -18,10 +22,11 @@ interface Props {}
 
 export default function SaveButton({  }: Props) {
   const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
   const { isSaveModalOpen } = React.useContext(Store.State);
+  const [updateUser, { loading, error, data }] = useMutation(UPDATE_USER_MUTATION)
 
   // TODO do graphql things
-  // const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error :(</p>;
@@ -38,7 +43,15 @@ export default function SaveButton({  }: Props) {
       </button>
       {isSaveModalOpen && (
         <SaveModal
-          onEmailConfirm={() => {
+          onEmailConfirm={(email) => {
+            const {decoration, ...config} = { // TODO add decoration to schema.
+              ...state.selectedVariations,
+              ...state.storeInfo
+            }
+            updateUser({variables: {
+              email,
+              config
+            }})
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: false });
             // TODO save graphql mutation
           }}
