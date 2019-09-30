@@ -5,7 +5,7 @@ import bluebird from 'bluebird'
 AWS.config.setPromisesDependency(bluebird);
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-dynamoDb.update()
+// dynamoDb.update()
 
 const createUserId = () => `usr-${uuidV1()}`
 
