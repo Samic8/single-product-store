@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { reject } from "any-promise";
 
 interface Props {
   onImageUpload: (image: { previewUrl: string; binaryString: string }) => void;
@@ -9,7 +8,7 @@ interface Props {
 export default function ImageUploader({ onImageUpload }: Props) {
   // Drag and Drop
   const onDrop = useCallback(acceptedFiles => {
-    const promise = new Promise<string>(resolve => {
+    const promise = new Promise<string>((resolve, reject) => {
       // URL
       const reader = new FileReader();
       reader.onabort = () => reject("file reading was aborted");
