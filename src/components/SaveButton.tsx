@@ -1,15 +1,16 @@
 import React from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
+
 import SaveModal from "../components/layout/SaveModal";
 import SaveSvg from "../svgs/save.svg";
 import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
+import { getActiveClasses } from "../utility/active-classes";
 
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
-
-const EXCHANGE_RATES = gql`
-  query {
-    ok
+const UPDATE_USER_MUTATION = gql`
+  mutation UPDATE_USER_MUTATION($email: String!, $config: Config!) {
+    UpdateUserConfig(email: $email, config: $config)
   }
 `;
 
@@ -21,10 +22,27 @@ interface Props {
 
 export default function SaveButton({ saveIconSize = "large" }: Props) {
   const dispatch = React.useContext(Store.Dispatch);
-  const { isSaveModalOpen } = React.useContext(Store.State);
+  const state = React.useContext(Store.State);
+  const { isSaveModalOpen, email, hasUnsavedChanges } = React.useContext(
+    Store.State
+  );
+  const [hitUserMutation, { loading, error, data }] = useMutation(
+    UPDATE_USER_MUTATION
+  );
+
+  const updateUser = () => {
+    hitUserMutation({
+      variables: {
+        email,
+        config: {
+          ...state.selectedVariations,
+          ...state.storeInfo
+        }
+      }
+    });
+  };
 
   // TODO do graphql things
-  // const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error :(</p>;
@@ -34,17 +52,42 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
       <button
         className="py-2 flex flex-col items-center"
         aria-haspopup="true"
-        onClick={() => dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })}
+        onClick={() => {
+          if (!email) {
+            dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true });
+          } else {
+            updateUser();
+            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null });
+          }
+        }}
       >
+        {/* TODO add proper styling to this *, do we even want a *? */}
+        <span
+          className={getActiveClasses({
+            "text-white float-right": true,
+            "opacity-0": !hasUnsavedChanges
+          })}
+        >
+          *
+        </span>
+        {/* Add an actual spinner */}
+        <span
+          className={getActiveClasses({
+            "text-white float-right": true,
+            "opacity-0": !loading
+          })}
+        >
+          spinner
+        </span>
         {saveIconSize === "large" && <SaveSvg />}
         {saveIconSize === "small" && <SmallSaveSvg />}
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
       {isSaveModalOpen && (
         <SaveModal
-          onEmailConfirm={() => {
+          onEmailConfirm={email => {
+            updateUser();
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: false });
-            // TODO save graphql mutation
           }}
         />
       )}

@@ -3,10 +3,10 @@ query {
 }
 
 mutation {
-  addUser(email: "user@user.com", fName: "hi", lName: "guy", color: "red") {
-    id
-    email
-  }
+  UpdateUserConfig(email: "userTS@user.com", config: {
+    storeName: "hey"
+    header: 6
+  })
 }
 
 
