@@ -2,6 +2,15 @@ import React from "react";
 import { Variations, preConfiguredThemes } from "./../themes/variations";
 import { StoreInfo } from "./../themes/info";
 
+export type VariationOptions = 1 | 2 | 3 | null;
+
+export type VariationKeys =
+  | "header"
+  | "background"
+  | "backgroundColor"
+  | "productContainer"
+  | "decoration";
+
 type ContextProps = {
   isSaveModalOpen: boolean;
   // TODO replace number with variation type
@@ -11,17 +20,34 @@ type ContextProps = {
   hasUnsavedChanges: boolean;
 };
 
-// TODO how to typescript a specific payload with a type? Maybe union types of objects?
-type Action = {
-  type:
-    | "TOGGLE_SAVE_MODAL"
-    | "UPDATE_EMAIL"
-    | "UPDATE_VARIATION"
-    | "SET_PRESET_THEME"
-    | "UPDATE_STORE_INFO"
-    | "UPDATE_SAVED_CHANGES_FLAG";
-  payload: any;
-};
+type Action =
+| {
+  type: "UPDATE_VARIATION",
+  payload: {
+    key: VariationKeys,
+    variation: VariationOptions,
+  },
+}
+| {
+  type: "UPDATE_SAVED_CHANGES_FLAG",
+}
+| {
+  type: "TOGGLE_SAVE_MODAL",
+  payload: boolean
+}
+| {
+  type: "UPDATE_EMAIL",
+  payload: string,
+}
+| {
+  type: "SET_PRESET_THEME",
+  payload: number,
+}
+| {
+  type: "UPDATE_STORE_INFO",
+  payload: any,
+}
+
 
 // Context
 const State = React.createContext<Partial<ContextProps>>(null);

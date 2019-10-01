@@ -57,7 +57,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true });
           } else {
             updateUser();
-            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null });
+            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG"});
           }
         }}
       >
