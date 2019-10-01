@@ -7,6 +7,8 @@ type ContextProps = {
   // TODO replace number with variation type
   selectedVariations: Variations;
   storeInfo: StoreInfo;
+  email: string;
+  hasUnsavedChanges: boolean;
 };
 
 // TODO how to typescript a specific payload with a type? Maybe union types of objects?
@@ -16,7 +18,8 @@ type Action = {
     | "UPDATE_EMAIL"
     | "UPDATE_VARIATION"
     | "SET_PRESET_THEME"
-    | "UPDATE_STORE_INFO";
+    | "UPDATE_STORE_INFO"
+    | "UPDATE_SAVED_CHANGES_FLAG";
   payload: any;
 };
 
@@ -27,6 +30,11 @@ const Dispatch = React.createContext<React.Dispatch<Action>>(null);
 // Reducer
 const reducer = (state, action: Action) => {
   switch (action.type) {
+    case "UPDATE_SAVED_CHANGES_FLAG":
+      return {
+        ...state,
+        hasUnsavedChanges: false,
+      }
     case "TOGGLE_SAVE_MODAL":
       return {
         ...state,
@@ -35,11 +43,13 @@ const reducer = (state, action: Action) => {
     case "UPDATE_EMAIL":
       return {
         ...state,
+        hasUnsavedChanges: false,
         email: action.payload
       };
     case "UPDATE_VARIATION":
       return {
         ...state,
+        hasUnsavedChanges: true,
         selectedVariations: {
           ...state.selectedVariations,
           [action.payload.key]: action.payload.variation
@@ -65,6 +75,7 @@ const reducer = (state, action: Action) => {
 
       return {
         ...state,
+        hasUnsavedChanges: true,
         storeInfo: {
           ...state.storeInfo,
           ...newStoreInfo
@@ -83,7 +94,9 @@ const Provider = ({ children }) => {
     // TODO: use defaults in info.tsx as well
     storeInfo: {
       type: "physical"
-    }
+    },
+    email: '',
+    hasUnsavedChanges: false
   });
 
   return (

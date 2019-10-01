@@ -5,6 +5,7 @@ import { gql } from 'apollo-boost';
 import SaveModal from "../components/layout/SaveModal";
 import SaveSvg from "../svgs/save.svg";
 import { Store } from "../components/containers/store";
+import { getActiveClasses } from "../utility/active-classes";
 
 
 const UPDATE_USER_MUTATION = gql`
@@ -23,8 +24,20 @@ interface Props {}
 export default function SaveButton({  }: Props) {
   const dispatch = React.useContext(Store.Dispatch);
   const state = React.useContext(Store.State);
-  const { isSaveModalOpen } = React.useContext(Store.State);
-  const [updateUser, { loading, error, data }] = useMutation(UPDATE_USER_MUTATION)
+  const { isSaveModalOpen, email, hasUnsavedChanges } = React.useContext(Store.State);
+  const [hitUserMutation, { loading, error, data }] = useMutation(UPDATE_USER_MUTATION)
+
+  const updateUser = () => {
+    const {decoration, ...config} = { // TODO add decoration to schema.
+      ...state.selectedVariations,
+      ...state.storeInfo
+    }
+    hitUserMutation({variables: {
+      email,
+      config
+    }})
+  }
+
 
   // TODO do graphql things
 
@@ -36,24 +49,33 @@ export default function SaveButton({  }: Props) {
       <button
         className="py-2"
         aria-haspopup="true"
-        onClick={() => dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })}
+        onClick={() => {
+          if(!email) {
+            dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })
+          } else {
+            updateUser()
+            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null })
+          }
+        }}
       >
+        {/* TODO add proper styling to this *, do we even want a *? */}
+        <span className={getActiveClasses({
+          'text-white float-right': true,
+          'opacity-0': !hasUnsavedChanges,
+        })}>*</span>
+        {/* Add an actual spinner */}
+        <span className={getActiveClasses({
+          'text-white float-right': true,
+          'opacity-0': !loading,
+        })}>spinner</span>
         <SaveSvg />
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
       {isSaveModalOpen && (
         <SaveModal
           onEmailConfirm={(email) => {
-            const {decoration, ...config} = { // TODO add decoration to schema.
-              ...state.selectedVariations,
-              ...state.storeInfo
-            }
-            updateUser({variables: {
-              email,
-              config
-            }})
+            updateUser()
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: false });
-            // TODO save graphql mutation
           }}
         />
       )}
