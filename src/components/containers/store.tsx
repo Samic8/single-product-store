@@ -20,41 +20,29 @@ type ContextProps = {
   hasUnsavedChanges: boolean;
 };
 
-type Action =
-| {
-  type: "UPDATE_VARIATION",
-  payload: {
-    key: VariationKeys,
-    variation: VariationOptions,
-  },
+interface Action<T, P> {
+  type: T,
+  payload: P,
 }
-| {
-  type: "UPDATE_SAVED_CHANGES_FLAG",
-}
-| {
-  type: "TOGGLE_SAVE_MODAL",
-  payload: boolean
-}
-| {
-  type: "UPDATE_EMAIL",
-  payload: string,
-}
-| {
-  type: "SET_PRESET_THEME",
-  payload: number,
-}
-| {
-  type: "UPDATE_STORE_INFO",
-  payload: any,
-}
+
+type Actions =
+| Action<"UPDATE_VARIATION", {
+  key: VariationKeys,
+  variation: VariationOptions,
+}>
+| Action<"UPDATE_SAVED_CHANGES_FLAG", null>
+| Action<"TOGGLE_SAVE_MODAL", boolean>
+| Action<"UPDATE_EMAIL", string>
+| Action<"SET_PRESET_THEME", number>
+| Action<"UPDATE_STORE_INFO", any>
 
 
 // Context
 const State = React.createContext<Partial<ContextProps>>(null);
-const Dispatch = React.createContext<React.Dispatch<Action>>(null);
+const Dispatch = React.createContext<React.Dispatch<Actions>>(null);
 
 // Reducer
-const reducer = (state, action: Action) => {
+const reducer = (state, action: Actions) => {
   switch (action.type) {
     case "UPDATE_SAVED_CHANGES_FLAG":
       return {
