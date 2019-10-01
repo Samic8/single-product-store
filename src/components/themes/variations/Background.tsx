@@ -1,5 +1,6 @@
 import React from "react";
 import { Variations } from "../variations/variations";
+import { getActiveClasses } from "../../../utility/active-classes";
 
 interface Props {
   variations: Variations;
@@ -7,17 +8,29 @@ interface Props {
 }
 
 export default function Background({ variations, children }: Props) {
+  const backgroundOneColorVariations = {
+    1: "bg-red-300",
+    2: "bg-teal-500",
+    3: "bg-purple-500"
+  };
+
+  const backgroundTwoColorVariations = {
+    1: "bg-gray-200",
+    2: "bg-teal-500",
+    3: "bg-purple-500"
+  };
+
   switch (variations.background) {
     case 1:
       return (
         <div className="relative flex flex-grow w-full">
           {/* TODO: Pixel value is a bit magic, maybe make a constant of the image width and share here  */}
           <div
-            className="bg-gray-300"
+            className={backgroundOneColorVariations[variations.backgroundColor]}
             style={{ width: "calc(50% - 220px)" }}
           ></div>
           <div
-            className="bg-red-300"
+            className="bg-white"
             style={{ width: "calc(50% + 220px)" }}
           ></div>
           <div className="absolute inset-0">{children}</div>
@@ -25,7 +38,12 @@ export default function Background({ variations, children }: Props) {
       );
     case 2:
       return (
-        <div className="relative flex flex-grow w-full bg-gray-200">
+        <div
+          className={getActiveClasses([
+            "relative flex flex-grow w-full",
+            backgroundTwoColorVariations[variations.backgroundColor]
+          ])}
+        >
           <div className="absolute inset-0">{children}</div>
         </div>
       );
