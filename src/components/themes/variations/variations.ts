@@ -19,15 +19,15 @@ export type Variations = {
 };
 
 export const allVariations: AllVariations[] = [
-  { name: "Header", key: "header", variations: [1, 2, null] },
-  { name: "Background", key: "background", variations: [1, 2, null] },
+  { name: "Header", key: "header", variations: [1, 2, 3] },
+  { name: "Background", key: "background", variations: [1, 2, 3] },
   {
     name: "Color",
     key: "backgroundColor",
     variations: [1, 2, 3]
   },
-  { name: "Product", key: "productContainer", variations: [1, 2, null] },
-  { name: "Decoration", key: "decoration", variations: [1, 2, null] }
+  { name: "Product", key: "productContainer", variations: [1, 2, 3] },
+  { name: "Decoration", key: "decoration", variations: [1, 2, 3] }
 ];
 
 export enum PreConfiguredThemes {
