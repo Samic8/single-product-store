@@ -5,7 +5,7 @@ import RadioButton from "./atoms/RadioButton";
 import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
 import { StaticQuery, graphql } from "gatsby";
-import SettingsSvg from "../images/settings.svg";
+import SettingsSvg from "../svgs/settings.svg";
 import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
 import { PreConfiguredThemes } from "./themes/variations";

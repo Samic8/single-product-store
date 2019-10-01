@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 import SaveModal from "../components/layout/SaveModal";
-import SaveSvg from "../images/save.svg";
+import SaveSvg from "../svgs/save.svg";
 import { Store } from "../components/containers/store";
 
 

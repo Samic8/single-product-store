@@ -2,7 +2,7 @@ import React from "react";
 
 import Modal from "@material-ui/core/Modal";
 import { Store } from "../../components/containers/store";
-import CrossSvg from "../../images/cross.svg";
+import CrossSvg from "../../svgs/cross.svg";
 import EmailForm from "../atoms/EmailForm";
 
 interface Props {
