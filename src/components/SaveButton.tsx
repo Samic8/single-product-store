@@ -1,6 +1,6 @@
 import React from "react";
 import SaveModal from "../components/layout/SaveModal";
-import SaveSvg from "../images/save.svg";
+import SaveSvg from "../svgs/save.svg";
 import { Store } from "../components/containers/store";
 
 import { useQuery } from "@apollo/react-hooks";

@@ -3,6 +3,7 @@ import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
 import Decoration from "./Decoration";
 import { getActiveClasses } from "../../../utility/active-classes";
+import PlaceholderProductImage from "../../../images/product-image.jpg";
 
 interface Props {
   variations: Variations;
@@ -49,10 +50,15 @@ const CenteredContainer = ({
       classes.root
     ])}
   >
-    <img
-      src={image.previewUrl}
-      className={getActiveClasses(["w-2/5 bg-gray-200 z-10", classes.image])}
-    />
+    {image.previewUrl && (
+      <img
+        src={image.previewUrl}
+        className={getActiveClasses(["w-2/5 bg-gray-200 z-10", classes.image])}
+      />
+    )}
+    {!image.previewUrl && (
+      <img className="w-2/5 bg-gray-200 z-10" src={PlaceholderProductImage} />
+    )}
     <div className="w-3/5 px-10 py-16 relative">
       <h2 className="font-bold text-2xl leading-tight inline-block">
         {productName}

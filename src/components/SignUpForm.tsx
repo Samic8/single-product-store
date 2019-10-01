@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
-import TickSvg from "../images/tick.svg";
+import TickSvg from "../svgs/tick.svg";
 import SubmitButton from "./atoms/EmailForm";
 
 export default function SignUpForm() {
