@@ -16,6 +16,7 @@ input Config {
     header: Int
     background: Int
     productContainer: Int
+    decoration: Int
 }
 
 type User {

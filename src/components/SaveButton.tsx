@@ -28,16 +28,14 @@ export default function SaveButton({  }: Props) {
   const [hitUserMutation, { loading, error, data }] = useMutation(UPDATE_USER_MUTATION)
 
   const updateUser = () => {
-    const {decoration, ...config} = { // TODO add decoration to schema.
-      ...state.selectedVariations,
-      ...state.storeInfo
-    }
     hitUserMutation({variables: {
       email,
-      config
+      config: {
+        ...state.selectedVariations,
+        ...state.storeInfo
+      }
     }})
   }
-
 
   // TODO do graphql things
 
