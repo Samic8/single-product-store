@@ -26,6 +26,7 @@ export const updateUserConfig = (id, config, maybeOverrideSubmittedAt) => {
     header,
     background,
     productContainer,
+    decoration,
   } = config;
   
   const timestamp = new Date().getTime();
@@ -41,6 +42,7 @@ export const updateUserConfig = (id, config, maybeOverrideSubmittedAt) => {
     header,
     background,
     productContainer,
+    decoration,
   };
 
   if(maybeOverrideSubmittedAt) {
