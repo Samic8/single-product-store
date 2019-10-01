@@ -7,10 +7,13 @@ import Info from "../Info";
 import SignUpForm from "../SignUpForm";
 import Header from "../header";
 import { useStaticQuery, graphql } from "gatsby";
+import { getActiveClasses } from "../../utility/active-classes";
 
-interface Props {}
+interface Props {
+  className?: string;
+}
 
-export default function HomepageLeftHandSide() {
+export default function HomepageLeftHandSide({ className }: Props) {
   const data = useStaticQuery(graphql`
     query IndexQuery {
       site {
@@ -22,7 +25,7 @@ export default function HomepageLeftHandSide() {
     }
   `);
   return (
-    <div>
+    <div className={getActiveClasses([className])}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className="flex flex-col items-start items-center px-6">
         <ConnectedLine>

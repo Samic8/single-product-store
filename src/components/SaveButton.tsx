@@ -1,6 +1,7 @@
 import React from "react";
 import SaveModal from "../components/layout/SaveModal";
 import SaveSvg from "../svgs/save.svg";
+import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
 
 import { useQuery } from "@apollo/react-hooks";
@@ -14,9 +15,11 @@ const EXCHANGE_RATES = gql`
 
 // TODO add cmd+s and ctrl+s keyboard shortcuts for saving
 
-interface Props {}
+interface Props {
+  saveIconSize: "small" | "large";
+}
 
-export default function SaveButton({  }: Props) {
+export default function SaveButton({ saveIconSize = "large" }: Props) {
   const dispatch = React.useContext(Store.Dispatch);
   const { isSaveModalOpen } = React.useContext(Store.State);
 
@@ -29,11 +32,12 @@ export default function SaveButton({  }: Props) {
   return (
     <>
       <button
-        className="py-2"
+        className="py-2 flex flex-col items-center"
         aria-haspopup="true"
         onClick={() => dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true })}
       >
-        <SaveSvg />
+        {saveIconSize === "large" && <SaveSvg />}
+        {saveIconSize === "small" && <SmallSaveSvg />}
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
       {isSaveModalOpen && (

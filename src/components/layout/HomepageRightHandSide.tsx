@@ -2,14 +2,19 @@ import React from "react";
 import { Store } from "../../components/containers/store";
 import ThemeContainer from "../themes/Container";
 import SaveButton from "../SaveButton";
+import { getActiveClasses } from "../../utility/active-classes";
 
-interface Props {}
+interface Props {
+  className?: string;
+}
 
-export default function HomepageRightHandSide() {
+export default function HomepageRightHandSide({ className }: Props) {
   const { selectedVariations, storeInfo } = React.useContext(Store.State);
 
   return (
-    <section className="flex-grow flex flex-col">
+    <section
+      className={getActiveClasses(["flex-grow flex flex-col", className])}
+    >
       <div className="flex items-start w-full py-2">
         <SaveButton />
         <div className="bg-teal-100 text-teal-900 rounded-sm px-3 py-2 flex-grow mx-5 text-lg leading-snug">

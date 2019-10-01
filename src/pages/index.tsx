@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -7,12 +7,20 @@ import HomepageRightHandSide from "../components/layout/HomepageRightHandSide";
 import { Store } from "../components/containers/store";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
+import { getActiveClasses } from "../utility/active-classes";
+
+// TODO: Move bottom mobile bar into component
+import SettingsSvg from "../svgs/settings.svg";
+import AirplaySvg from "../svgs/airplay.svg";
+import SaveButton from "../components/SaveButton";
 
 const client = new ApolloClient({
   uri: "https://d0ttz70vr6.execute-api.us-east-1.amazonaws.com/dev/graphql"
 });
 
 function IndexPage() {
+  const [isShowing, setIsShowing] = useState<"config" | "preview">("config");
+
   return (
     <ApolloProvider client={client}>
       <Store.Provider>
@@ -29,13 +37,60 @@ function IndexPage() {
             ]}
             title="Single Product Store."
           />
-          <div className="flex w-full">
-            <HomepageLeftHandSide />
-            <HomepageRightHandSide />
+          <div className="flex w-full relative">
+            <HomepageLeftHandSide
+              className={getActiveClasses([
+                "sm:block",
+                isShowing !== "config" ? "hidden" : ""
+              ])}
+            />
+            <HomepageRightHandSide
+              className={getActiveClasses([
+                "sm:flex",
+                isShowing !== "preview" ? "hidden" : ""
+              ])}
+            />
+            <div className="fixed flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow sm:hidden">
+              <SwitchButton
+                onClick={() => setIsShowing("config")}
+                isActive={isShowing === "config"}
+                label={"Config"}
+              >
+                <SettingsSvg className={"stroke-current"} />
+              </SwitchButton>
+              <SwitchButton
+                onClick={() => setIsShowing("preview")}
+                isActive={isShowing === "preview"}
+                label={"Preview"}
+              >
+                <AirplaySvg className={"stroke-current"} />
+              </SwitchButton>
+              <div className="ml-auto">
+                <SaveButton saveIconSize="small" />
+              </div>
+            </div>
           </div>
         </Layout>
       </Store.Provider>
     </ApolloProvider>
+  );
+}
+
+function SwitchButton({ isActive, label, children, ...props }) {
+  return (
+    <button
+      className={getActiveClasses([
+        "mr-10 flex flex-col items-center",
+        {
+          "text-white": isActive === "config",
+          "text-gray-200": isActive !== "config"
+        }
+      ])}
+      {...props}
+    >
+      {children}
+      <div className="text-sm font-bold text-center">{label}</div>
+    </button>
   );
 }
 
