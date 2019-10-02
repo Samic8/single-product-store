@@ -170,10 +170,10 @@ export default function Info() {
             title={"Image"}
             content={
               <ImageUploader
-                onImageUpload={({ previewUrl }) => {
+                onImageUpload={({ cloudinaryPublicId }) => {
                   dispatch({
                     type: "UPDATE_STORE_INFO",
-                    payload: { image: { previewUrl } }
+                    payload: { image: { cloudinaryPublicId } }
                   });
                 }}
               />

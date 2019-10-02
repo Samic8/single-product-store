@@ -7,7 +7,7 @@ const CLOUDINARY_UPLOAD_PRESET = "ylgmpdvo";
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/irevdev/upload";
 
 interface Props {
-  onImageUpload: (image: { previewUrl: string}) => void;
+  onImageUpload: (image: { cloudinaryPublicId: string}) => void;
 }
 
 export default function ImageUploader({ onImageUpload }: Props) {
@@ -26,7 +26,7 @@ export default function ImageUploader({ onImageUpload }: Props) {
 
       if (response.body.secure_url !== "") {
         // TODO send to DB. 
-        onImageUpload({previewUrl: response.body.secure_url})
+        onImageUpload({cloudinaryPublicId: response.body.public_id})
       }
     });
   }

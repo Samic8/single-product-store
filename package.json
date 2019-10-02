@@ -8,6 +8,7 @@
     "@material-ui/core": "^4.4.1",
     "@types/request": "^2.48.3",
     "apollo-boost": "^0.4.4",
+    "cloudinary-react": "^1.2.1",
     "gatsby": "2.13.50",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-google-analytics": "^2.1.7",
