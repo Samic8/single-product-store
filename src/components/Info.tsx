@@ -170,10 +170,10 @@ export default function Info() {
             title={"Image"}
             content={
               <ImageUploader
-                onImageUpload={({ previewUrl, binaryString }) => {
+                onImageUpload={({ previewUrl }) => {
                   dispatch({
                     type: "UPDATE_STORE_INFO",
-                    payload: { image: { previewUrl, binaryString } }
+                    payload: { image: { previewUrl } }
                   });
                 }}
               />
