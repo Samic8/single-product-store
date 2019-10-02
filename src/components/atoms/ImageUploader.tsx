@@ -1,41 +1,40 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Button from "@material-ui/core/Button";
+import request from "superagent"; // TODO probably replace with axios
+
+const CLOUDINARY_UPLOAD_PRESET = "ylgmpdvo";
+const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/irevdev/upload";
 
 interface Props {
   onImageUpload: (image: { previewUrl: string; binaryString: string }) => void;
 }
 
 export default function ImageUploader({ onImageUpload }: Props) {
+  const [uploadedFileUrl, setUploadedFileUrl] = useState('')
+  console.log(uploadedFileUrl)
+  function handleImageUpload(file) {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
+      .field("file", file);
+    
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+      console.log('good things happened I think')
+
+      if (response.body.secure_url !== "") {
+        // TODO put in store and send to DB. 
+        setUploadedFileUrl(response.body.secure_url)
+      }
+    });
+  }
   // Drag and Drop
   const onDrop = useCallback(acceptedFiles => {
-    const promise = new Promise<string>((resolve, reject) => {
-      // URL
-      const reader = new FileReader();
-      reader.onabort = () => reject("file reading was aborted");
-      reader.onerror = () => reject("file reading has failed");
-      reader.onload = () => {
-        resolve(reader.result as string);
-      };
-      acceptedFiles.forEach(file => reader.readAsDataURL(file));
-    });
-
-    const promise2 = new Promise<string>((resolve, reject) => {
-      // Binary
-      const readerBinary = new FileReader();
-      readerBinary.onabort = () => reject("file reading was aborted");
-      readerBinary.onerror = () => reject("file reading has failed");
-      readerBinary.onload = () => {
-        resolve(readerBinary.result as string);
-      };
-      acceptedFiles.forEach(file => readerBinary.readAsBinaryString(file));
-    });
-
-    const all = Promise.all([promise, promise2]);
-
-    all.then(([previewUrl, binaryString]) => {
-      onImageUpload({ previewUrl, binaryString });
-    });
+    handleImageUpload(acceptedFiles[0])
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
