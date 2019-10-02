@@ -40,7 +40,7 @@ function IndexPage() {
           <div className="flex w-full relative">
             <HomepageLeftHandSide
               className={getActiveClasses([
-                "sm:block",
+                "sm:block mx-auto sm:mx-0",
                 isShowing !== "config" ? "hidden" : ""
               ])}
             />
