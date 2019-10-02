@@ -40,7 +40,7 @@ function IndexPage() {
           <div className="flex w-full relative">
             <HomepageLeftHandSide
               className={getActiveClasses([
-                "sm:block",
+                "sm:block mx-auto sm:mx-0",
                 isShowing !== "config" ? "hidden" : ""
               ])}
             />
@@ -80,16 +80,17 @@ function SwitchButton({ isActive, label, children, ...props }) {
   return (
     <button
       className={getActiveClasses([
-        "mr-10 flex flex-col items-center",
+        "mr-8 flex flex-col items-center relative",
         {
-          "text-white": isActive === "config",
-          "text-gray-200": isActive !== "config"
+          "text-white": isActive,
+          "text-gray-200": !isActive
         }
       ])}
       {...props}
     >
       {children}
       <div className="text-sm font-bold text-center">{label}</div>
+      {isActive && <div className="absolute top-full h-1 bg-teal-500 w-full" />}
     </button>
   );
 }

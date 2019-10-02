@@ -7,6 +7,7 @@ import SaveSvg from "../svgs/save.svg";
 import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
 import { getActiveClasses } from "../utility/active-classes";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const UPDATE_USER_MUTATION = gql`
   mutation UPDATE_USER_MUTATION($email: String!, $config: Config!) {
@@ -50,7 +51,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
   return (
     <>
       <button
-        className="py-2 flex flex-col items-center"
+        className="py-2 flex flex-col items-center relative"
         aria-haspopup="true"
         onClick={() => {
           if (!email) {
@@ -64,21 +65,20 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
         {/* TODO add proper styling to this *, do we even want a *? */}
         <span
           className={getActiveClasses({
-            "text-white float-right": true,
-            "opacity-0": !hasUnsavedChanges
+            "text-white absolute bg-orange-400 rounded-full w-3 h-3": true,
+            hidden: !hasUnsavedChanges && !loading
           })}
-        >
-          *
-        </span>
-        {/* Add an actual spinner */}
-        <span
-          className={getActiveClasses({
-            "text-white float-right": true,
-            "opacity-0": !loading
-          })}
-        >
-          spinner
-        </span>
+          style={{ top: "8px", right: "1px" }}
+        ></span>
+        {loading && (
+          <CircularProgress
+            size={16}
+            color="inherit"
+            thickness={10}
+            className="absolute w-3 h-3 text-orange-400"
+            style={{ top: "5px", right: "-1px" }}
+          />
+        )}
         {saveIconSize === "large" && <SaveSvg />}
         {saveIconSize === "small" && <SmallSaveSvg />}
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>

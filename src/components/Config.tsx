@@ -86,7 +86,7 @@ export default function Config() {
                   >
                     <div className="absolute inset-0 bg-black opacity-25 z-10" />
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <SettingsSvg></SettingsSvg>
+                      <SettingsSvg className="text-white"></SettingsSvg>
                     </div>
                     <Img
                       className="rounded-sm"
