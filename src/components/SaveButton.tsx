@@ -1,6 +1,5 @@
 import React from "react";
 import { useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 
 import SaveModal from "../components/layout/SaveModal";
 import SaveSvg from "../svgs/save.svg";
@@ -8,12 +7,7 @@ import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
 import { getActiveClasses } from "../utility/active-classes";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-const UPDATE_USER_MUTATION = gql`
-  mutation UPDATE_USER_MUTATION($email: String!, $config: Config!) {
-    UpdateUserConfig(email: $email, config: $config)
-  }
-`;
+import { UPDATE_USER_MUTATION } from '../queries/mutations'
 
 // TODO add cmd+s and ctrl+s keyboard shortcuts for saving
 
@@ -31,13 +25,16 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
     UPDATE_USER_MUTATION
   );
 
-  const updateUser = () => {
+  const updateUser = (ProvidedEmail) => {
+    const {image, ...storeInfo} = state.storeInfo
+    const cloudinaryPublicId = image && image.cloudinaryPublicId
     hitUserMutation({
       variables: {
-        email,
+        email: ProvidedEmail || email,
         config: {
           ...state.selectedVariations,
-          ...state.storeInfo
+          ...storeInfo,
+          cloudinaryPublicId,
         }
       }
     });
@@ -57,8 +54,8 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           if (!email) {
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true });
           } else {
-            updateUser();
             dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null});
+            updateUser(null);
           }
         }}
       >
@@ -86,7 +83,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
       {isSaveModalOpen && (
         <SaveModal
           onEmailConfirm={email => {
-            updateUser();
+            updateUser(email);
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: false });
           }}
         />

@@ -11,8 +11,6 @@ interface Props {
 }
 
 export default function ImageUploader({ onImageUpload }: Props) {
-  const [uploadedFileUrl, setUploadedFileUrl] = useState('')
-  console.log(uploadedFileUrl)
   function handleImageUpload(file) {
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
@@ -25,7 +23,6 @@ export default function ImageUploader({ onImageUpload }: Props) {
       }
 
       if (response.body.secure_url !== "") {
-        // TODO send to DB. 
         onImageUpload({cloudinaryPublicId: response.body.public_id})
       }
     });
