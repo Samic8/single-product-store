@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
+import fetch from 'isomorphic-fetch';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import HomepageLeftHandSide from "../components/layout/HomepageLeftHandSide";
 import HomepageRightHandSide from "../components/layout/HomepageRightHandSide";
 import { Store } from "../components/containers/store";
-import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from "apollo-boost";
 import { getActiveClasses } from "../utility/active-classes";
 
 // TODO: Move bottom mobile bar into component
@@ -15,6 +16,7 @@ import AirplaySvg from "../svgs/airplay.svg";
 import SaveButton from "../components/SaveButton";
 
 const client = new ApolloClient({
+  fetch,
   uri: "https://d0ttz70vr6.execute-api.us-east-1.amazonaws.com/dev/graphql"
 });
 
