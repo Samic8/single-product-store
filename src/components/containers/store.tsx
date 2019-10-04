@@ -9,6 +9,7 @@ type ContextProps = {
   storeInfo: StoreInfo;
   email: string;
   hasUnsavedChanges: boolean;
+  activeNavBarTab: "config" | "preview";
 };
 
 // TODO how to typescript a specific payload with a type? Maybe union types of objects?
@@ -19,7 +20,8 @@ type Action = {
     | "UPDATE_VARIATION"
     | "SET_PRESET_THEME"
     | "UPDATE_STORE_INFO"
-    | "UPDATE_SAVED_CHANGES_FLAG";
+    | "UPDATE_SAVED_CHANGES_FLAG"
+    | "UPDATE_NAV_BAR";
   payload: any;
 };
 
@@ -33,8 +35,8 @@ const reducer = (state, action: Action) => {
     case "UPDATE_SAVED_CHANGES_FLAG":
       return {
         ...state,
-        hasUnsavedChanges: false,
-      }
+        hasUnsavedChanges: false
+      };
     case "TOGGLE_SAVE_MODAL":
       return {
         ...state,
@@ -81,6 +83,11 @@ const reducer = (state, action: Action) => {
           ...newStoreInfo
         }
       };
+    case "UPDATE_NAV_BAR":
+      return {
+        ...state,
+        activeNavBarTab: action.payload
+      };
     default:
       return state;
   }
@@ -95,8 +102,9 @@ const Provider = ({ children }) => {
     storeInfo: {
       type: "physical"
     },
-    email: '',
-    hasUnsavedChanges: false
+    email: "",
+    hasUnsavedChanges: false,
+    activeNavBarTab: "config"
   });
 
   return (
@@ -106,7 +114,12 @@ const Provider = ({ children }) => {
   );
 };
 
-// Export
+export const useStore = (): [Partial<ContextProps>, React.Dispatch<Action>] => {
+  const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
+  return [state, dispatch];
+};
+
 export const Store = {
   State,
   Dispatch,
