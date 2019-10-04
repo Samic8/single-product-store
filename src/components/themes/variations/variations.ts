@@ -1,11 +1,4 @@
-type VariationOptions = 1 | 2 | 3 | null;
-
-export type VariationKeys =
-  | "header"
-  | "background"
-  | "backgroundColor"
-  | "productContainer"
-  | "decoration";
+import { VariationOptions, VariationKeys } from '../../containers/store'
 
 type AllVariations = {
   name: string;

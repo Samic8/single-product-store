@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
+import fetch from "isomorphic-fetch";
 
 import Layout from "../components/layout";
 import MainContent from "../components/containers/MainContent";
 import SEO from "../components/seo";
 import { Store } from "../components/containers/store";
-import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
+  fetch,
   uri: "https://d0ttz70vr6.execute-api.us-east-1.amazonaws.com/dev/graphql"
 });
 
