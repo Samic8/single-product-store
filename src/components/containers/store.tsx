@@ -4,6 +4,8 @@ import { StoreInfo } from "./../themes/info";
 
 export type VariationOptions = 1 | 2 | 3 | null;
 
+const LOCAL_STORAGE_STORE_KEY = 'sps-store'
+
 export type VariationKeys =
   | "header"
   | "background"
@@ -35,6 +37,8 @@ type Actions =
 | Action<"UPDATE_EMAIL", string>
 | Action<"SET_PRESET_THEME", number>
 | Action<"UPDATE_STORE_INFO", any>
+| Action<"INIT_STORE FROM LS", null>
+| Action<"PUT_STORE_IN_LS", null>
 
 
 // Context
@@ -44,6 +48,16 @@ const Dispatch = React.createContext<React.Dispatch<Actions>>(null);
 // Reducer
 const reducer = (state, action: Actions) => {
   switch (action.type) {
+    case "INIT_STORE FROM LS":
+      const store = window.localStorage.getItem(LOCAL_STORAGE_STORE_KEY)
+      if(!store) return state
+      return {
+        ...state,
+        ...JSON.parse(store),
+      }
+    case "PUT_STORE_IN_LS":
+      window.localStorage.setItem(LOCAL_STORAGE_STORE_KEY, JSON.stringify(state))
+      return state
     case "UPDATE_SAVED_CHANGES_FLAG":
       return {
         ...state,
@@ -55,11 +69,13 @@ const reducer = (state, action: Actions) => {
         isSaveModalOpen: action.payload
       };
     case "UPDATE_EMAIL":
-      return {
+      const newState = {
         ...state,
         hasUnsavedChanges: false,
         email: action.payload
       };
+      window.localStorage.setItem(LOCAL_STORAGE_STORE_KEY, JSON.stringify(newState))
+      return newState
     case "UPDATE_VARIATION":
       return {
         ...state,
