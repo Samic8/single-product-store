@@ -9,6 +9,7 @@ import SettingsSvg from "../svgs/settings.svg";
 import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
 import { PreConfiguredThemes } from "./themes/variations";
+import Collapse from "@material-ui/core/Collapse";
 
 const themes = [
   PreConfiguredThemes.one,
@@ -96,9 +97,9 @@ export default function Config() {
                   </ImageRadioButton>
                 </div>
               </div>
-              {selectedTheme === "mixAndMatch" && (
+              <Collapse in={selectedTheme === "mixAndMatch"}>
                 <MixAndMatchOptions></MixAndMatchOptions>
-              )}
+              </Collapse>
             </>
           </GradientBox>
         );
