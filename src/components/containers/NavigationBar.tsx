@@ -4,6 +4,8 @@ import AirplaySvg from "../../svgs/airplay.svg";
 import SaveButton from "../../components/SaveButton";
 import { getActiveClasses } from "../../utility/active-classes";
 import { useStore } from "./store";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 interface Props {}
 
@@ -12,21 +14,46 @@ export default function NavigationBar({  }: Props) {
 
   return (
     <div className="fixed flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow lg:hidden">
-      <SwitchButton
-        onClick={() => dispatch({ type: "UPDATE_NAV_BAR", payload: "config" })}
-        isActive={state.activeNavBarTab === "config"}
-        label={"Config"}
+      <Tabs
+        value={state.activeNavBarTab}
+        onChange={(e, newVal) =>
+          dispatch({ type: "UPDATE_NAV_BAR", payload: newVal })
+        }
+        aria-label="simple tabs example"
+        TabIndicatorProps={{ className: "h-1 bg-teal-500" }}
       >
-        <SettingsSvg className={"stroke-current"} />
-      </SwitchButton>
-      <SwitchButton
-        onClick={() => dispatch({ type: "UPDATE_NAV_BAR", payload: "preview" })}
-        isActive={state.activeNavBarTab === "preview"}
-        label={"Preview"}
-      >
-        <AirplaySvg className={"stroke-current"} />
-      </SwitchButton>
-      <div className="ml-auto">
+        <Tab
+          value="config"
+          label="Config"
+          disableTouchRipple
+          icon={<SettingsSvg className={"stroke-current mb-0"} />}
+          classes={{
+            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            wrapper: getActiveClasses([
+              {
+                "text-white capitalize mb-0": true,
+                "text-gray-200": false
+              }
+            ])
+          }}
+        />
+        <Tab
+          value="preview"
+          label="Preview"
+          disableTouchRipple
+          icon={<AirplaySvg className={"stroke-current mb-0"} />}
+          classes={{
+            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            wrapper: getActiveClasses([
+              {
+                "text-white capitalize mb-0": true,
+                "text-gray-200": false
+              }
+            ])
+          }}
+        />
+      </Tabs>
+      <div className="ml-auto px-4 mb-1">
         <SaveButton saveIconSize="small" />
       </div>
     </div>

@@ -58,7 +58,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true });
           } else {
             updateUser();
-            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null});
+            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null });
           }
         }}
       >
@@ -80,7 +80,9 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           />
         )}
         {saveIconSize === "large" && <SaveSvg />}
-        {saveIconSize === "small" && <SmallSaveSvg />}
+        {saveIconSize === "small" && (
+          <SmallSaveSvg style={{ marginBottom: "2px" }} />
+        )}
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
       {isSaveModalOpen && (
