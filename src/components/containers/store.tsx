@@ -92,23 +92,12 @@ const reducer = (state, action: Actions) => {
         selectedVariations: preConfiguredThemes[action.payload]
       };
     case "UPDATE_STORE_INFO":
-      // TODO: Better way to deal with nested merges?
-      let newStoreInfo = action.payload;
-      if (action.payload.image) {
-        newStoreInfo = {
-          image: {
-            ...state.storeInfo.image,
-            ...action.payload.image
-          }
-        };
-      }
-
       return {
         ...state,
         hasUnsavedChanges: true,
         storeInfo: {
           ...state.storeInfo,
-          ...newStoreInfo
+          ...action.payload,
         }
       };
     default:

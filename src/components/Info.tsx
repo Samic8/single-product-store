@@ -173,7 +173,7 @@ export default function Info() {
                 onImageUpload={({ cloudinaryPublicId }) => {
                   dispatch({
                     type: "UPDATE_STORE_INFO",
-                    payload: { image: { cloudinaryPublicId } }
+                    payload: { imageId: cloudinaryPublicId }
                   });
                 }}
               />

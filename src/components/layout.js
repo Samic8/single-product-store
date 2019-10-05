@@ -5,17 +5,18 @@ import { Store } from './containers/store';
 
 function Layout({ children }) {
   const dispatch = useContext(Store.Dispatch)
+  const listener = () => dispatch({
+    type: 'PUT_STORE_IN_LS',
+    payload: null,
+  })
   
   useEffect(() => {
     dispatch({
       type: "INIT_STORE FROM LS",
       payload: null,
     })
-    window.addEventListener("beforeunload", (event) => dispatch({
-      type: 'PUT_STORE_IN_LS',
-      payload: null,
-    }));
-    return () => window.removeEventListener('beforeunload');
+    window.addEventListener("beforeunload", listener);
+    return () => window.removeEventListener('beforeunload', listener);
   }, [])
 
   const data = useStaticQuery(graphql`

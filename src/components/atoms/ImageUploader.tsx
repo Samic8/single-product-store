@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Button from "@material-ui/core/Button";
-import request from "superagent"; // TODO probably replace with axios
+import axios from 'axios'
 
 const CLOUDINARY_UPLOAD_PRESET = "ylgmpdvo";
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/irevdev/upload";
@@ -11,21 +11,19 @@ interface Props {
 }
 
 export default function ImageUploader({ onImageUpload }: Props) {
-  function handleImageUpload(file) {
-    let upload = request
-      .post(CLOUDINARY_UPLOAD_URL)
-      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
-      .field("file", file);
-
-    upload.end((err, response) => {
-      if (err) {
-        console.error(err);
+  async function handleImageUpload(file) {
+    const imageData = new FormData();
+    imageData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+    imageData.append('file', file);
+    let upload = axios.post(CLOUDINARY_UPLOAD_URL, imageData)
+    try {
+      const { data } = await upload
+      if (data && data.public_id !== "") {
+        onImageUpload({cloudinaryPublicId: data.public_id})
       }
-
-      if (response.body.secure_url !== "") {
-        onImageUpload({cloudinaryPublicId: response.body.public_id})
-      }
-    });
+    } catch (e) {
+      console.error('ERROR', e)
+    }
   }
   // Drag and Drop
   const onDrop = useCallback(acceptedFiles => {

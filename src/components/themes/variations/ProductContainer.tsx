@@ -38,12 +38,12 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
 }
 
 const CenteredContainer = ({
-  storeInfo: { productName, price, description, image },
+  storeInfo: { productName, price, description, imageId },
   classes = {},
   variations
 }: {
   storeInfo: StoreInfo;
-  classes?: { root?: string; image?: string };
+  classes?: { root?: string; imageId?: string };
   variations: Variations;
 }) => (
   <div
@@ -52,10 +52,10 @@ const CenteredContainer = ({
       classes.root
     ])}
   >
-    {image.cloudinaryPublicId && (
-      <Image cloudName="irevdev" publicId={image.cloudinaryPublicId} width="300" crop="scale"/>
+    {imageId && (
+      <Image cloudName="irevdev" publicId={imageId} width="300" crop="scale"/>
     )}
-    {!image.cloudinaryPublicId && (
+    {!imageId && (
       <img className="w-2/5 bg-gray-200 z-10" src={PlaceholderProductImage} />
     )}
     <div className="w-3/5 px-10 py-16 relative">

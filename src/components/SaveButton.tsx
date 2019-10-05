@@ -26,8 +26,8 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
   );
 
   const updateUser = (ProvidedEmail) => {
-    const {image, ...storeInfo} = state.storeInfo
-    const cloudinaryPublicId = image && image.cloudinaryPublicId
+    const {imageId, ...storeInfo} = state.storeInfo
+    const cloudinaryPublicId = imageId
     hitUserMutation({
       variables: {
         email: ProvidedEmail || email,
