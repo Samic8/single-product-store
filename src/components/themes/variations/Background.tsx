@@ -23,7 +23,7 @@ export default function Background({ variations, children }: Props) {
   switch (variations.background) {
     case 1:
       return (
-        <div className="relative flex flex-grow w-full">
+        <div className="relative flex flex-grow w-full min-h-screen">
           {/* TODO: Pixel value is a bit magic, maybe make a constant of the image width and share here  */}
           <div
             className={backgroundOneColorVariations[variations.backgroundColor]}
