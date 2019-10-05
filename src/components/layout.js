@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
+import { Store } from './containers/store';
 
 function Layout({ children }) {
+  const dispatch = useContext(Store.Dispatch)
+  
+  useEffect(() => {
+    dispatch({
+      type: "INIT_STORE FROM LS",
+      payload: null,
+    })
+    window.addEventListener("beforeunload", (event) => dispatch({
+      type: 'PUT_STORE_IN_LS',
+      payload: null,
+    }));
+    return () => window.removeEventListener('beforeunload');
+  }, [])
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
