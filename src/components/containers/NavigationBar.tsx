@@ -11,7 +11,7 @@ export default function NavigationBar({  }: Props) {
   const [state, dispatch] = useStore();
 
   return (
-    <div className="fixed flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow sm:hidden">
+    <div className="fixed flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow lg:hidden">
       <SwitchButton
         onClick={() => dispatch({ type: "UPDATE_NAV_BAR", payload: "config" })}
         isActive={state.activeNavBarTab === "config"}
