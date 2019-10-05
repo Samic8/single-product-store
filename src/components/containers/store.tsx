@@ -20,26 +20,30 @@ type ContextProps = {
   storeInfo: StoreInfo;
   email: string;
   hasUnsavedChanges: boolean;
+  activeNavBarTab: "config" | "preview";
 };
 
 interface Action<T, P> {
-  type: T,
-  payload: P,
+  type: T;
+  payload: P;
 }
 
 type Actions =
-| Action<"UPDATE_VARIATION", {
-  key: VariationKeys,
-  variation: VariationOptions,
-}>
-| Action<"UPDATE_SAVED_CHANGES_FLAG", null>
-| Action<"TOGGLE_SAVE_MODAL", boolean>
-| Action<"UPDATE_EMAIL", string>
-| Action<"SET_PRESET_THEME", number>
-| Action<"UPDATE_STORE_INFO", any>
-| Action<"INIT_STORE FROM LS", null>
-| Action<"PUT_STORE_IN_LS", null>
-
+  | Action<
+      "UPDATE_VARIATION",
+      {
+        key: VariationKeys;
+        variation: VariationOptions;
+      }
+    >
+  | Action<"UPDATE_SAVED_CHANGES_FLAG", null>
+  | Action<"TOGGLE_SAVE_MODAL", boolean>
+  | Action<"UPDATE_EMAIL", string>
+  | Action<"SET_PRESET_THEME", number>
+  | Action<"UPDATE_STORE_INFO", any>
+  | Action<"UPDATE_NAV_BAR", ContextProps["activeNavBarTab"]>
+  | Action<"INIT_STORE FROM LS", null>
+  | Action<"PUT_STORE_IN_LS", null>;
 
 // Context
 const State = React.createContext<Partial<ContextProps>>(null);
@@ -61,8 +65,8 @@ const reducer = (state, action: Actions) => {
     case "UPDATE_SAVED_CHANGES_FLAG":
       return {
         ...state,
-        hasUnsavedChanges: false,
-      }
+        hasUnsavedChanges: false
+      };
     case "TOGGLE_SAVE_MODAL":
       return {
         ...state,
@@ -100,6 +104,11 @@ const reducer = (state, action: Actions) => {
           ...action.payload,
         }
       };
+    case "UPDATE_NAV_BAR":
+      return {
+        ...state,
+        activeNavBarTab: action.payload
+      };
     default:
       return state;
   }
@@ -114,8 +123,9 @@ const Provider = ({ children }) => {
     storeInfo: {
       type: "physical"
     },
-    email: '',
-    hasUnsavedChanges: false
+    email: "",
+    hasUnsavedChanges: false,
+    activeNavBarTab: "config"
   });
 
   return (
@@ -125,7 +135,15 @@ const Provider = ({ children }) => {
   );
 };
 
-// Export
+export const useStore = (): [
+  Partial<ContextProps>,
+  React.Dispatch<Actions>
+] => {
+  const dispatch = React.useContext(Store.Dispatch);
+  const state = React.useContext(Store.State);
+  return [state, dispatch];
+};
+
 export const Store = {
   State,
   Dispatch,
