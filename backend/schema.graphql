@@ -15,8 +15,10 @@ input Config {
     description: String
     header: Int
     background: Int
+    backgroundColor: Int
     productContainer: Int
     decoration: Int
+    cloudinaryPublicId: String
 }
 
 type User {
