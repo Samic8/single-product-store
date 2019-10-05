@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SettingsSvg from "../../svgs/settings.svg";
 import AirplaySvg from "../../svgs/airplay.svg";
 import SaveButton from "../../components/SaveButton";
