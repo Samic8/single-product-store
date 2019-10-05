@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import Button from "@material-ui/core/Button";
 import axios from 'axios'
 
-const CLOUDINARY_UPLOAD_PRESET = "ylgmpdvo";
+const CLOUDINARY_UPLOAD_PRESET = process.env.GATSBY_PROD_PRESET || "dev_preset";
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/irevdev/upload";
 
 interface Props {
