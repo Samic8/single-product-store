@@ -119,7 +119,7 @@ const MixAndMatchOptions: FunctionComponent = () => {
   return (
     <TwoColOverlay>
       {allVariations.map(({ name, key, variations }) => (
-        <TwoColRow>
+        <TwoColRow key={key}>
           <TwoColTitleCell className="align-center">{name}</TwoColTitleCell>
           <TwoColContentCell>
             <>
