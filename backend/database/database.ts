@@ -25,8 +25,10 @@ export const updateUserConfig = (id, config, maybeOverrideSubmittedAt) => {
     description,
     header,
     background,
+    backgroundColor,
     productContainer,
     decoration,
+    cloudinaryPublicId,
   } = config;
   
   const timestamp = new Date().getTime();
@@ -41,8 +43,10 @@ export const updateUserConfig = (id, config, maybeOverrideSubmittedAt) => {
     description,
     header,
     background,
+    backgroundColor,
     productContainer,
     decoration,
+    cloudinaryPublicId,
   };
 
   if(maybeOverrideSubmittedAt) {

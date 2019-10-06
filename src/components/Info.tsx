@@ -185,10 +185,10 @@ export default function Info() {
             <InfoTitleCell>Image</InfoTitleCell>
             <InfoContentCell>
               <ImageUploader
-                onImageUpload={({ previewUrl, binaryString }) => {
+                onImageUpload={({ cloudinaryPublicId }) => {
                   dispatch({
                     type: "UPDATE_STORE_INFO",
-                    payload: { image: { previewUrl, binaryString } }
+                    payload: { imageId: cloudinaryPublicId }
                   });
                 }}
               />

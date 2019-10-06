@@ -4,7 +4,7 @@ export interface StoreInfo {
   type: "digital" | "physical";
   price: string;
   description: string;
-  image: { previewUrl: string; binaryString: string };
+  imageId: string;
 }
 
 export const storeInfoPlaceholder: StoreInfo = {
@@ -14,7 +14,7 @@ export const storeInfoPlaceholder: StoreInfo = {
   price: "$49",
   description:
     "A tea set both designed and made in my home studio. Every set is guaranteed to be unique with its own imperfections.",
-  image: { previewUrl: "", binaryString: "" }
+  imageId: '',
 };
 
 // Uses placeholder if value is falsy

@@ -1,4 +1,6 @@
 import React from "react";
+import {Image} from 'cloudinary-react';
+
 import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
 import Decoration from "./Decoration";
@@ -36,12 +38,12 @@ export default function ProductContainer({ variations, storeInfo }: Props) {
 }
 
 const CenteredContainer = ({
-  storeInfo: { productName, price, description, image },
+  storeInfo: { productName, price, description, imageId },
   classes = {},
   variations
 }: {
   storeInfo: StoreInfo;
-  classes?: { root?: string; image?: string };
+  classes?: { root?: string; imageId?: string };
   variations: Variations;
 }) => (
   <div
@@ -50,13 +52,10 @@ const CenteredContainer = ({
       classes.root
     ])}
   >
-    {image.previewUrl && (
-      <img
-        src={image.previewUrl}
-        className={getActiveClasses(["w-2/5 bg-gray-200 z-10", classes.image])}
-      />
+    {imageId && (
+      <Image cloudName="irevdev" publicId={imageId} width="300" crop="scale"/>
     )}
-    {!image.previewUrl && (
+    {!imageId && (
       <img className="w-2/5 bg-gray-200 z-10" src={PlaceholderProductImage} />
     )}
     <div className="w-3/5 px-10 py-16 relative">
