@@ -1,6 +1,10 @@
 import React, { useState, FunctionComponent } from "react";
 import GradientBox from "./atoms/GradientBox";
-import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
+import TwoColOverlay, {
+  TwoColRow,
+  TwoColTitleCell,
+  TwoColContentCell
+} from "./atoms/TwoColOverlay";
 import RadioButton from "./atoms/RadioButton";
 import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
@@ -114,12 +118,10 @@ const MixAndMatchOptions: FunctionComponent = () => {
 
   return (
     <TwoColOverlay>
-      <TwoColRow title="" content={<></>} />
       {allVariations.map(({ name, key, variations }) => (
-        <TwoColRow
-          key={key}
-          title={name}
-          content={
+        <TwoColRow>
+          <TwoColTitleCell className="align-center">{name}</TwoColTitleCell>
+          <TwoColContentCell>
             <>
               {variations.map(variation => (
                 <RadioButton
@@ -137,8 +139,8 @@ const MixAndMatchOptions: FunctionComponent = () => {
                 />
               ))}
             </>
-          }
-        />
+          </TwoColContentCell>
+        </TwoColRow>
       ))}
     </TwoColOverlay>
   );
