@@ -57,7 +57,8 @@ module.exports = {
     function({ addUtilities, theme }) {
       const newUtilities = {
         ".alias-max-w-index-wide": {
-          "max-width": theme("maxWidth").md
+          "max-width": theme("maxWidth").md,
+          width: "100%"
         },
         ".alias-rounded-index": {
           "border-radius": theme("borderRadius").default

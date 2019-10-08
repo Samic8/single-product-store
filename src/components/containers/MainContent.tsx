@@ -13,7 +13,7 @@ export default function MainContent({  }: Props) {
     <div className="flex w-full relative">
       <HomepageLeftHandSide
         className={getActiveClasses([
-          "lg:block mx-auto lg:mx-0",
+          "lg:block mx-auto lg:mx-0 w-full",
           state.activeNavBarTab !== "config" ? "hidden" : ""
         ])}
       />
