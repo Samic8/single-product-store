@@ -37,8 +37,6 @@ export default function Header({ variations, storeInfo }: Props) {
           </h1>
         </div>
       );
-    case 3:
-      return <div className="text-white font-bold">2</div>;
   }
 
   return <div className="py-5 px-6"></div>;
