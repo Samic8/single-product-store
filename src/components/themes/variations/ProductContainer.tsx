@@ -1,5 +1,5 @@
 import React from "react";
-import {Image} from 'cloudinary-react';
+import { Image } from "cloudinary-react";
 
 import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
@@ -43,7 +43,7 @@ const CenteredContainer = ({
   variations
 }: {
   storeInfo: StoreInfo;
-  classes?: { root?: string; imageId?: string };
+  classes?: { root?: string; image?: string };
   variations: Variations;
 }) => (
   <div
@@ -53,10 +53,19 @@ const CenteredContainer = ({
     ])}
   >
     {imageId && (
-      <Image cloudName="irevdev" publicId={imageId} width="300" crop="scale"/>
+      <Image
+        className={classes.image}
+        cloudName="irevdev"
+        publicId={imageId}
+        width="300"
+        crop="scale"
+      />
     )}
     {!imageId && (
-      <img className="w-2/5 bg-gray-200 z-10" src={PlaceholderProductImage} />
+      <img
+        className={`w-2/5 bg-gray-200 z-10 ${classes.image}`}
+        src={PlaceholderProductImage}
+      />
     )}
     <div className="w-3/5 px-10 py-16 relative">
       <h2 className="font-bold text-2xl leading-tight inline-block">
