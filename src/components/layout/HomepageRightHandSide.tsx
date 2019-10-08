@@ -16,7 +16,7 @@ export default function HomepageRightHandSide({ className }: Props) {
       className={getActiveClasses(["flex-grow flex flex-col", className])}
     >
       <div className="flex items-start w-full py-2">
-        <div className="hidden sm:block">
+        <div className="hidden lg:block">
           <SaveButton />
         </div>
         <div className="bg-teal-100 text-teal-900 rounded-sm px-3 py-2 flex-grow mx-5 text-lg leading-snug">

@@ -1,6 +1,10 @@
 import React from "react";
 import GradientBox from "./atoms/GradientBox";
-import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
+import TwoColOverlay, {
+  TwoColRow,
+  TwoColTitleCell,
+  TwoColContentCell
+} from "./atoms/TwoColOverlay";
 import TextField from "@material-ui/core/TextField";
 import Popover from "@material-ui/core/Popover";
 import { ThemeProvider } from "@material-ui/styles";
@@ -21,6 +25,18 @@ const theme = createMuiTheme({
   }
 });
 
+const InfoTitleCell = ({ children, ...props }) => (
+  <TwoColTitleCell className="align-top pt-2" {...props}>
+    {children}
+  </TwoColTitleCell>
+);
+
+const InfoContentCell = ({ children, ...props }) => (
+  <TwoColContentCell className="align-top py-2 px-4" {...props}>
+    {children}
+  </TwoColContentCell>
+);
+
 export default function Info() {
   const dispatch = React.useContext(Store.Dispatch);
   const state = React.useContext(Store.State);
@@ -40,17 +56,16 @@ export default function Info() {
     <ThemeProvider theme={theme}>
       <GradientBox>
         <TwoColOverlay>
-          <TwoColRow
-            title={
+          <TwoColRow>
+            <TwoColTitleCell>
               <h2 className="text-white font-bold text-sm leading-loose">
                 Info
               </h2>
-            }
-            content={<></>}
-          />
-          <TwoColRow
-            title={"Store Name"}
-            content={
+            </TwoColTitleCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Store Name</InfoTitleCell>
+            <InfoContentCell>
               <TextField
                 className="flex-1"
                 placeholder={storeInfoPlaceholder.storeName}
@@ -62,11 +77,11 @@ export default function Info() {
                   })
                 }
               />
-            }
-          />
-          <TwoColRow
-            title={"Product"}
-            content={
+            </InfoContentCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Product</InfoTitleCell>
+            <InfoContentCell>
               <TextField
                 className="flex-1"
                 placeholder={storeInfoPlaceholder.productName}
@@ -78,11 +93,11 @@ export default function Info() {
                   })
                 }
               />
-            }
-          />
-          <TwoColRow
-            title={"Type"}
-            content={
+            </InfoContentCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Type</InfoTitleCell>
+            <InfoContentCell>
               <>
                 <RadioButton
                   name="type"
@@ -127,11 +142,11 @@ export default function Info() {
                   </div>
                 </Popover>
               </>
-            }
-          />
-          <TwoColRow
-            title={"Price"}
-            content={
+            </InfoContentCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Price</InfoTitleCell>
+            <InfoContentCell>
               <>
                 <TextField
                   className="flex-1"
@@ -145,11 +160,11 @@ export default function Info() {
                   }
                 />
               </>
-            }
-          />
-          <TwoColRow
-            title={"Description"}
-            content={
+            </InfoContentCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Description</InfoTitleCell>
+            <InfoContentCell>
               <>
                 <TextField
                   multiline
@@ -164,11 +179,11 @@ export default function Info() {
                   }
                 />
               </>
-            }
-          />
-          <TwoColRow
-            title={"Image"}
-            content={
+            </InfoContentCell>
+          </TwoColRow>
+          <TwoColRow>
+            <InfoTitleCell>Image</InfoTitleCell>
+            <InfoContentCell>
               <ImageUploader
                 onImageUpload={({ cloudinaryPublicId }) => {
                   dispatch({
@@ -177,9 +192,8 @@ export default function Info() {
                   });
                 }}
               />
-            }
-          />
-          <TwoColRow title={""} content={<></>} />
+            </InfoContentCell>
+          </TwoColRow>
         </TwoColOverlay>
       </GradientBox>
     </ThemeProvider>

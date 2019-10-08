@@ -1,6 +1,10 @@
 import React, { useState, FunctionComponent } from "react";
 import GradientBox from "./atoms/GradientBox";
-import TwoColOverlay, { TwoColRow } from "./atoms/TwoColOverlay";
+import TwoColOverlay, {
+  TwoColRow,
+  TwoColTitleCell,
+  TwoColContentCell
+} from "./atoms/TwoColOverlay";
 import RadioButton from "./atoms/RadioButton";
 import ImageRadioButton from "./atoms/ImageRadioButton";
 import Img from "gatsby-image";
@@ -9,6 +13,7 @@ import SettingsSvg from "../svgs/settings.svg";
 import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
 import { PreConfiguredThemes } from "./themes/variations";
+import Collapse from "@material-ui/core/Collapse";
 
 const themes = [
   PreConfiguredThemes.one,
@@ -96,9 +101,9 @@ export default function Config() {
                   </ImageRadioButton>
                 </div>
               </div>
-              {selectedTheme === "mixAndMatch" && (
+              <Collapse in={selectedTheme === "mixAndMatch"}>
                 <MixAndMatchOptions></MixAndMatchOptions>
-              )}
+              </Collapse>
             </>
           </GradientBox>
         );
@@ -113,12 +118,10 @@ const MixAndMatchOptions: FunctionComponent = () => {
 
   return (
     <TwoColOverlay>
-      <TwoColRow title="" content={<></>} />
       {allVariations.map(({ name, key, variations }) => (
-        <TwoColRow
-          key={key}
-          title={name}
-          content={
+        <TwoColRow key={key}>
+          <TwoColTitleCell className="align-center">{name}</TwoColTitleCell>
+          <TwoColContentCell>
             <>
               {variations.map(variation => (
                 <RadioButton
@@ -136,8 +139,8 @@ const MixAndMatchOptions: FunctionComponent = () => {
                 />
               ))}
             </>
-          }
-        />
+          </TwoColContentCell>
+        </TwoColRow>
       ))}
     </TwoColOverlay>
   );

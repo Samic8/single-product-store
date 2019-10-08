@@ -18,7 +18,7 @@ export default function MainContent({  }: Props) {
   })}
   return (
     <>
-      <div className='sm:hidden'>
+      <div className='lg:hidden'>
         <SwipeableViews
           index={index}
           onChangeIndex={onChangeIndex}
@@ -29,7 +29,7 @@ export default function MainContent({  }: Props) {
           <HomepageRightHandSide/>
         </SwipeableViews>
       </div>
-      <div className="hidden sm:flex w-full relative">
+      <div className="hidden lg:flex w-full relative">
         <HomepageLeftHandSide
           className="mx-auto mx-0"
         />
