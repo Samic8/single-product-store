@@ -7,7 +7,7 @@ import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
 import { getActiveClasses } from "../utility/active-classes";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { UPDATE_USER_MUTATION } from '../queries/mutations'
+import { UPDATE_USER_MUTATION } from "../queries/mutations";
 
 // TODO add cmd+s and ctrl+s keyboard shortcuts for saving
 
@@ -25,16 +25,16 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
     UPDATE_USER_MUTATION
   );
 
-  const updateUser = (ProvidedEmail) => {
-    const {imageId, ...storeInfo} = state.storeInfo
-    const cloudinaryPublicId = imageId
+  const updateUser = ProvidedEmail => {
+    const { imageId, ...storeInfo } = state.storeInfo;
+    const cloudinaryPublicId = imageId;
     hitUserMutation({
       variables: {
         email: ProvidedEmail || email,
         config: {
           ...state.selectedVariations,
           ...storeInfo,
-          cloudinaryPublicId,
+          cloudinaryPublicId
         }
       }
     });
@@ -54,7 +54,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           if (!email) {
             dispatch({ type: "TOGGLE_SAVE_MODAL", payload: true });
           } else {
-            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null});
+            dispatch({ type: "UPDATE_SAVED_CHANGES_FLAG", payload: null });
             updateUser(null);
           }
         }}
@@ -77,7 +77,9 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           />
         )}
         {saveIconSize === "large" && <SaveSvg />}
-        {saveIconSize === "small" && <SmallSaveSvg />}
+        {saveIconSize === "small" && (
+          <SmallSaveSvg style={{ marginBottom: "2px" }} />
+        )}
         <div className="text-sm text-gray-200 font-bold text-center">Save</div>
       </button>
       {isSaveModalOpen && (

@@ -36,12 +36,12 @@ export default function HomepageLeftHandSide({ className }: Props) {
           </InsetBox>
         </ConnectedLine>
         <ul className={"w-full flex flex-col items-center"}>
-          <li className="max-w-sm w-full">
+          <li className="alias-max-w-index-wide w-full">
             <ConnectedLine className="mt-16">
               <Config />
             </ConnectedLine>
           </li>
-          <li className="max-w-sm w-full">
+          <li className="alias-max-w-index-wide w-full">
             <ConnectedLine className="mt-16">
               <Info />
             </ConnectedLine>
