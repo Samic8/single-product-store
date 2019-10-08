@@ -59,7 +59,6 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           }
         }}
       >
-        {/* TODO add proper styling to this *, do we even want a *? */}
         <span
           className={getActiveClasses({
             "text-white absolute bg-orange-400 rounded-full w-3 h-3": true,

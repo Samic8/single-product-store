@@ -41,7 +41,16 @@ export default function NavigationBar({  }: Props) {
           value="preview"
           label="Preview"
           disableTouchRipple
-          icon={<AirplaySvg className={"stroke-current mb-0"} />}
+          icon={<>
+            <span
+              className={getActiveClasses({
+                "text-white absolute bg-orange-400 rounded-full w-3 h-3": true,
+                hidden: !state.hasUnseenChanges
+              })}
+              style={{ top: "0", right: "25px" }}
+            ></span>
+            <AirplaySvg className={"stroke-current mb-0"} />
+          </>}
           classes={{
             root: "min-h-0 pt-0 pb-1 px-4 outline-none",
             wrapper: getActiveClasses([
