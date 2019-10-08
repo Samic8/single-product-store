@@ -30,6 +30,7 @@
     "react-dom": "16.8.6",
     "react-dropzone": "^10.1.9",
     "react-helmet": "5.2.1",
+    "react-swipeable-views": "^0.13.3",
     "tailwindcss-interaction-variants": "^2.2.0"
   },
   "keywords": [
