@@ -13,7 +13,7 @@ export default function NavigationBar({  }: Props) {
   const [state, dispatch] = useStore();
 
   return (
-    <div className="fixed flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow lg:hidden">
+    <div className="fixed z-20 flex items-center px-6 bottom-0 left-0 right-0 h-16 bg-purple-900 shadow lg:hidden">
       <Tabs
         value={state.activeNavBarTab}
         onChange={(e, newVal) =>
