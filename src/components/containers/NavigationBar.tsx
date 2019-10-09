@@ -28,7 +28,7 @@ export default function NavigationBar({  }: Props) {
           disableTouchRipple
           icon={<SettingsSvg className={"stroke-current mb-0"} />}
           classes={{
-            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            root: "min-h-0 pt-0 pb-1 px-4 outline-none min-w-0",
             wrapper: getActiveClasses([
               {
                 "text-white capitalize mb-0": true,
@@ -52,7 +52,7 @@ export default function NavigationBar({  }: Props) {
             <AirplaySvg className={"stroke-current mb-0"} />
           </>}
           classes={{
-            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            root: "min-h-0 min-w-0 pt-0 pb-1 px-4 outline-none",
             wrapper: getActiveClasses([
               {
                 "text-white capitalize mb-0": true,
