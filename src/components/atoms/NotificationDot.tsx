@@ -3,11 +3,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { getActiveClasses } from "../../utility/active-classes";
 import { any } from 'prop-types';
+import { CSSProperties } from '@material-ui/styles';
 
 interface Props {
     shouldHide: boolean
     isLoading?: boolean;
-    style?: any;
+    style?: CSSProperties;
 }
 
 export const NotificationDot = ({style, shouldHide, isLoading}: Props) => {
