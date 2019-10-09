@@ -2,6 +2,7 @@ import React from "react";
 import SettingsSvg from "../../svgs/settings.svg";
 import AirplaySvg from "../../svgs/airplay.svg";
 import SaveButton from "../../components/SaveButton";
+import {NotificationDot} from "../../components/atoms/NotificationDot"
 import { getActiveClasses } from "../../utility/active-classes";
 import { useStore } from "./store";
 import Tabs from "@material-ui/core/Tabs";
@@ -42,13 +43,10 @@ export default function NavigationBar({  }: Props) {
           label="Preview"
           disableTouchRipple
           icon={<>
-            <span
-              className={getActiveClasses({
-                "text-white absolute bg-orange-400 rounded-full w-3 h-3": true,
-                hidden: !state.hasUnseenChanges
-              })}
-              style={{ top: "0", right: "25px" }}
-            ></span>
+            <NotificationDot
+              shouldHide={!state.hasUnseenChanges}
+              style={{ top: "5px", right: "-5px" }}
+            />
             <AirplaySvg className={"stroke-current mb-0"} />
           </>}
           classes={{

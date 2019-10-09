@@ -2,6 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 
 import SaveModal from "../components/layout/SaveModal";
+import {NotificationDot} from '../components/atoms/NotificationDot'
 import SaveSvg from "../svgs/save.svg";
 import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
@@ -59,22 +60,11 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           }
         }}
       >
-        <span
-          className={getActiveClasses({
-            "text-white absolute bg-orange-400 rounded-full w-3 h-3": true,
-            hidden: !hasUnsavedChanges && !loading
-          })}
-          style={{ top: "8px", right: "1px" }}
-        ></span>
-        {loading && (
-          <CircularProgress
-            size={16}
-            color="inherit"
-            thickness={10}
-            className="absolute w-3 h-3 text-orange-400"
-            style={{ top: "5px", right: "-1px" }}
-          />
-        )}
+        <NotificationDot 
+          style={{ top: "0px", right: "-2px" }}
+          shouldHide={!hasUnsavedChanges && !loading}
+          isLoading={loading}
+        />
         {saveIconSize === "large" && <SaveSvg />}
         {saveIconSize === "small" && (
           <SmallSaveSvg style={{ marginBottom: "2px" }} />
