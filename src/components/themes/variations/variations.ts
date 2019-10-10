@@ -1,4 +1,4 @@
-import { VariationOptions, VariationKeys } from '../../containers/store'
+import { VariationOptions, VariationKeys } from "../../containers/store";
 
 type AllVariations = {
   name: string;
@@ -40,7 +40,7 @@ export const preConfiguredThemes: {
     decoration: 1
   },
   2: {
-    header: null,
+    header: 3,
     background: 2,
     backgroundColor: 1,
     productContainer: 2,

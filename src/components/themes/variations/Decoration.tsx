@@ -18,5 +18,7 @@ export default function Pattern({ variations, ...props }: Props) {
       return <DecoSvg {...props} />;
     case 2:
       return <Deco2Svg {...props} />;
+    case 3:
+      return null;
   }
 }

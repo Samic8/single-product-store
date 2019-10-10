@@ -1,9 +1,11 @@
 .variations-colors {
   /* Gray */
+  --color-gray-100: #f7fafc;
   --color-gray-200: #e1e1e1;
   --color-gray-300: #c7c7c7;
   --color-gray-500: #84858e;
   --color-gray-600: #404040;
+  --color-gray-800: #2d3748;
 
   /* Red */
   --color-red-300: #dd979f;
@@ -13,4 +15,7 @@
 
   /* Purple */
   --color-purple-500: #667eea;
+
+  /* Blue */
+  --color-blue-800: #2c5282;
 }

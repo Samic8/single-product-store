@@ -11,7 +11,8 @@ module.exports = {
         purple: generateColorProps("purple"),
         gray: generateColorProps("gray"),
         teal: generateColorProps("teal"),
-        red: generateColorProps("red")
+        red: generateColorProps("red"),
+        blue: generateColorProps("blue")
       },
       inset: {
         full: "100%",
@@ -20,6 +21,9 @@ module.exports = {
       width: {
         1: "3px",
         26: "6.5rem"
+      },
+      height: {
+        sm: "300px"
       },
       maxWidth: {
         sm: "330px",
