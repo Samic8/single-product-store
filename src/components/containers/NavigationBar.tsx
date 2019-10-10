@@ -2,6 +2,7 @@ import React from "react";
 import SettingsSvg from "../../svgs/settings.svg";
 import AirplaySvg from "../../svgs/airplay.svg";
 import SaveButton from "../../components/SaveButton";
+import {NotificationDot} from "../../components/atoms/NotificationDot"
 import { getActiveClasses } from "../../utility/active-classes";
 import { useStore } from "./store";
 import Tabs from "@material-ui/core/Tabs";
@@ -28,7 +29,7 @@ export default function NavigationBar({  }: Props) {
           disableTouchRipple
           icon={<SettingsSvg className={"stroke-current mb-0"} />}
           classes={{
-            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            root: "min-h-0 pt-0 pb-1 px-4 outline-none min-w-0",
             wrapper: getActiveClasses([
               {
                 "text-white capitalize mb-0": true,
@@ -41,9 +42,15 @@ export default function NavigationBar({  }: Props) {
           value="preview"
           label="Preview"
           disableTouchRipple
-          icon={<AirplaySvg className={"stroke-current mb-0"} />}
+          icon={<>
+            <NotificationDot
+              shouldHide={!state.hasUnseenChanges}
+              style={{ top: "5px", right: "-5px" }}
+            />
+            <AirplaySvg className={"stroke-current mb-0"} />
+          </>}
           classes={{
-            root: "min-h-0 pt-0 pb-1 px-4 outline-none",
+            root: "min-h-0 min-w-0 pt-0 pb-1 px-4 outline-none",
             wrapper: getActiveClasses([
               {
                 "text-white capitalize mb-0": true,
