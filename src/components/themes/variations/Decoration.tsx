@@ -2,7 +2,7 @@ import React from "react";
 
 import { Variations } from "./variations";
 import DecoSvg from "../decorations/pattern.svg";
-import Deco2Svg from "../decorations/patterntwo.svg";
+import DecoTwoSvg from "../decorations/patterntwo.svg";
 
 // TODO: Make standard props and extend in each variation
 interface Props {
@@ -17,7 +17,7 @@ export default function Pattern({ variations, ...props }: Props) {
     case 1:
       return <DecoSvg {...props} />;
     case 2:
-      return <Deco2Svg {...props} />;
+      return <DecoTwoSvg {...props} />;
     case 3:
       return null;
   }
