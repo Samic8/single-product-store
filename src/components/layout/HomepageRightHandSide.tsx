@@ -13,7 +13,10 @@ export default function HomepageRightHandSide({ className }: Props) {
 
   return (
     <section
-      className={getActiveClasses(["flex-grow flex flex-col", className])}
+      className={getActiveClasses([
+        "flex-grow flex flex-col lg:flex",
+        className
+      ])}
     >
       <div className="flex items-start w-full py-2">
         <div className="hidden lg:block">

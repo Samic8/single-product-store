@@ -1,6 +1,7 @@
 import React from "react";
 import { Variations } from "./variations";
 import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
+import { getActiveClasses } from "../../../utility/active-classes";
 
 interface Props {
   variations: Variations;
@@ -9,6 +10,14 @@ interface Props {
 
 export default function Header({ variations, storeInfo }: Props) {
   const { storeName } = applyPlaceholderStoreInfo(storeInfo);
+
+  const shouldUseWhiteText =
+    (variations.backgroundColor === 1 && variations.background === 1) ||
+    (variations.backgroundColor === 3 && variations.background === 3);
+  const textColorClasses = {
+    "text-white": shouldUseWhiteText,
+    "text-gray-800": !shouldUseWhiteText
+  };
 
   switch (variations.header) {
     case 1:
@@ -21,7 +30,10 @@ export default function Header({ variations, storeInfo }: Props) {
           ></link>
           <div className="py-5 px-6">
             <h1
-              className="text-white font-bold inline-block text-2xl"
+              className={getActiveClasses([
+                "font-bold inline-block text-2xl",
+                textColorClasses
+              ])}
               style={{ fontFamily: "Satisfy", transform: "rotate(-5deg)" }}
             >
               {storeName}
@@ -32,13 +44,16 @@ export default function Header({ variations, storeInfo }: Props) {
     case 2:
       return (
         <div className="py-5 px-6">
-          <h1 className="text-white font-bold inline-block text-2xl">
+          <h1
+            className={getActiveClasses([
+              "font-bold inline-block text-2xl",
+              textColorClasses
+            ])}
+          >
             {storeName}
           </h1>
         </div>
       );
-    case 3:
-      return <div className="text-white font-bold">2</div>;
   }
 
   return <div className="py-5 px-6"></div>;

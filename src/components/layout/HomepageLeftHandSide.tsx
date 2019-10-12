@@ -25,11 +25,17 @@ export default function HomepageLeftHandSide({ className }: Props) {
     }
   `);
   return (
-    <div className={getActiveClasses([className])}>
+    <div
+      className={getActiveClasses([
+        "lg:block mx-auto lg:mx-0 alias-max-w-index-wide px-6",
+        className
+      ])}
+      style={{ boxSizing: "content-box" }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div className="flex flex-col items-start items-center px-6">
+      <div className="flex flex-col items-start items-center">
         <ConnectedLine>
-          <InsetBox className="px-4 py-8 mt-10 alias-max-w-index-wide">
+          <InsetBox className="px-4 py-8 mt-10">
             <h2 className="text-white text-2xl text-center font-bold">
               {data.site.siteMetadata.description}
             </h2>
