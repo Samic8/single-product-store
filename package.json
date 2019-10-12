@@ -30,6 +30,7 @@
     "react-dom": "16.8.6",
     "react-dropzone": "^10.1.9",
     "react-helmet": "5.2.1",
+    "react-swipeable-views": "^0.13.3",
     "tailwindcss-interaction-variants": "^2.2.0"
   },
   "keywords": [
@@ -45,6 +46,10 @@
     "analyze": "npm run analyze:lint && npm run analyze:prettier",
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "GATSBY_PROD_PRESET=PROD_PRESET GATSBY_PROD_GRAPHQL='https://ev53rgqh6k.execute-api.us-east-1.amazonaws.com/prod/graphql' gatsby build",
+    "sls-dev": "cd backend && sls offline",
+    "sls-deploy-dev": "cd backend && sls deploy",
+    "sls-deploy": "cd backend && sls deploy --stage prod",
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write '**/*.{js,css,md,json}'",
     "fix": "npm run fix:lint && npm run fix:prettier",
@@ -56,6 +61,7 @@
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
     "babel-eslint": "10.0.2",
+    "dotenv": "^8.1.0",
     "eslint": "6.1.0",
     "eslint-config-react-app": "^5.0.1",
     "eslint-plugin-flowtype": "3.13.0",

@@ -20,6 +20,7 @@ type ContextProps = {
   storeInfo: StoreInfo;
   email: string;
   hasUnsavedChanges: boolean;
+  hasUnseenChanges: boolean;
   activeNavBarTab: "config" | "preview";
 };
 
@@ -84,6 +85,7 @@ const reducer = (state, action: Actions) => {
       return {
         ...state,
         hasUnsavedChanges: true,
+        hasUnseenChanges: true,
         selectedVariations: {
           ...state.selectedVariations,
           [action.payload.key]: action.payload.variation
@@ -99,14 +101,17 @@ const reducer = (state, action: Actions) => {
       return {
         ...state,
         hasUnsavedChanges: true,
+        hasUnseenChanges: true,
         storeInfo: {
           ...state.storeInfo,
           ...action.payload,
         }
       };
     case "UPDATE_NAV_BAR":
+      const hasUnseenChanges = action.payload === 'preview' ? false : state.hasUnseenChanges
       return {
         ...state,
+        hasUnseenChanges,
         activeNavBarTab: action.payload
       };
     default:
@@ -125,6 +130,7 @@ const Provider = ({ children }) => {
     },
     email: "",
     hasUnsavedChanges: false,
+    hasUnseenChanges: false,
     activeNavBarTab: "config"
   });
 
