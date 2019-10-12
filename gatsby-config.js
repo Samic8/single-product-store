@@ -67,6 +67,7 @@ module.exports = {
       options: {
         fs_org: "PGSER"
       }
-    }
+    },
+    `gatsby-plugin-material-ui`
   ]
 };
