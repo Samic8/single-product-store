@@ -20,6 +20,10 @@ input:checked + .image-radio-button {
   @apply rounded-sm overflow-hidden flex relative border-none;
 }
 
+.image-radio-button-inner img {
+  @apply border-none;
+}
+
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
