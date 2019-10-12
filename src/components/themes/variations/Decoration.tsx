@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Variations } from "./variations";
-import DecoSvg from "../decorations/pattern.svg";
-import DecoTwoSvg from "../decorations/patterntwo.svg";
+import DecoSvg from "../../../svgs/pattern.svg";
+import DecoTwoSvg from "../../../svgs/patterntwo.svg";
 
 // TODO: Make standard props and extend in each variation
 interface Props {
