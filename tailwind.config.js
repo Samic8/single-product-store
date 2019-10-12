@@ -1,36 +1,38 @@
 // See https://tailwindcss.com/docs/configuration for details
 
 module.exports = {
+  important: true,
   theme: {
     extend: {
       fontFamily: {
         sans: `"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`
       },
       colors: {
-        purple: {
-          100: "#D6CFD8",
-          200: "#8C8A94",
-          600: "#524D60",
-          900: "#433F4F"
-        },
-        gray: {
-          100: "#FCFAFA"
-        },
-        teal: {
-          500: "#39C1BC",
-          900: "#0F4D4A"
-        }
+        purple: generateColorProps("purple"),
+        gray: generateColorProps("gray"),
+        teal: generateColorProps("teal"),
+        red: generateColorProps("red"),
+        blue: generateColorProps("blue")
       },
       inset: {
         full: "100%",
         "1/2": "50%"
       },
       width: {
-        1: "3px"
+        1: "3px",
+        26: "6.5rem"
+      },
+      height: {
+        sm: "300px"
+      },
+      maxWidth: {
+        sm: "330px",
+        md: "360px"
       },
       borderRadius: {
         sm: ".25rem",
-        default: ".4375rem"
+        default: ".4375rem",
+        xl: "1.875rem"
       },
       boxShadow: {
         default: "0px 4px 14px rgba(0, 0, 0, 0.25)",
@@ -41,8 +43,11 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    backgroundColor: ["hover", "hocus", "responsive"]
+  },
   plugins: [
+    require("tailwindcss-interaction-variants")(),
     function({ addUtilities }) {
       const newUtilities = {
         ".gradient": {
@@ -56,10 +61,21 @@ module.exports = {
     function({ addUtilities, theme }) {
       const newUtilities = {
         ".alias-max-w-index-wide": {
-          "max-width": theme("maxWidth").sm
+          "max-width": theme("maxWidth").md,
+          width: "100%"
         },
         ".alias-rounded-index": {
           "border-radius": theme("borderRadius").default
+        },
+        // TODO: better tailwind way to handle background opacity?
+        ".bg-grey-800-opacity-05": {
+          "background-color": "rgba(87, 87, 87, 0.5)"
+        },
+        ".bg-grey-800-opacity-08": {
+          "background-color": "rgba(87, 87, 87, 0.8)"
+        },
+        ".shadow-inner-radio": {
+          "box-shadow": `inset 0px 1px 0px ${theme("colors").purple[300]}`
         }
       };
 
@@ -67,3 +83,11 @@ module.exports = {
     }
   ]
 };
+
+function generateColorProps(name) {
+  let props = {};
+  for (let i = 1; i <= 9; i++) {
+    props[`${i}00`] = `var(--color-${name}-${i}00)`;
+  }
+  return props;
+}

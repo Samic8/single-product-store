@@ -1,8 +1,27 @@
+@import "./brand-colors.css";
 @tailwind base;
 @tailwind components;
 
+/* cta-button */
 .cta-button {
   @apply shadow-inset-teal bg-teal-500 text-teal-900 font-bold;
+}
+
+/* image-radio-button */
+.image-radio-button {
+  @apply border border-transparent border-solid flex rounded-sm p-1 cursor-pointer;
+}
+
+input:checked + .image-radio-button {
+  @apply border-gray-100;
+}
+
+.image-radio-button-inner {
+  @apply rounded-sm overflow-hidden flex relative border-none;
+}
+
+.image-radio-button-inner img {
+  @apply border-none;
 }
 
 @tailwind utilities;

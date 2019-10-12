@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
-
-import Header from "./header";
+import { Store } from "./containers/store";
 
 function Layout({ children }) {
+  const dispatch = useContext(Store.Dispatch);
+  const listener = () =>
+    dispatch({
+      type: "PUT_STORE_IN_LS",
+      payload: null
+    });
+
+  useEffect(() => {
+    dispatch({
+      type: "INIT_STORE FROM LS",
+      payload: null
+    });
+    window.addEventListener("beforeunload", listener);
+    return () => window.removeEventListener("beforeunload", listener);
+  }, [dispatch, listener]);
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -16,13 +31,8 @@ function Layout({ children }) {
   `);
 
   return (
-    <div className="flex flex-col font-sans min-h-screen text-gray-900">
-      <Header siteTitle={data.site.siteMetadata.title} />
-
-      <main>
-        {children}
-      </main>
-
+    <div className="font-sans text-gray-900">
+      <main>{children}</main>
     </div>
   );
 }

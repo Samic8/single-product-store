@@ -1,0 +1,9 @@
+.MuiInputBase-input,
+.MuiInputBase-multiline {
+  @apply text-sm !important;
+  padding: 4px 0 !important;
+}
+
+.MuiInputBase-multiline .MuiInputBase-input {
+  padding: 0 !important;
+}

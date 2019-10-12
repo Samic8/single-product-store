@@ -1,0 +1,32 @@
+type Query {
+    ok: String
+    list: [User]
+}
+
+type Mutation {
+    UpdateUserConfig(email: String!, config: Config): String!
+}
+
+input Config {
+    storeName: String
+    productName: String
+    type: String
+    price: String
+    description: String
+    header: Int
+    background: Int
+    backgroundColor: Int
+    productContainer: Int
+    decoration: Int
+    cloudinaryPublicId: String
+}
+
+type User {
+    id: String!
+    email: String!
+    configuration: UserConfig!
+}
+
+type UserConfig {
+    color: String
+}

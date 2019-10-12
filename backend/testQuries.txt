@@ -1,0 +1,12 @@
+query {
+  ok 
+}
+
+mutation {
+  UpdateUserConfig(email: "userTS@user.com", config: {
+    storeName: "hey"
+    header: 6
+  })
+}
+
+

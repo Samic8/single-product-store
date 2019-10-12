@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   siteMetadata: {
     title: `Single Product Store.`,
@@ -38,7 +42,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /images/
+          include: /svgs/
         }
       }
     },
@@ -56,6 +60,14 @@ module.exports = {
         endpoint:
           "https://gmail.us3.list-manage.com/subscribe/post?u=e3d40026264a982baf0275441&amp;id=23400ce5fc"
       }
-    }
+    },
+    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-fullstory`,
+      options: {
+        fs_org: "PGSER"
+      }
+    },
+    `gatsby-plugin-material-ui`
   ]
 };
