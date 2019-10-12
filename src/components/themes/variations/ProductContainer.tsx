@@ -53,9 +53,10 @@ const CenteredContainer = ({
       className={getActiveClasses([
         imageClasses,
         className,
-        "self-start",
+        "self-start overflow-hidden",
         {
-          "rounded-lg shadow overflow-hidden": variations.productContainer === 1
+          "rounded-lg shadow": variations.productContainer === 1,
+          "rounded-lg md:rounded-none": variations.productContainer === 2
         }
       ])}
     >
@@ -74,15 +75,21 @@ const CenteredContainer = ({
     </div>
   );
 
+  const shouldUseWhiteText =
+    variations.backgroundColor === 3 &&
+    variations.background === 3 &&
+    variations.productContainer === 1;
+  const textColorClasses = {
+    "text-white": shouldUseWhiteText,
+    "text-gray-800": !shouldUseWhiteText
+  };
+
   return (
     <div
       className={getActiveClasses([
         "max-w-3xl mx-6 md:mx-auto rounded-sm flex md:flex-row flex-col",
         classes.root,
-        {
-          "text-white":
-            variations.background == 3 && variations.backgroundColor == 3
-        }
+        textColorClasses
       ])}
     >
       <ImageComponent className="hidden md:block" />

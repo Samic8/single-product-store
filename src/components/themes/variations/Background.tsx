@@ -11,8 +11,8 @@ export default function Background({ variations, children }: Props) {
   const mainBackgroundColorVariations = {
     1: {
       1: "bg-red-300",
-      2: "bg-blue-800",
-      3: "bg-purple-500"
+      2: "bg-yellow-100",
+      3: "bg-blue-200"
     },
     2: {
       1: "bg-yellow-100",

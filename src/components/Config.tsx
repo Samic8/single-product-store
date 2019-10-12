@@ -15,11 +15,7 @@ import { Store } from "./containers/store";
 import { PreConfiguredThemes } from "./themes/variations";
 import Collapse from "@material-ui/core/Collapse";
 
-const themes = [
-  PreConfiguredThemes.one,
-  PreConfiguredThemes.two,
-  PreConfiguredThemes.three
-];
+const themes = [PreConfiguredThemes.one, PreConfiguredThemes.two];
 
 export default function Config() {
   const [selectedTheme, selectTheme] = useState(null);
@@ -52,13 +48,6 @@ export default function Config() {
               draggable={false}
               fixed={storeMockup.childImageSharp.fixed}
             />
-          ),
-          [PreConfiguredThemes.three]: () => (
-            <Img
-              className="rounded-sm"
-              draggable={false}
-              fixed={storeMockup.childImageSharp.fixed}
-            />
           )
         };
 
@@ -69,7 +58,7 @@ export default function Config() {
                 <h2 className="text-white font-bold text-sm leading-loose">
                   Theme
                 </h2>
-                <div className="flex justify-between -ml-1">
+                <div className="flex -ml-1">
                   {themes.map(theme => (
                     <ImageRadioButton
                       key={theme}
