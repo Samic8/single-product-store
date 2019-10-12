@@ -3,7 +3,7 @@
 # output of the build
 publish = "public/"
 
-command = "yarn build"
+command = "yarn deploy"
 
 functions = "backend/functions/"
 
