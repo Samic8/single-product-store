@@ -66,11 +66,17 @@ export default function Background({ variations, children }: Props) {
       return (
         <div
           className={getActiveClasses([
-            "relative flex flex-grow w-full",
-            mainBackgroundColor
+            "relative flex flex-grow w-full min-h-screen"
           ])}
         >
-          <div className="absolute inset-0">{children}</div>
+          <div
+            className={getActiveClasses([
+              "absolute inset-0",
+              mainBackgroundColor
+            ])}
+          >
+            {children}
+          </div>
         </div>
       );
   }
