@@ -9,7 +9,7 @@
 
 /* radio-button */
 .radio-button {
-  @apply rounded-full p-1 border border-transparent cursor-pointer;
+  @apply rounded-full p-1 border border-solid border-transparent cursor-pointer;
 }
 
 .radio-button:hover .radio-button-inner {
@@ -44,7 +44,7 @@ input:checked + .image-radio-button {
 }
 
 .image-radio-button-inner {
-  @apply rounded-sm overflow-hidden flex relative;
+  @apply rounded-sm overflow-hidden flex relative border-none;
 }
 
 @tailwind utilities;
