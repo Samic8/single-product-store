@@ -87,7 +87,7 @@ export default function HomepageLeftHandSide({ className }: Props) {
           </div>
         </ConnectedLine>
         <div className="mt-24 mb-32 alias-max-w-index-wide w-full">
-          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 border-2">
+          <div className="alias-rounded-index overflow-hidden bg-purple-900 text-white font-bold text-xl border-purple-200 p-5 border-2 border-solid">
             <SignUpForm />
           </div>
         </div>
