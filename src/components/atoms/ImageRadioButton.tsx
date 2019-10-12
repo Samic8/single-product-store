@@ -28,7 +28,7 @@ const ImageRadioButton: FunctionComponent<Props> = ({
         hidden
       />
       <label className="image-radio-button" htmlFor={`${value}-id`}>
-        <div className="image-radio-button-inner">{children}</div>
+        <div className="image-radio-button-inner border-none">{children}</div>
       </label>
     </div>
   );
