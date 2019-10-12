@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 
 import SaveModal from "../components/layout/SaveModal";
-import {NotificationDot} from '../components/atoms/NotificationDot'
+import { NotificationDot } from "../components/atoms/NotificationDot";
 import SaveSvg from "../svgs/save.svg";
 import SmallSaveSvg from "../svgs/save-small.svg";
 import { Store } from "../components/containers/store";
@@ -49,7 +49,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
   return (
     <>
       <button
-        className="py-2 flex flex-col items-center relative"
+        className="pt-2 flex flex-col items-center relative"
         aria-haspopup="true"
         onClick={() => {
           if (!email) {
@@ -60,7 +60,7 @@ export default function SaveButton({ saveIconSize = "large" }: Props) {
           }
         }}
       >
-        <NotificationDot 
+        <NotificationDot
           style={{ top: "0px", right: "-2px" }}
           shouldHide={!hasUnsavedChanges && !loading}
           isLoading={loading}

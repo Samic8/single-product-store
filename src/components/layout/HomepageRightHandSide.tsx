@@ -22,7 +22,7 @@ export default function HomepageRightHandSide({ className }: Props) {
         <div className="hidden lg:block">
           <SaveButton />
         </div>
-        <div className="bg-teal-100 text-teal-900 rounded-sm px-3 py-2 flex-grow mx-5 text-lg leading-snug">
+        <div className="bg-teal-100 text-teal-900 lg:rounded-sm px-3 py-2 flex-grow lg:mx-5 text-lg leading-snug">
           <span className="font-bold">Single Product Store</span> is not
           available just yet.
           <div>Save your configuration so its ready to set live at launch</div>
