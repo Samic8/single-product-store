@@ -9,7 +9,7 @@
 
 /* image-radio-button */
 .image-radio-button {
-  @apply border border-transparent flex rounded-sm p-1 cursor-pointer;
+  @apply border border-transparent border-solid flex rounded-sm p-1 cursor-pointer;
 }
 
 input:checked + .image-radio-button {
