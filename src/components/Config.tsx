@@ -14,6 +14,7 @@ import { allVariations } from "./themes/variations";
 import { Store } from "./containers/store";
 import { PreConfiguredThemes } from "./themes/variations";
 import Collapse from "@material-ui/core/Collapse";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const themes = [PreConfiguredThemes.one, PreConfiguredThemes.two];
 
@@ -36,18 +37,26 @@ export default function Config() {
       render={({ storeMockup }) => {
         const themeRepresentationComponent = {
           [PreConfiguredThemes.one]: () => (
-            <Img
-              className="rounded-sm"
-              draggable={false}
-              fixed={storeMockup.childImageSharp.fixed}
-            />
+            <Tooltip title="Divided">
+              <div className="flex">
+                <Img
+                  className="rounded-sm"
+                  draggable={false}
+                  fixed={storeMockup.childImageSharp.fixed}
+                />
+              </div>
+            </Tooltip>
           ),
           [PreConfiguredThemes.two]: () => (
-            <Img
-              className="rounded-sm"
-              draggable={false}
-              fixed={storeMockup.childImageSharp.fixed}
-            />
+            <Tooltip title="Carded">
+              <div className="flex">
+                <Img
+                  className="rounded-sm"
+                  draggable={false}
+                  fixed={storeMockup.childImageSharp.fixed}
+                />
+              </div>
+            </Tooltip>
           )
         };
 
@@ -71,23 +80,27 @@ export default function Config() {
                     </ImageRadioButton>
                   ))}
                   {/* TODO: Add tooltip or title to explain what this section is */}
-                  <ImageRadioButton
-                    key={"mixAndMatch"}
-                    name="theme"
-                    value={"mixAndMatch"}
-                    selectedValue={selectedTheme}
-                    onSelect={selectTheme}
-                  >
-                    <div className="absolute inset-0 bg-black opacity-25 z-10" />
-                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <SettingsSvg className="text-white"></SettingsSvg>
+                  <Tooltip title="Custom">
+                    <div className="flex">
+                      <ImageRadioButton
+                        key={"mixAndMatch"}
+                        name="theme"
+                        value={"mixAndMatch"}
+                        selectedValue={selectedTheme}
+                        onSelect={selectTheme}
+                      >
+                        <div className="absolute inset-0 bg-black opacity-25 z-10" />
+                        <div className="absolute inset-0 flex items-center justify-center z-20">
+                          <SettingsSvg className="text-white"></SettingsSvg>
+                        </div>
+                        <Img
+                          className="rounded-sm"
+                          draggable={false}
+                          fixed={storeMockup.childImageSharp.fixed}
+                        />
+                      </ImageRadioButton>
                     </div>
-                    <Img
-                      className="rounded-sm"
-                      draggable={false}
-                      fixed={storeMockup.childImageSharp.fixed}
-                    />
-                  </ImageRadioButton>
+                  </Tooltip>
                 </div>
               </div>
               <Collapse in={selectedTheme === "mixAndMatch"}>
