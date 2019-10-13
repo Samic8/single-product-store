@@ -55,8 +55,8 @@ export default function Config() {
           <GradientBox>
             <>
               <div className="px-4 pb-3">
-                <h2 className="text-white font-bold text-sm leading-loose">
-                  Theme
+                <h2 className="text-white font-bold text-base leading-loose">
+                  Select a theme
                 </h2>
                 <div className="flex -ml-1">
                   {themes.map(theme => (

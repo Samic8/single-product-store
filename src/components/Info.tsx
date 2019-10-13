@@ -58,8 +58,8 @@ export default function Info() {
         <TwoColOverlay>
           <TwoColRow>
             <TwoColTitleCell>
-              <h2 className="text-white font-bold text-sm leading-loose">
-                Info
+              <h2 className="text-white font-bold text-base leading-loose">
+                Enter info
               </h2>
             </TwoColTitleCell>
           </TwoColRow>
