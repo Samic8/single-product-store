@@ -95,6 +95,7 @@ const reducer = (state, action: Actions) => {
       return {
         ...state,
         // TODO: better way to update all of the keys? Maybe store keys all in one place
+        hasUnseenChanges: true,
         selectedVariations: preConfiguredThemes[action.payload]
       };
     case "UPDATE_STORE_INFO":
