@@ -4,7 +4,7 @@ import { StoreInfo } from "./../themes/info";
 
 export type VariationOptions = 1 | 2 | 3 | null;
 
-const LOCAL_STORAGE_STORE_KEY = 'sps-store'
+const LOCAL_STORAGE_STORE_KEY = "sps-store";
 
 export type VariationKeys =
   | "header"
@@ -54,15 +54,18 @@ const Dispatch = React.createContext<React.Dispatch<Actions>>(null);
 const reducer = (state, action: Actions) => {
   switch (action.type) {
     case "INIT_STORE FROM LS":
-      const store = window.localStorage.getItem(LOCAL_STORAGE_STORE_KEY)
-      if(!store) return state
+      const store = window.localStorage.getItem(LOCAL_STORAGE_STORE_KEY);
+      if (!store) return state;
       return {
         ...state,
-        ...JSON.parse(store),
-      }
+        ...JSON.parse(store)
+      };
     case "PUT_STORE_IN_LS":
-      window.localStorage.setItem(LOCAL_STORAGE_STORE_KEY, JSON.stringify(state))
-      return state
+      window.localStorage.setItem(
+        LOCAL_STORAGE_STORE_KEY,
+        JSON.stringify(state)
+      );
+      return state;
     case "UPDATE_SAVED_CHANGES_FLAG":
       return {
         ...state,
@@ -79,8 +82,11 @@ const reducer = (state, action: Actions) => {
         hasUnsavedChanges: false,
         email: action.payload
       };
-      window.localStorage.setItem(LOCAL_STORAGE_STORE_KEY, JSON.stringify(newState))
-      return newState
+      window.localStorage.setItem(
+        LOCAL_STORAGE_STORE_KEY,
+        JSON.stringify(newState)
+      );
+      return newState;
     case "UPDATE_VARIATION":
       return {
         ...state,
@@ -104,11 +110,12 @@ const reducer = (state, action: Actions) => {
         hasUnseenChanges: true,
         storeInfo: {
           ...state.storeInfo,
-          ...action.payload,
+          ...action.payload
         }
       };
     case "UPDATE_NAV_BAR":
-      const hasUnseenChanges = action.payload === 'preview' ? false : state.hasUnseenChanges
+      const hasUnseenChanges =
+        action.payload === "preview" ? false : state.hasUnseenChanges;
       return {
         ...state,
         hasUnseenChanges,
@@ -123,7 +130,7 @@ const reducer = (state, action: Actions) => {
 const Provider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, {
     isSaveModalOpen: false,
-    selectedVariations: {},
+    selectedVariations: preConfiguredThemes["1"],
     // TODO: use defaults in info.tsx as well
     storeInfo: {
       type: "physical"
