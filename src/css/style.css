@@ -34,3 +34,8 @@ body {
   -webkit-font-smoothing: antialiased;
   @apply bg-purple-900;
 }
+
+/* TODO: figure about better way to apply styles to swipeable view */
+[data-swipeable="true"] {
+  display: flex;
+}
