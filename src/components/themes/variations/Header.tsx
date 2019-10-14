@@ -23,11 +23,6 @@ export default function Header({ variations, storeInfo }: Props) {
     case 1:
       return (
         <>
-          {/* TODO figure out how to lazy load this font with gatsby */}
-          <link
-            href="https://fonts.googleapis.com/css?family=Satisfy&display=swap"
-            rel="stylesheet"
-          ></link>
           <div className="py-5 px-6">
             <h1
               className={getActiveClasses([

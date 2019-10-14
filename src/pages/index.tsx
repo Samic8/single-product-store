@@ -8,16 +8,23 @@ import MainContent from "../components/containers/MainContent";
 import SEO from "../components/seo";
 import { Store } from "../components/containers/store";
 
-const uri = process.env.GATSBY_PROD_GRAPHQL || "https://d0ttz70vr6.execute-api.us-east-1.amazonaws.com/dev/graphql"
+const uri =
+  process.env.GATSBY_PROD_GRAPHQL ||
+  "https://d0ttz70vr6.execute-api.us-east-1.amazonaws.com/dev/graphql";
 const client = new ApolloClient({
   fetch,
-  uri,
+  uri
 });
 
 function IndexPage() {
   return (
     <ApolloProvider client={client}>
       <Store.Provider>
+        {/* TODO: Move font loading to a better location because the website builder is dependent on it */}
+        <link
+          href="https://fonts.googleapis.com/css?family=Satisfy&display=swap"
+          rel="stylesheet"
+        ></link>
         <Layout>
           <SEO
             keywords={[
