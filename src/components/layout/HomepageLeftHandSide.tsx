@@ -27,7 +27,7 @@ export default function HomepageLeftHandSide({ className }: Props) {
   return (
     <div
       className={getActiveClasses([
-        "lg:block mx-auto lg:mx-0 alias-max-w-index-wide px-6",
+        "lg:block mx-auto lg:mx-0 alias-max-w-index-wide lg:px-6",
         className
       ])}
       style={{ boxSizing: "content-box" }}
