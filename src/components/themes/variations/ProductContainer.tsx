@@ -6,6 +6,7 @@ import { StoreInfo, applyPlaceholderStoreInfo } from "../info";
 import Decoration from "./Decoration";
 import { getActiveClasses } from "../../../utility/active-classes";
 import PlaceholderProductImage from "../../../images/product-image.jpg";
+import Popover from "@material-ui/core/Popover";
 
 interface Props {
   variations: Variations;
@@ -46,6 +47,21 @@ const CenteredContainer = ({
   classes?: { root?: string; image?: string };
   variations: Variations;
 }) => {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  function handleClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   const imageClasses = `h-sm md:h-auto md:w-2/5 z-10 ${classes.image}`;
 
   const ImageComponent = ({ className = "" }) => (
@@ -104,9 +120,30 @@ const CenteredContainer = ({
         <div className="text-3xl">{price}</div>
         <p className="text-lg leading-tight mt-2 max-w-sm">{description}</p>
         {/* TODO better focus state? */}
-        <button className="rounded-xl bg-gray-500 py-3 px-6 text-white font-bold mt-4 hocus:bg-gray-600">
+        <button
+          onClick={handleClick}
+          className="rounded-xl bg-gray-500 py-3 px-6 text-white font-bold mt-4 hocus:bg-gray-600"
+        >
           Buy
         </button>
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+          }}
+          transformOrigin={{
+            vertical: "bottom",
+            horizontal: "center"
+          }}
+        >
+          <p className="p-3 max-w-sm">
+            The customer will be navigated to the{" "}
+            <span className="font-bold">purchase page</span> on clicking buy.
+          </p>
+        </Popover>
         <Decoration
           variations={variations}
           className="absolute"
